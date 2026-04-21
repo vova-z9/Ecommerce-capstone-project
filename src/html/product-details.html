@@ -53,49 +53,96 @@
     </nav>
   </header>
 
-  <main id="app">
-    <section class="product-page" style="padding: 40px 0;">
-      <div class="container">
+  <main class="product-page">
+  <div class="container">
+    
+    <section class="product-main">
+      
+      <div class="product-gallery">
+        <div class="product-gallery__main">
+          <img id="product-main-image" src="/src/assets/suitcase-yellow.jpg" alt="Product Image">
+        </div>
+        <div class="product-gallery__thumbnails" id="product-thumbnails">
+          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 1" class="active">
+          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 2">
+          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 3">
+          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 4">
+        </div>
+      </div>
+
+      <div class="product-info">
+        <h1 class="product-info__title" id="product-title">Loading...</h1>
         
-        <div class="product-single__layout" id="single-product-container">
-           <div class="loader" style="text-align: center; padding: 50px;">Завантаження даних товару...</div>
+        <div class="product-info__rating">
+          <span class="stars" id="product-rating">★★★★★</span>
+          <span class="reviews-count">(0 Reviews)</span>
+        </div>
+        
+        <div class="product-info__price" id="product-price">$0</div>
+        
+        <div class="product-info__desc">
+          <p id="product-description">The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of travel essentials...</p>
         </div>
 
-        <div class="product-tabs" style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
-          
-          <div class="product-tabs__headers" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; border-bottom: 2px solid #eee;">
-            <button class="product-tabs__btn active" data-tab="details" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; border-bottom: 3px solid #B92770;">DETAILS</button>
-            <button class="product-tabs__btn" data-tab="reviews" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; color: #888;">REVIEWS</button>
-            <button class="product-tabs__btn" data-tab="shipping" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; color: #888;">SHIPPING POLICY</button>
+        <div class="product-info__options">
+          <div class="option-group">
+            <label>Size</label>
+            <select id="option-size"><option>Choose option</option></select>
           </div>
-          
-          <div class="product-tabs__content" style="max-width: 800px; margin: 0 auto; color: #555; line-height: 1.6;">
-            <div class="tab-pane active" id="tab-details">
-              <p>Опис товару завантажується...</p>
-            </div>
-            
-            <div class="tab-pane" id="tab-reviews" style="display: none;">
-              <h3>Customer Reviews</h3>
-              <p>No reviews yet.</p>
-            </div>
-            
-            <div class="tab-pane" id="tab-shipping" style="display: none;">
-              <h3>Shipping Policy</h3>
-              <p>Standard delivery takes 3-5 business days. Free shipping on orders over $3000.</p>
-            </div>
+          <div class="option-group">
+            <label>Color</label>
+            <select id="option-color"><option>Choose option</option></select>
+          </div>
+          <div class="option-group">
+            <label>Category</label>
+            <select id="option-category"><option>Choose option</option></select>
           </div>
         </div>
 
-        <div class="related-products" style="margin-top: 80px; text-align: center;">
-          <h2 class="related-products__title" style="font-size: 24px; font-weight: 700; margin-bottom: 40px; text-decoration: underline; text-decoration-color: #B92770;">You May Also Like</h2>
-          
-          <div class="product-grid" id="related-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left;">
-             </div>
+        <div class="product-info__actions">
+          <div class="quantity-selector">
+            <button type="button" id="qty-minus">-</button>
+            <input type="text" id="qty-input" value="1" readonly>
+            <button type="button" id="qty-plus">+</button>
+          </div>
+          <button class="btn btn-add-cart" id="btn-add-to-cart">Add To Cart</button>
         </div>
 
+        <div class="product-info__payments">
+          <span>Payment:</span>
+          <strong>VISA</strong> <strong>MasterCard</strong> <strong>PayPal</strong>
+        </div>
       </div>
     </section>
-  </main>
+
+    <section class="product-tabs">
+      <div class="tabs-header">
+        <button class="tab-btn active" data-tab="details">DETAILS</button>
+        <button class="tab-btn" data-tab="reviews">REVIEWS</button>
+        <button class="tab-btn" data-tab="shipping">SHIPPING POLICY</button>
+      </div>
+      
+      <div class="tabs-content">
+        <div class="tab-pane active" id="tab-details">
+          <p>Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis...</p>
+        </div>
+        <div class="tab-pane" id="tab-reviews">
+          <p>Here will be reviews form.</p>
+        </div>
+        <div class="tab-pane" id="tab-shipping">
+          <p>Shipping information goes here...</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-related">
+      <h2 class="section-title">You May Also Like</h2>
+      <div class="product-grid" id="related-products-grid">
+        </div>
+    </section>
+
+  </div>
+</main>
 
   <section class="benefits" style="background-color: #4a4a4a; padding: 40px 0;">
     <div class="container">
@@ -193,6 +240,6 @@
     </div>
   </footer>
 
-  <script type="module" src="/src/ts/product-details.ts"></script>
+  <script type="module" src="/src/ts/product.ts"></script>
 </body>
 </html>

@@ -11,7 +11,8 @@
 @import './components/reviews';     // Відгуки клієнтів
 @import './components/footer';      // Підвал сайту
 @import './components/benefits';
-@import './pages/catalog';          // <--- ТУТ ТЕПЕР Є ;
+@import './pages/catalog';      
+@import './pages/product-details';
 
 body {
   font-family: $font-main;
