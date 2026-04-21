@@ -1,0 +1,76 @@
+@import '../base/variables';
+
+.footer {
+  background-color: #fff; // Світлий фон як на макеті
+  padding: 80px 0;
+  border-top: 1px solid #eee; // Легка лінія зверху для відділення від контенту
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 рівні колонки
+    gap: 40px;
+    margin-bottom: 60px; // Відступ до нижнього блоку
+  }
+
+  &__title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 25px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin-bottom: 15px;
+
+      a {
+        color: #555;
+        text-decoration: none;
+        font-size: 14px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $color-primary; // Твій рожевий колір при наведенні
+        }
+      }
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  &__bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Розділяємо навпіл: зліва текст, справа контакти
+    gap: 80px;
+    align-items: flex-start;
+  }
+
+  &__contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // Сітка 2х2 для контактів
+    gap: 30px;
+  }
+
+  &__contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+
+    i {
+      font-size: 22px;
+      color: $color-primary; // Рожеві іконки
+      margin-top: 2px; // Трохи опускаємо іконку, щоб вона була на рівні тексту
+    }
+  }
+}

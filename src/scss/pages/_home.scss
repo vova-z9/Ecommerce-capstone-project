@@ -1,0 +1,37 @@
+.hero {
+  background-color: #F2F2F2; // Світлий фон як у Figma
+  padding: 80px 0;
+
+  &__inner {
+    display: flex;             // ОСЬ ЦЕ ГОЛОВНЕ!
+    align-items: center;       // Центрує текст і фото по вертикалі
+    justify-content: space-between;
+    gap: 50px;
+  }
+
+  &__content {
+    flex: 1;
+    max-width: 550px;
+  }
+
+  &__title {
+    font-size: 48px;
+    margin-bottom: 25px;
+    color: #222;
+  }
+
+  &__text {
+    font-size: 18px;
+    margin-bottom: 35px;
+    color: #555;
+  }
+
+  &__image {
+    flex: 1;
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 500px; // Щоб валіза не була на весь екран
+    }
+  }
+}

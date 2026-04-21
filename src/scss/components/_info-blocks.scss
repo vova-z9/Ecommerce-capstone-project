@@ -1,0 +1,76 @@
+@import '../base/variables';
+
+.info-blocks {
+  padding: 60px 0;
+
+  &__inner {
+    display: flex;
+    gap: 0; // 1. ПРИБРАЛИ ПРОБІЛ (було 30px)
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08); // Додали легку тінь для всього блоку, щоб він "висів" над фоном
+    border-radius: 10px; // Заокруглили кути всього великого блоку
+    overflow: hidden; // Щоб картинка не вилазила за заокруглені кути
+  }
+}
+
+.info-card {
+  flex: 1;
+  padding: 70px 60px; // 2. ЗБІЛЬШИЛИ ВІДСТУПИ (було 50px)
+  min-height: 480px;  // 3. ЗБІЛЬШИЛИ ВИСОТУ (було 400px)
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &--about {
+    background-color: #fff;
+    border: none;
+  }
+
+  &__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &--discount {
+    background-color: $color-dark;
+    color: white;
+    // Твоя картинка залишається тут:
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/src/assets/discount-bg.jpg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  &__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  &__percent {
+    display: block;
+    font-size: 24px;
+    color: $color-primary;
+    margin-bottom: 10px;
+  }
+}
+
+.btn--white {
+  background-color: white;
+  color: $color-dark;
+  &:hover { background-color: #f2f2f2; }
+}

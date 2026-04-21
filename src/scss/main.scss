@@ -1,0 +1,25 @@
+@import './base/variables';
+@import './base/reset';
+
+@import './components/header';
+@import './pages/home';
+@import './components/buttons';
+@import './components/product-card';
+@import './components/info-blocks'; // Блок з Ліліан
+@import './components/categories';  // 4 сірі категорії
+@import './components/offer-banner';// Банер 50%
+@import './components/reviews';     // Відгуки клієнтів
+@import './components/footer';      // Підвал сайту
+@import './components/benefits';
+@import './pages/catalog';          // <--- ТУТ ТЕПЕР Є ;
+
+body {
+  font-family: $font-main;
+  color: $color-dark;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

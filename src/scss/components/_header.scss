@@ -1,0 +1,99 @@
+@import '../base/variables';
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #eee; // Легка лінія під хедером
+
+  &__top {
+    padding: 20px 0;
+    border-bottom: 1px solid #f9f9f9;
+  }
+
+  &__top-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 15px;
+    width: 100px; // Щоб логотип був рівно по центру
+    a { 
+      color: #777; 
+      font-size: 16px; 
+      transition: color 0.3s; 
+      &:hover { color: $color-primary; }
+    }
+  }
+
+  &__logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: $color-primary; // Рожевий логотип
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100px; // Баланс для центрування лого
+    justify-content: flex-end;
+  }
+
+  &__action-link {
+    color: #333;
+    font-size: 20px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    &:hover { color: $color-primary; }
+  }
+
+  &__cart-count {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: $color-primary;
+    color: white;
+    font-size: 11px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: 700;
+  }
+
+  &__nav {
+    padding: 15px 0;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+
+      &:hover, &.active {
+        color: $color-primary;
+      }
+    }
+  }
+}

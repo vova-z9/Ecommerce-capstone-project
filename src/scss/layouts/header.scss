@@ -1,0 +1,19 @@
+.header__top-bar {
+  display: flex;
+  justify-content: space-between; // Розкидає елементи: ліворуч, по центру, праворуч
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee; // Якщо на макеті є лінія
+}
+
+.header__socials, .header__actions {
+  display: flex;
+  align-items: center;
+  gap: 15px; // Відстань між іконками
+}
+
+.header__logo {
+  text-align: center;
+  // Якщо логотип завеликий, можна обмежити ширину:
+  // img { max-width: 150px; } 
+}

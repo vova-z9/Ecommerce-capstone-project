@@ -1,0 +1,204 @@
+@import '../base/variables';
+
+.catalog-page {
+  padding: 40px 0 80px;
+}
+
+.catalog__layout {
+  display: grid !important;
+  // Ліва частина займає все місце (1fr), права — рівно 300px
+  grid-template-columns: 1fr 300px !important; 
+  gap: 50px;
+  align-items: start;
+}
+
+// Тулбар над сіткою
+.catalog__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  
+  .results-text {
+    font-size: 14px;
+    color: #888;
+  }
+  
+  .sort-select {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+// Рядок фільтрів
+.catalog__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  align-items: center;
+
+  .filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+  }
+
+  .filter-checkbox {
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .btn-reset {
+    background: transparent;
+    border: none;
+    color: #B92770;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    text-decoration: underline;
+
+    &:hover {
+      color: #111;
+    }
+  }
+}
+
+// Стилі Сайдбару
+.catalog__sidebar {
+  .sidebar-widget {
+    margin-bottom: 40px;
+    
+    &__title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Пошук
+.search-box {
+  display: flex;
+  border: 1px solid #ddd;
+  
+  input {
+    flex: 1;
+    border: none;
+    padding: 12px 15px;
+    outline: none;
+    font-size: 13px;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    color: #888;
+  }
+}
+
+// Пагінація
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center; // Вирівнюємо по центру по вертикалі
+  gap: 10px;
+  margin-top: 50px;
+  
+  &__btn {
+    padding: 10px 18px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+    
+    &.active {
+      background: #B92770;
+      color: #fff;
+      border-color: #B92770;
+    }
+    
+    &:hover:not(.active) {
+      border-color: #B92770;
+      color: #B92770;
+    }
+
+    // Додаємо стиль спеціально для кнопки NEXT
+    &--next {
+      padding: 10px 20px;
+      font-size: 13px;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+/* --- САЙДБАР: Міні-картки (Top Best Sets) --- */
+.sidebar-sets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar-mini-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover h4 {
+    color: #B92770;
+  }
+
+  img {
+    // Жорстко фіксуємо розмір, щоб картинки не були гігантськими
+    width: 75px !important; 
+    height: 75px !important; 
+    min-width: 75px !important;
+    max-width: 75px !important;
+    flex-shrink: 0 !important; 
+    object-fit: cover !important; 
+    background: #f4f4f4;
+    border-radius: 4px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      margin: 0 0 5px 0;
+      line-height: 1.3;
+      transition: 0.3s;
+    }
+
+    .rating {
+      color: #ffc107;
+      font-size: 11px;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      font-size: 14px;
+      font-weight: 700;
+      color: #111;
+    }
+  }
+}

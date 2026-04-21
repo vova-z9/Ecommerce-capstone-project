@@ -1,0 +1,14 @@
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: $color-primary;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

@@ -1,21 +1,23 @@
 {
   "compilerOptions": {
-    "target": "ES6",                     
-    "module": "node16",                 
-    "outDir": "./dist/js",                  // Compiled JS files go here
-    "rootDir": "./src/ts",                  // TS source files
-    "strict": true,                      
-    "esModuleInterop": true,             
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,                
-    "moduleResolution": "node16",          
-    "allowJs": false,                    
+    "target": "es2023",
+    "module": "esnext",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "src/ts/main.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src"]
 }

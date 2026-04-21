@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Shop | Product Details</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="/src/scss/main.scss">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__top">
+      <div class="container header__top-inner" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+        
+        <div class="header__socials" style="display: flex; gap: 15px;">
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        
+        <a href="/" class="header__logo" style="font-size: 24px; font-weight: 800; color: #B92770; text-decoration: none;">
+           <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+        </a>
+        
+        <div class="header__actions" style="display: flex; gap: 20px;">
+          <a href="#" class="header__action-link">
+            <i class="fa-regular fa-user"></i>
+          </a>
+          <a href="/src/html/cart.html" class="header__action-link header__cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="header__cart-count">0</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <nav class="header__nav" style="padding: 20px 0;">
+      <div class="container">
+        <ul class="header__menu" style="display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; font-weight: 600; text-transform: uppercase;">
+           <li><a href="/" style="text-decoration: none; color: #333;">Home</a></li>
+           <li><a href="/src/html/catalog.html" style="text-decoration: none; color: #B92770;">Catalog</a></li> 
+           <li><a href="/src/html/about.html" style="text-decoration: none; color: #333;">About Us</a></li>
+           <li><a href="/src/html/contact.html" style="text-decoration: none; color: #333;">Contact Us</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    <section class="product-page" style="padding: 40px 0;">
+      <div class="container">
+        
+        <div class="product-single__layout" id="single-product-container">
+           <div class="loader" style="text-align: center; padding: 50px;">Завантаження даних товару...</div>
+        </div>
+
+        <div class="product-tabs" style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px;">
+          
+          <div class="product-tabs__headers" style="display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; border-bottom: 2px solid #eee;">
+            <button class="product-tabs__btn active" data-tab="details" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; border-bottom: 3px solid #B92770;">DETAILS</button>
+            <button class="product-tabs__btn" data-tab="reviews" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; color: #888;">REVIEWS</button>
+            <button class="product-tabs__btn" data-tab="shipping" style="background: none; border: none; font-weight: 700; font-size: 16px; cursor: pointer; padding-bottom: 10px; color: #888;">SHIPPING POLICY</button>
+          </div>
+          
+          <div class="product-tabs__content" style="max-width: 800px; margin: 0 auto; color: #555; line-height: 1.6;">
+            <div class="tab-pane active" id="tab-details">
+              <p>Опис товару завантажується...</p>
+            </div>
+            
+            <div class="tab-pane" id="tab-reviews" style="display: none;">
+              <h3>Customer Reviews</h3>
+              <p>No reviews yet.</p>
+            </div>
+            
+            <div class="tab-pane" id="tab-shipping" style="display: none;">
+              <h3>Shipping Policy</h3>
+              <p>Standard delivery takes 3-5 business days. Free shipping on orders over $3000.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="related-products" style="margin-top: 80px; text-align: center;">
+          <h2 class="related-products__title" style="font-size: 24px; font-weight: 700; margin-bottom: 40px; text-decoration: underline; text-decoration-color: #B92770;">You May Also Like</h2>
+          
+          <div class="product-grid" id="related-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: left;">
+             </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <section class="benefits" style="background-color: #4a4a4a; padding: 40px 0;">
+    <div class="container">
+      <div class="benefits__wrapper" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+        
+        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
+          <img src="/src/assets/icon-plane.svg" alt="Plane" class="benefit-card__icon" style="width: 40px;">
+          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Velit nisl sodales eget<br>donec quis. volutpat orci.</p>
+        </div>
+        
+        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
+          <img src="/src/assets/icon-truck.svg" alt="Truck" class="benefit-card__icon" style="width: 40px;">
+          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Dolor eu varius. Morbi<br>fermentum velit nisl.</p>
+        </div>
+
+        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
+          <img src="/src/assets/icon-coins.svg" alt="Coins" class="benefit-card__icon" style="width: 40px;">
+          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Malesuada fames ac ante<br>ipsum primis in faucibus.</p>
+        </div>
+
+        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
+          <img src="/src/assets/icon-cap.svg" alt="Cap" class="benefit-card__icon" style="width: 40px;">
+          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Nisl sodales eget donec<br>quis. volutpat orci.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__col">
+          <h3 class="footer__title">About Us</h3>
+          <ul class="footer__list">
+            <li><a href="#">Organisation</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Clients</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Interesting Links</h3>
+          <ul class="footer__list">
+            <li><a href="#">Photo Gallery</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Socials</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Achievements</h3>
+          <ul class="footer__list">
+            <li><a href="#">Winning Awards</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Our Amazing Clients</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Contact Us</h3>
+          <p class="footer__text">
+            Bendum dolor eu varius. Morbi fermentum velitsodales egetonec. volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac velitn consequat nec luctus.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__shipping">
+          <h3 class="footer__title">Shipping Information</h3>
+          <p class="footer__text">
+            Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque.
+          </p>
+        </div>
+
+        <div class="footer__contacts">
+          <div class="footer__contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>Phone: (+63) 236 6322</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-regular fa-envelope"></i>
+            <span>public@news.com</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-regular fa-clock"></i>
+            <span>Mon - Fri: 10am - 6pm<br>Sat - Sun: 10am - 6pm</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>639 Jade Valley,<br>Washington Dc</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/ts/product-details.ts"></script>
+</body>
+</html>

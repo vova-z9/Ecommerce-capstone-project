@@ -1,0 +1,40 @@
+@import '../base/variables';
+
+.benefits {
+  background-color: #4a4a4a; // Темно-сірий фон
+  background-image: url('../../assets/benefits-bg.png'); // Ті самі хвилі
+  background-size: cover;
+  background-position: center;
+  padding: 50px 0; // Відступи зверху і знизу
+  color: white;
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 рівні колонки
+    gap: 30px;
+  }
+}
+
+.benefit-card {
+  display: flex;
+  align-items: center;
+  gap: 15px; // Відстань між іконкою та текстом
+
+  &__icon {
+    width: 45px; // Ширина іконки (підкоригуй, якщо експортуєш іншого розміру)
+    height: auto;
+    flex-shrink: 0; // Забороняємо іконці стискатися
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #e0e0e0; // Трохи світліший білий для м'якості читання
+  }
+}
