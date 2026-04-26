@@ -1,5 +1,6 @@
 import './scss/main.scss'; 
 import { initLoginModal } from './ts/modal'; // Імпортуємо логіку модалки
+import { initContactForm } from './ts/contact';
 
 // Інтерфейс для типізації продукту згідно з JSON
 interface Product {
@@ -77,11 +78,12 @@ function renderProducts(products: Product[], containerId: string, buttonText: st
  * Головна точка входу: чекаємо завантаження DOM і запускаємо всі модулі
  */
 document.addEventListener('DOMContentLoaded', () => {
-  // Ініціалізація модалки логіну (Stage 4 - Account Icon)
+  // Ініціалізація модалки логіну
   initLoginModal();
 
-  // Завантаження товарів з JSON (Stage 4 - Homepage/Catalog)
-  fetchProducts();
+  // ДОДАЙ ЦЕЙ РЯДОК, ЩОБ ЗАПУСТИТИ ФОРМУ:
+  initContactForm(); 
 
-  // Тут у майбутньому додамо ініціалізацію слайдера та кошика
+  // Завантаження товарів з JSON
+  fetchProducts();
 });
