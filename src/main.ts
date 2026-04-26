@@ -1,5 +1,7 @@
 import './scss/main.scss'; 
+import { initLoginModal } from './ts/modal'; // Імпортуємо логіку модалки
 
+// Інтерфейс для типізації продукту згідно з JSON
 interface Product {
   id: string;
   name: string;
@@ -7,8 +9,6 @@ interface Product {
   imageUrl: string; 
   blocks: string[];
   salesStatus: boolean; 
-  
-  // (За бажанням) Можна відразу додати й інші поля з твого JSON на майбутнє:
   category?: string;
   color?: string;
   size?: string;
@@ -16,34 +16,41 @@ interface Product {
   popularity?: number;
 }
 
+/**
+ * Завантаження даних з локального JSON та рендер блоків на головній
+ */
 async function fetchProducts() {
   try {
     const response = await fetch('/src/assets/data.json'); 
     const rawData = await response.json();
     
-    // Перевіряємо структуру, щоб не було помилок
+    // Перевірка структури: у твоєму файлі дані лежать в rawData[0].data
     if (!rawData[0] || !rawData[0].data) return;
     
     const allProducts: Product[] = rawData[0].data;
 
-    // 1. Малюємо Selected Products
+    // 1. Рендеримо Selected Products (на головній)
     const selected = allProducts.filter(p => p.blocks.includes("Selected Products"));
     renderProducts(selected, 'product-grid', 'Add To Cart');
 
-    // 2. Малюємо New Arrivals (тільки один раз!)
+    // 2. Рендеримо New Products Arrival (на головній)
     const arrivals = allProducts.filter(p => p.blocks.includes("New Products Arrival"));
     renderProducts(arrivals, 'new-arrivals-grid', 'View Product');
 
-    // 3. Малюємо КАТАЛОГ
-    if (document.getElementById('catalog-grid')) {
+    // 3. Рендеримо КАТАЛОГ (якщо ми на сторінці каталогу)
+    const catalogContainer = document.getElementById('catalog-grid');
+    if (catalogContainer) {
       renderProducts(allProducts, 'catalog-grid', 'Add To Cart');
     }
 
   } catch (error) {
-    console.error("Помилка завантаження:", error);
+    console.error("Помилка завантаження даних:", error);
   }
 }
 
+/**
+ * Універсальна функція для створення карток товарів
+ */
 function renderProducts(products: Product[], containerId: string, buttonText: string = 'Add To Cart') {
   const container = document.getElementById(containerId);
   if (!container) return;
@@ -66,4 +73,15 @@ function renderProducts(products: Product[], containerId: string, buttonText: st
   `}).join('');
 }
 
-fetchProducts();
+/**
+ * Головна точка входу: чекаємо завантаження DOM і запускаємо всі модулі
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Ініціалізація модалки логіну (Stage 4 - Account Icon)
+  initLoginModal();
+
+  // Завантаження товарів з JSON (Stage 4 - Homepage/Catalog)
+  fetchProducts();
+
+  // Тут у майбутньому додамо ініціалізацію слайдера та кошика
+});
