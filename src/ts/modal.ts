@@ -1,5 +1,4 @@
 export const initLoginModal = (): void => {
-  // Використовуємо прямий пошук за ID, який ти додав у HTML
   const openModalBtn = document.getElementById('open-login'); 
   const loginModal = document.getElementById('login-modal');
   const loginForm = document.getElementById('login-form') as HTMLFormElement;
@@ -7,32 +6,26 @@ export const initLoginModal = (): void => {
   const emailInput = document.getElementById('login-email') as HTMLInputElement;
   const passwordInput = document.getElementById('login-password') as HTMLInputElement;
   const togglePasswordBtn = document.getElementById('toggle-password');
-  
-  console.log('Кнопка:', openModalBtn);
 
-console.log('Модалка:', loginModal);
+  if (!loginModal || !loginForm || !openModalBtn) return;
 
-console.log('Форма:', loginForm);
-  // Перевірка наявності головних елементів
-  if (!loginModal || !loginForm || !openModalBtn) {
-    console.error('Елементи модалки або кнопка відкриття не знайдені в DOM!');
-    return;
-  }
-
+  // 1. ЗМІНИЛИ ЗАКРИТТЯ:
   const closeModal = () => {
-    loginModal.classList.add('is-hidden');
+    // Було: loginModal.classList.add('is-hidden');
+    loginModal.hidden = true; // Стало
     document.body.style.overflow = '';
     loginForm.reset();
   };
 
-  // 1. Відкриття модалки
+  // 2. ЗМІНИЛИ ВІДКРИТТЯ:
   openModalBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    loginModal.classList.remove('is-hidden');
-    document.body.style.overflow = 'hidden'; // Забороняємо скрол сторінки під модалкою
+    // Було: loginModal.classList.remove('is-hidden');
+    loginModal.hidden = false; // Стало
+    document.body.style.overflow = 'hidden'; 
   });
 
-  // 2. Закриття по кліку на оверлей (темний фон навколо вікна)
+  // Закриття по кліку на оверлей
   loginModal.addEventListener('click', (e) => {
     if (e.target === loginModal) {
       closeModal();
