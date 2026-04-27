@@ -54,7 +54,7 @@ function renderCatalog() {
                 <div class="product-card__info">
                     <h3 class="product-card__title" onclick="location.href='/src/html/product-details.html?id=${p.id}'">${p.name}</h3>
                     <p class="product-card__price">$${p.price}</p>
-                    <button class="btn" onclick="addToCart('${p.id}')">Add To Cart</button>
+                    <button class="btn" onclick="addToCart('${p.id}', '${p.color || ''}', '${p.size || ''}')">Add To Cart</button>
                 </div>
             </article>
         `).join('');
@@ -78,7 +78,6 @@ function renderPagination() {
     let html = '';
 
     if (totalPages > 1) {
-        // 🛑 ДОДАНА КНОПКА PREV
         if (currentPage > 1) {
             html += `<button class="pagination__btn pagination__btn--prev" data-page="${currentPage - 1}">&lt; PREV</button>`;
         }
@@ -209,12 +208,31 @@ function setupListeners() {
     });
 }
 
-(window as any).addToCart = (id: string) => {
+// 🛑 ТУТ ЗМІНЕНО: Нова логіка додавання в кошик (об'єкти замість рядків)
+(window as any).addToCart = (id: string, color: string = '', size: string = '') => {
+    // Дістаємо поточний кошик
     const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    cart.push(id);
+    
+    // Шукаємо такий самий товар (id + колір + розмір)
+    const existingItem = cart.find((item: any) => 
+        item.id === id && item.color === color && item.size === size
+    );
+
+    // Збільшуємо кількість або додаємо новий
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id, color, size, quantity: 1 });
+    }
+
+    // Зберігаємо і оновлюємо лічильник
     localStorage.setItem('cart', JSON.stringify(cart));
+    
     const counter = document.querySelector('.header__cart-count');
-    if (counter) counter.textContent = cart.length.toString();
+    if (counter) {
+        const totalItems = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
+        counter.textContent = totalItems.toString();
+    }
 };
 
 document.addEventListener('DOMContentLoaded', initCatalog);

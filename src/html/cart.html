@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Shop | Contact Us</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="/src/scss/main.scss">
+</head>
+<body>
+
+  <header class="header">
+      <div class="header__top">
+        <div class="container header__top-inner" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
+          
+          <div class="header__socials" style="display: flex; gap: 15px;">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+          
+          <a href="/" class="header__logo" style="font-size: 24px; font-weight: 800; color: #B92770; text-decoration: none;">
+             <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+          </a>
+          
+          <div class="header__actions" style="display: flex; gap: 20px;">
+            <a href="#" class="header__action-link">
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <a href="/src/html/cart.html" class="header__action-link header__cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-count">0</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <nav class="header__nav" style="padding: 20px 0;">
+        <div class="container">
+          <ul class="header__menu" style="display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; font-weight: 600; text-transform: uppercase;">
+             <li><a href="/" style="text-decoration: none; color: #333;">Home</a></li>
+             <li><a href="/src/html/catalog.html" style="text-decoration: none; color: #333;">Catalog</a></li> 
+             <li><a href="/src/html/about.html" style="text-decoration: none; color: #333;">About Us</a></li>
+             <li><a href="/src/html/contact.html" style="text-decoration: none; color: #B92770;">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+  </header>
+
+  <main class="cart-page">
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-hero__title">My Cart</h1>
+    </div>
+  </section>
+
+  <section class="cart-content container">
+    <div class="cart-table-header">
+      <div class="col-image">IMAGE</div>
+      <div class="col-name">PRODUCT NAME</div>
+      <div class="col-price">PRICE</div>
+      <div class="col-quantity">QUANTITY</div>
+      <div class="col-total">TOTAL</div>
+      <div class="col-delete">DELETE</div>
+    </div>
+
+    <div id="cart-items-container" class="cart-items-list">
+      </div>
+
+    <div id="cart-empty-message" class="cart-empty" hidden>
+      <p>Your cart is empty. Use the catalog to add new items.</p>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-actions">
+        <a href="/src/html/catalog.html" class="btn btn--primary">CONTINUE SHOPPING</a>
+        <button id="clear-cart-btn" class="btn btn--primary">CLEAR SHOPPING CART</button>
+      </div>
+
+      <div class="cart-summary">
+        <div class="cart-summary__row">
+          <span>Sub Total</span>
+          <span id="summary-subtotal">$0</span>
+        </div>
+        <div class="cart-summary__row">
+          <span>Shipping</span>
+          <span>$30</span>
+        </div>
+        <div id="discount-row" class="cart-summary__row cart-summary__row--discount" hidden>
+          <span>Discount (10%)</span>
+          <span id="summary-discount">-$0</span>
+        </div>
+        <div class="cart-summary__row cart-summary__row--total">
+          <span>Total</span>
+          <span id="summary-total">$0</span>
+        </div>
+        <button id="checkout-btn" class="btn btn--primary btn--checkout">CHECKOUT</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+      
+      <div class="footer__top">
+        <div class="footer__col">
+          <h3 class="footer__title">About Us</h3>
+          <ul class="footer__list">
+            <li><a href="#">Organisation</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Clients</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Interesting Links</h3>
+          <ul class="footer__list">
+            <li><a href="#">Photo Gallery</a></li>
+            <li><a href="#">Our Team</a></li>
+            <li><a href="#">Socials</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Achievements</h3>
+          <ul class="footer__list">
+            <li><a href="#">Winning Awards</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Our Amazing Clients</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer__col">
+          <h3 class="footer__title">Contact Us</h3>
+          <p class="footer__text">
+            Bendum dolor eu varius. Morbi fermentum velitsodales egetonec. volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac velitn consequat nec luctus.
+          </p>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        
+        <div class="footer__shipping">
+          <h3 class="footer__title">Shipping Information</h3>
+          <p class="footer__text">
+            Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.
+          </p>
+        </div>
+
+        <div class="footer__contacts">
+          <div class="footer__contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>Phone: (+63) 236 6322</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-regular fa-envelope"></i>
+            <span>public@news.com</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-regular fa-clock"></i>
+            <span>Mon - Fri: 10am - 6pm<br>Sat - Sun: 10am - 6pm</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>639 Jade Valley,<br>Washington Dc</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

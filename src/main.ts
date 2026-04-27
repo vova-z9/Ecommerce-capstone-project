@@ -1,15 +1,15 @@
 import './scss/main.scss'; 
-import { initLoginModal } from './ts/modal'; // Імпортуємо логіку модалки
+import { initLoginModal } from './ts/modal';
 import { initContactForm } from './ts/contact';
+import { initCart } from './ts/cart'; 
 
-// Інтерфейс для типізації продукту згідно з JSON
 interface Product {
   id: string;
   name: string;
   price: number;
   imageUrl: string; 
   blocks: string[];
-  salesStatus: boolean; 
+  salesStatus: boolean | string; 
   category?: string;
   color?: string;
   size?: string;
@@ -17,15 +17,11 @@ interface Product {
   popularity?: number;
 }
 
-/**
- * Завантаження даних з локального JSON та рендер блоків на головній
- */
 async function fetchProducts() {
   try {
     const response = await fetch('/src/assets/data.json'); 
     const rawData = await response.json();
     
-    // Перевірка структури: у твоєму файлі дані лежать в rawData[0].data
     if (!rawData[0] || !rawData[0].data) return;
     
     const allProducts: Product[] = rawData[0].data;
@@ -38,7 +34,7 @@ async function fetchProducts() {
     const arrivals = allProducts.filter(p => p.blocks.includes("New Products Arrival"));
     renderProducts(arrivals, 'new-arrivals-grid', 'View Product');
 
-    // 3. Рендеримо КАТАЛОГ (якщо ми на сторінці каталогу)
+    // 3. Рендеримо КАТАЛОГ
     const catalogContainer = document.getElementById('catalog-grid');
     if (catalogContainer) {
       renderProducts(allProducts, 'catalog-grid', 'Add To Cart');
@@ -49,41 +45,61 @@ async function fetchProducts() {
   }
 }
 
-/**
- * Універсальна функція для створення карток товарів
- */
 function renderProducts(products: Product[], containerId: string, buttonText: string = 'Add To Cart') {
   const container = document.getElementById(containerId);
   if (!container) return;
 
   container.innerHTML = products.map(product => {
-    const saleBadge = product.salesStatus ? `<span class="product-card__badge">SALE</span>` : '';
+    const saleBadge = product.salesStatus === true || product.salesStatus === "true" 
+        ? `<span class="product-card__badge">SALE</span>` : '';
+    
+    // 🛑 ДОДАНО ЛОГІКУ ДЛЯ КНОПОК: щоб вони додавали товар або вели на сторінку
+    const btnAction = buttonText === 'Add To Cart' 
+        ? `onclick="addToCart('${product.id}', '${product.color || ''}', '${product.size || ''}')"` 
+        : `onclick="location.href='/src/html/product-details.html?id=${product.id}'"`;
 
     return `
     <article class="product-card">
-      <div class="product-card__image-wrapper">
+      <div class="product-card__image-wrapper" onclick="location.href='/src/html/product-details.html?id=${product.id}'" style="cursor:pointer;">
         ${saleBadge}
         <img src="${product.imageUrl}" alt="${product.name}" class="product-card__image">
       </div>
       <div class="product-card__info">
-        <h3 class="product-card__title">${product.name}</h3>
+        <h3 class="product-card__title" onclick="location.href='/src/html/product-details.html?id=${product.id}'" style="cursor:pointer;">${product.name}</h3>
         <p class="product-card__price">$${product.price}</p>
-        <button class="btn btn--primary">${buttonText}</button>
+        <button class="btn btn--primary" ${btnAction}>${buttonText}</button>
       </div>
     </article>
   `}).join('');
 }
 
-/**
- * Головна точка входу: чекаємо завантаження DOM і запускаємо всі модулі
- */
+// 🛑 ДОДАНО ГЛОБАЛЬНУ ФУНКЦІЮ ДОДАВАННЯ: щоб вона працювала на головній сторінці
+(window as any).addToCart = (id: string, color: string = '', size: string = '') => {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const existingItem = cart.find((item: any) => 
+        item.id === id && item.color === color && item.size === size
+    );
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id, color, size, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    const counter = document.querySelector('.header__cart-count');
+    if (counter) {
+        const totalItems = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
+        counter.textContent = totalItems.toString();
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Ініціалізація модалки логіну
   initLoginModal();
-
-  // ДОДАЙ ЦЕЙ РЯДОК, ЩОБ ЗАПУСТИТИ ФОРМУ:
   initContactForm(); 
-
-  // Завантаження товарів з JSON
+  
+  initCart(); // 🛑 ТЕПЕР КОШИК ТОЧНО ЗАПУСТИТЬСЯ
+  
   fetchProducts();
 });

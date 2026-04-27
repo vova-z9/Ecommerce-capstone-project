@@ -11,37 +11,40 @@ interface Product {
     rating: number;
     imageUrl: string;
     description?: string;
-    gallery?: string[]; // Додаткові фото
-    salesStatus?: boolean; // Додали для SALE-беджів
+    gallery?: string[]; 
+    salesStatus?: boolean | string;
+}
+
+interface CartItem {
+    id: string;
+    color: string;
+    size: string;
+    quantity: number;
 }
 
 let currentProduct: Product | null = null;
 
 async function initProductDetails() {
-    // 1. Отримуємо ID з URL
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
 
     if (!productId) {
-        window.location.href = 'catalog.html'; // Якщо ID немає, вертаємо в каталог
+        window.location.href = 'catalog.html';
         return;
     }
 
     try {
-        // 2. Завантажуємо дані
         const response = await fetch('/src/assets/data.json');
         const rawData = await response.json();
         const allProducts: Product[] = rawData[0]?.data || [];
 
-        // 3. Шукаємо потрібний товар
         currentProduct = allProducts.find(p => p.id === productId) || null;
 
         if (currentProduct) {
-            // 4. Заповнюємо сторінку
             renderProductInfo(currentProduct);
             setupEventListeners();
             renderRelatedProducts(allProducts);
-            syncCartCounter(); // Синхронізація лічильника хедера
+            syncCartCounter(); 
         } else {
             const mainContainer = document.querySelector('.product-page');
             if (mainContainer) mainContainer.innerHTML = "<div class='container'><h1>Product not found</h1></div>";
@@ -51,7 +54,6 @@ async function initProductDetails() {
     }
 }
 
-// Функція для заповнення сторінки даними
 function renderProductInfo(p: Product) {
     const title = document.getElementById('product-title');
     const price = document.getElementById('product-price');
@@ -63,37 +65,31 @@ function renderProductInfo(p: Product) {
     if (title) title.textContent = p.name;
     if (price) price.textContent = `$${p.price}`;
     if (mainImage) mainImage.src = p.imageUrl;
-    if (desc) desc.textContent = p.description || "The new Urban Compact Travel Suitcase is a bold reimagining of travel essentials, designed to elevate every journey. Made with at least 30% recycled materials, its lightweight yet impact-resistant shell combines eco-conscious innovation with rugged durability.";
-    if (rating) rating.textContent = '★'.repeat(Math.floor(p.rating)) + '☆'.repeat(5 - Math.floor(p.rating));
+    if (desc) desc.textContent = p.description || "The new Urban Compact Travel Suitcase is a bold reimagining of travel essentials, designed to elevate every journey.";
+    
+    if (rating) {
+        const stars = Math.floor(p.rating);
+        rating.innerHTML = `<span class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</span> (0 Reviews)`;
+    }
 
-    // --- 🖼 ДИНАМІЧНА ГАЛЕРЕЯ (Виправлення галереї) ---
+    // Галерея
     if (thumbsContainer) {
-        thumbsContainer.innerHTML = ''; // Очищаємо старі фото
-
-        // Якщо в JSON є галерея — рендеримо її, якщо ні — тільки головне фото
-        const imagesToRender = (p.gallery && p.gallery.length > 0) 
-            ? p.gallery 
-            : [p.imageUrl];
-
+        const imagesToRender = (p.gallery && p.gallery.length > 0) ? p.gallery : [p.imageUrl];
         thumbsContainer.innerHTML = imagesToRender.map((imgUrl, index) => `
             <img src="${imgUrl}" alt="Thumbnail ${index + 1}" class="${index === 0 ? 'active' : ''}">
         `).join('');
-        
-        // Обов'язково заново вішаємо слухачі кліків, бо ми створили нові елементи
         setupGalleryClickHandlers();
     }
 
-    // Оновлення селектів (опцій)
+    // Опції (Size / Color)
     const sizeSelect = document.getElementById('option-size') as HTMLSelectElement;
     const colorSelect = document.getElementById('option-color') as HTMLSelectElement;
-    const catSelect = document.getElementById('option-category') as HTMLSelectElement;
 
-    if (sizeSelect) sizeSelect.innerHTML = `<option>${p.size || 'M'}</option>`;
-    if (colorSelect) colorSelect.innerHTML = `<option>${p.color || 'Default'}</option>`;
-    if (catSelect) catSelect.innerHTML = `<option>${p.category}</option>`;
+    // Якщо в JSON є дані - ставимо їх, якщо ні - дефолтні
+    if (sizeSelect) sizeSelect.value = p.size || 'M';
+    if (colorSelect) colorSelect.value = p.color || 'black';
 }
 
-// Слухачі кліків галереї
 function setupGalleryClickHandlers() {
     const mainImg = document.getElementById('product-main-image') as HTMLImageElement;
     const thumbnails = document.querySelectorAll('.product-gallery__thumbnails img');
@@ -110,8 +106,9 @@ function setupGalleryClickHandlers() {
 }
 
 function setupEventListeners() {
-    // Кількість (+/-)
     const qtyInput = document.getElementById('qty-input') as HTMLInputElement;
+
+    // 1. Кількість (+/-)
     document.getElementById('qty-plus')?.addEventListener('click', () => {
         qtyInput.value = (parseInt(qtyInput.value) + 1).toString();
     });
@@ -120,7 +117,7 @@ function setupEventListeners() {
         if (val > 1) qtyInput.value = (val - 1).toString();
     });
 
-    // Таби (Details / Reviews / Shipping Policy)
+    // 2. Таби
     const tabBtns = document.querySelectorAll('.tab-btn');
     tabBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -131,19 +128,52 @@ function setupEventListeners() {
         });
     });
 
-    // Add To Cart
+    // 3. Відгуки (Review Form)
+    const reviewForm = document.getElementById('review-form') as HTMLFormElement;
+    reviewForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const successMsg = document.getElementById('review-success-msg');
+        if (successMsg) {
+            successMsg.textContent = "Thank you! Your review has been submitted.";
+            successMsg.style.display = "block";
+            reviewForm.reset();
+            // Ховаємо через 3 секунди
+            setTimeout(() => { successMsg.style.display = "none"; }, 3000);
+        }
+    });
+
+    // 4. Оновлена логіка ADD TO CART
     document.getElementById('btn-add-to-cart')?.addEventListener('click', () => {
         if (!currentProduct) return;
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        const count = parseInt(qtyInput.value);
-        // Додаємо товар count разів
-        for(let i=0; i<count; i++) cart.push(currentProduct.id);
+
+        const sizeSelect = document.getElementById('option-size') as HTMLSelectElement;
+        const colorSelect = document.getElementById('option-color') as HTMLSelectElement;
+        
+        const selectedSize = sizeSelect ? sizeSelect.value : 'M';
+        const selectedColor = colorSelect ? colorSelect.value : 'black';
+        const countToAdd = parseInt(qtyInput.value);
+
+        let cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
+
+        const existingItem = cart.find(item => 
+            item.id === currentProduct?.id && 
+            item.color === selectedColor && 
+            item.size === selectedSize
+        );
+
+        if (existingItem) {
+            existingItem.quantity += countToAdd;
+        } else {
+            cart.push({
+                id: currentProduct.id,
+                color: selectedColor,
+                size: selectedSize,
+                quantity: countToAdd
+            });
+        }
+
         localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Оновлюємо лічильник у хедері
-        const counter = document.querySelector('.header__cart-count');
-        if (counter) counter.textContent = cart.length.toString();
-        
+        syncCartCounter();
         alert('Product added to cart!');
     });
 }
@@ -152,7 +182,6 @@ function renderRelatedProducts(all: Product[]) {
     const grid = document.getElementById('related-products-grid');
     if (!grid) return;
 
-    // Вибираємо 4 рандомні товари, крім поточного
     const related = all
         .filter(p => p.id !== currentProduct?.id)
         .sort(() => 0.5 - Math.random())
@@ -160,12 +189,12 @@ function renderRelatedProducts(all: Product[]) {
 
     grid.innerHTML = related.map(p => `
         <article class="product-card">
-            ${p.salesStatus === true ? '<span class="product-card__badge">SALE</span>' : ''}
+            ${(p.salesStatus === true || p.salesStatus === "true") ? '<span class="product-card__badge">SALE</span>' : ''}
             <div class="product-card__image-wrapper" onclick="location.href='product-details.html?id=${p.id}'">
                 <img src="${p.imageUrl}" alt="${p.name}" class="product-card__image">
             </div>
             <div class="product-card__info">
-                <h3>${p.name}</h3>
+                <h3 onclick="location.href='product-details.html?id=${p.id}'">${p.name}</h3>
                 <p>$${p.price}</p>
                 <button class="btn btn-add-cart" onclick="location.href='product-details.html?id=${p.id}'">View Details</button>
             </div>
@@ -173,11 +202,13 @@ function renderRelatedProducts(all: Product[]) {
     `).join('');
 }
 
-// Синхронізація лічильника хедера при старті
 function syncCartCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const cart: CartItem[] = JSON.parse(localStorage.getItem('cart') || '[]');
     const counter = document.querySelector('.header__cart-count');
-    if (counter) counter.textContent = cart.length.toString();
+    if (counter) {
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        counter.textContent = totalItems.toString();
+    }
 }
 
 document.addEventListener('DOMContentLoaded', initProductDetails);
