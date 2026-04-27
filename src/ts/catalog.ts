@@ -78,12 +78,17 @@ function renderPagination() {
     let html = '';
 
     if (totalPages > 1) {
+        // 🛑 ДОДАНА КНОПКА PREV
+        if (currentPage > 1) {
+            html += `<button class="pagination__btn pagination__btn--prev" data-page="${currentPage - 1}">&lt; PREV</button>`;
+        }
+
         for (let i = 1; i <= totalPages; i++) {
             html += `<button class="pagination__btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
         }
 
         if (currentPage < totalPages) {
-            html += `<button class="pagination__btn pagination__btn--next" data-page="${currentPage + 1}">NEXT ></button>`;
+            html += `<button class="pagination__btn pagination__btn--next" data-page="${currentPage + 1}">NEXT &gt;</button>`;
         }
     }
     container.innerHTML = html;
@@ -110,7 +115,6 @@ function renderBestSets() {
 
 function setupListeners() {
     // 💡 ДОПОМІЖНА ФУНКЦІЯ: розбиває будь-який рядок на масив розмірів
-    // Наприклад: "S, M, XL" -> ["S", "M", "XL"] або "S-L" -> ["S", "L"]
     const getSizesArray = (sizeStr: string): string[] => {
         if (!sizeStr) return [];
         return sizeStr.split(/[,/-]/).map(s => s.trim().toUpperCase()).filter(s => s !== "");
@@ -132,7 +136,7 @@ function setupListeners() {
         const query = searchElem ? searchElem.value.toLowerCase() : '';
 
         filteredProducts = allProducts.filter((p: Product) => {
-            // 1. Категорія (ігноруємо пробіли та апострофи)
+            // 1. Категорія
             const itemCat = p.category ? p.category.toLowerCase().replace(/['\s]/g, "") : '';
             const selectedCat = cat.toLowerCase().replace(/['\s]/g, "");
             const matchCat = cat === 'all' || itemCat === selectedCat;
@@ -144,11 +148,9 @@ function setupListeners() {
             const itemColor = p.color ? p.color.toLowerCase().trim() : '';
             const matchColor = color === 'all' || itemColor === color.toLowerCase().trim();
 
-            // 4. РОЗМІР (Магія масивів)
-            const itemSizes = getSizesArray(p.size || ""); // Розміри з JSON
-            const selectedSizes = getSizesArray(size);     // Розмір з випадаючого списку
-            
-            // Перевіряємо, чи є хоча б один спільний розмір
+            // 4. Розмір
+            const itemSizes = getSizesArray(p.size || "");
+            const selectedSizes = getSizesArray(size); 
             const matchSize = size === 'all' || selectedSizes.some(s => itemSizes.includes(s));
 
             // 5. Статус розпродажу
