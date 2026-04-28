@@ -5,17 +5,17 @@
 
   &__inner {
     display: flex;
-    gap: 0; // 1. ПРИБРАЛИ ПРОБІЛ (було 30px)
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08); // Додали легку тінь для всього блоку, щоб він "висів" над фоном
-    border-radius: 10px; // Заокруглили кути всього великого блоку
-    overflow: hidden; // Щоб картинка не вилазила за заокруглені кути
+    gap: 0;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden;
   }
 }
 
 .info-card {
   flex: 1;
-  padding: 70px 60px; // 2. ЗБІЛЬШИЛИ ВІДСТУПИ (було 50px)
-  min-height: 480px;  // 3. ЗБІЛЬШИЛИ ВИСОТУ (було 400px)
+  padding: 70px 60px;
+  min-height: 480px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -35,8 +35,7 @@
   &--discount {
     background-color: $color-dark;
     color: white;
-    // Твоя картинка залишається тут:
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/src/assets/discount-bg.jpg.png');
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('/public/discount-bg.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,12 +46,6 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 25px;
-  }
-
-  &__avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
   }
 
   &__title {

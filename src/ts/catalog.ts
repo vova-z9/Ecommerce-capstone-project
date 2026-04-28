@@ -186,15 +186,23 @@ function setupListeners() {
 
     // Кнопка Reset
     document.getElementById('reset-filters')?.addEventListener('click', () => {
-        const ids = ['filter-category', 'filter-color', 'filter-size', 'sort-select', 'search-input'];
-        ids.forEach(id => {
-            const el = document.getElementById(id) as HTMLSelectElement | HTMLInputElement;
-            if (el) el.value = id === 'sort-select' ? 'default' : (id === 'search-input' ? '' : 'all');
+      const ids = ['filter-category', 'filter-color', 'filter-size', 'sort-select', 'search-input'];
+      ids.forEach(id => {
+          const el = document.getElementById(id) as HTMLSelectElement | HTMLInputElement;
+          if (el) {
+              if (id === 'sort-select') {
+                  el.value = 'default';
+              } else if (id === 'search-input') {
+                  el.value = '';
+              } else {
+                  el.value = 'all';
+              }
+          }
         });
-        const sale = document.getElementById('filter-sale') as HTMLInputElement;
-        if (sale) sale.checked = false;
-        
-        applyFilters();
+      const sale = document.getElementById('filter-sale') as HTMLInputElement;
+      if (sale) sale.checked = false;
+    
+      applyFilters();
     });
 
     // Пагінація
