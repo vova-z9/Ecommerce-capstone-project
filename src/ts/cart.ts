@@ -30,7 +30,7 @@ export async function initCart() {
     }
 
     try {
-        const response = await fetch('/src/assets/data.json');
+        const response = await fetch('/data.json');
         const rawData = await response.json();
         const allProducts = rawData[0]?.data || [];
 

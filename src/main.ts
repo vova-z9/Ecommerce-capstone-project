@@ -19,7 +19,7 @@ interface Product {
 
 async function fetchProducts() {
   try {
-    const response = await fetch('/src/assets/data.json'); 
+    const response = await fetch('/data.json'); 
     const rawData = await response.json();
     
     if (!rawData[0] || !rawData[0].data) return;

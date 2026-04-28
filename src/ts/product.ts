@@ -34,7 +34,7 @@ async function initProductDetails() {
     }
 
     try {
-        const response = await fetch('/src/assets/data.json');
+        const response = await fetch('/data.json');
         const rawData = await response.json();
         const allProducts: Product[] = rawData[0]?.data || [];
 

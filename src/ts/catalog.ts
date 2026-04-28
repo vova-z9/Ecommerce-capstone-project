@@ -20,7 +20,7 @@ const ITEMS_PER_PAGE = 12;
 
 async function initCatalog() {
     try {
-        const response = await fetch('/src/assets/data.json');
+        const response = await fetch('/data.json');
         const rawData = await response.json();
         
         // Дістаємо масив товарів з твоєї структури [{ "data": [...] }]
