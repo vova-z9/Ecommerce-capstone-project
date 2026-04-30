@@ -1,9 +1,39 @@
-.header__top-bar {
+/* =========================================
+   БАЗОВІ СТИЛІ (ДЕСКТОП ТА ЗАГАЛЬНІ)
+========================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffff;
+  width: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.header__top-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 0;
   border-bottom: 1px solid #eee;
+}
+
+.header__left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ГОЛОВНЕ: ховаємо бургер на десктопі */
+.header__burger {
+  display: none !important; 
+  font-size: 24px;
+  color: #000;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .header__socials, 
@@ -14,5 +44,63 @@
 }
 
 .header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 24px;
+  color: #B92770;
   text-align: center;
+  white-space: nowrap;
+}
+
+.header__menu {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  padding: 15px 0;
+  margin: 0;
+}
+
+
+/* =========================================
+   АДАПТИВ ДЛЯ МОБІЛЬНИХ (менше 768px)
+========================================= */
+
+@media (max-width: 768px) {
+  
+  /* 1. Ховаємо іконки соцмереж на телефоні */
+  .header__socials {
+    display: none !important;
+  }
+
+  /* 2. ПОКАЗУЄМО БУРГЕР НА ТЕЛЕФОНІ */
+  .header__burger {
+    display: block !important; 
+  }
+
+  /* 3. Навігація, що випадає */
+  .header__nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px 0;
+  }
+
+  /* Клас для відкриття меню (TypeScript) */
+  .header__nav.is-open {
+    display: block;
+  }
+
+  .header__menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
 }

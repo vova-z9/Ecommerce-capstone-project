@@ -16,42 +16,44 @@
 
   <header class="header">
       <div class="header__top">
-        <div class="container header__top-inner" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-          
-          <div class="header__socials" style="display: flex; gap: 15px;">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          
-          <a href="/" class="header__logo" style="font-size: 24px; font-weight: 800; color: #B92770; text-decoration: none;">
-             <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-          </a>
-          
-          <div class="header__actions" style="display: flex; gap: 20px;">
-            <a href="#" class="header__action-link">
-              <i class="fa-regular fa-user"></i>
-            </a>
-            <a href="/src/html/cart.html" class="header__action-link header__cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="header__cart-count">0</span>
-            </a>
-          </div>
-
-        </div>
+        <div class="container header__top-inner">
+  <div class="header__left"> <button class="header__burger" id="burger-btn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="header__socials">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+  
+  <a href="/" class="header__logo">
+      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+  </a>
+  
+  <div class="header__actions">
+    <a href="#" class="header__action-link" id="open-login">
+      <i class="fa-regular fa-user"></i>
+    </a>
+    <a href="/src/html/cart.html" class="header__action-link header__cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="header__cart-count">0</span>
+    </a>
+  </div>
+</div>
       </div>
 
-      <nav class="header__nav" style="padding: 20px 0;">
+      <nav class="header__nav">
         <div class="container">
-          <ul class="header__menu" style="display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; font-weight: 600; text-transform: uppercase;">
-             <li><a href="/" style="text-decoration: none; color: #333;">Home</a></li>
-             <li><a href="/src/html/catalog.html" style="text-decoration: none; color: #333;">Catalog</a></li> 
-             <li><a href="/src/html/about.html" style="text-decoration: none; color: #B92770;">About Us</a></li>
-             <li><a href="/src/html/contact.html" style="text-decoration: none; color: #333;">Contact Us</a></li>
+          <ul class="header__menu">
+             <li><a href="/">Home</a></li>
+             <li><a href="/src/html/catalog.html">Catalog</a></li> 
+             <li><a href="/src/html/about.html">About Us</a></li>
+             <li><a href="/src/html/contact.html">Contact Us</a></li>
           </ul>
         </div>
       </nav>
-  </header>
+    </header>
 
   <main class="about-page">
   
@@ -245,7 +247,36 @@
 
     </div>
   </footer>
+  <div class="modal-overlay is-hidden" id="login-modal">
+  <div class="modal-content">
+    
+    <form class="login-form" id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email address <span class="required">*</span></label>
+        <input type="email" id="login-email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="login-password">Password <span class="required">*</span></label>
+        <div class="password-wrapper">
+          <input type="password" id="login-password" required>
+          <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <label class="remember-me">
+          <input type="checkbox" id="remember-me">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link">Forgot Your Password?</a>
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+    </form>
 
+  </div>
+  </div>
   <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

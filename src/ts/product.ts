@@ -24,7 +24,7 @@ interface CartItem {
 
 let currentProduct: Product | null = null;
 
-async function initProductDetails() {
+export async function initProductDetails() {
     const params = new URLSearchParams(window.location.search);
     const productId = params.get('id');
 
@@ -210,5 +210,3 @@ function syncCartCounter() {
         counter.textContent = totalItems.toString();
     }
 }
-
-document.addEventListener('DOMContentLoaded', initProductDetails);

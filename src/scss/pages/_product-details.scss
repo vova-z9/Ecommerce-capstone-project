@@ -180,6 +180,98 @@
     }
   }
 
+  // Сітка відгуків (2 колонки)
+.reviews-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // На мобілці буде в одну колонку
+  }
+}
+
+// Стилі лівої колонки (існуючі відгуки)
+.review-item {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+
+  .review-author {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .review-date {
+      font-size: 12px;
+      color: #888;
+      font-weight: 400;
+    }
+  }
+
+  .review-rating {
+    color: #ffd700; // Золотий колір зірок
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+  }
+}
+
+// Стилі правої колонки (форма)
+.reviews-form-wrapper {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+
+  .form-title {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 20px; // Відстань між Name та Email
+  }
+
+  .form-group {
+    flex: 1; // Щоб Name і Email ділили ширину 50/50
+    margin-bottom: 20px;
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #333;
+      font-weight: 500;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s;
+
+      &:focus { border-color: #B92770; }
+    }
+  }
+
+  .rating-select {
+    color: #ffd700;
+    cursor: pointer;
+    font-size: 18px;
+  }
+}
+
   // 2. ТАБИ
   .product-tabs {
     margin-bottom: 80px;

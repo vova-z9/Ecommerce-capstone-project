@@ -1,1 +1,15 @@
-// TODO: add styles here
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1440px;
+
+@mixin respond-to($media) {
+  @if $media == mobile {
+    @media (max-width: $mobile) { @content; }
+  }
+  @else if $media == tablet {
+    @media (max-width: $tablet) { @content; }
+  }
+  @else if $media == desktop {
+    @media (max-width: $desktop) { @content; }
+  }
+}

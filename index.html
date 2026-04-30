@@ -17,26 +17,30 @@
     <header class="header">
       <div class="header__top">
         <div class="container header__top-inner">
-          <div class="header__socials">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          
-          <a href="/" class="header__logo">
-             <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-          </a>
-          
-          <div class="header__actions">
-            <a href="#" class="header__action-link" id="open-login">
-              <i class="fa-regular fa-user"></i>
-            </a>
-            <a href="/html/cart.html" class="header__action-link header__cart">
-              <i class="fa-solid fa-cart-shopping"></i>
-              <span class="header__cart-count">0</span>
-            </a>
-          </div>
-        </div>
+  <div class="header__left"> <button class="header__burger" id="burger-btn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="header__socials">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+  </div>
+  
+  <a href="/" class="header__logo">
+      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+  </a>
+  
+  <div class="header__actions">
+    <a href="#" class="header__action-link" id="open-login"> 
+      <i class="fa-regular fa-user"></i>
+    </a>
+    <a href="/src/html/cart.html" class="header__action-link header__cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="header__cart-count">0</span>
+    </a>
+  </div>
+</div>
       </div>
 
       <nav class="header__nav">
@@ -57,7 +61,7 @@
           <div class="hero__content">
             <h1 class="hero__title">Smart Styles for Every Destination</h1>
             <p class="hero__text">Whether you're jetting off for a weekend getaway or embarking on a long-haul adventure, we've got you covered.</p>
-            <a href="/html/catalog.html" class="btn btn--primary">View All Models</a>
+            <a href="./src/html/catalog.html" class="btn btn--primary">View All Models</a>
           </div>
           <div class="hero__image">
             <img src="/src/assets/smart-suitcase-banner.png.png" alt="Smart Suitcase">
@@ -279,7 +283,7 @@
     </footer>
 
   </div>
-  <div class="modal-overlay is-hidden" id="login-modal" hidden>
+  <div class="modal-overlay is-hidden" id="login-modal">
   <div class="modal-content">
     
     <form class="login-form" id="login-form">
@@ -308,8 +312,7 @@
     </form>
 
   </div>
-</div>
+  </div>
   <script type="module" src="/src/main.ts"></script>
-
 </body>
 </html>

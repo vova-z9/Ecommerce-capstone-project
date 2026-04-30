@@ -15,49 +15,50 @@
 <body>
 
   <header class="header">
-    <div class="header__top">
-      <div class="container header__top-inner" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #f0f0f0;">
-        
-        <div class="header__socials" style="display: flex; gap: 15px;">
-          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-        
-        <a href="/" class="header__logo" style="font-size: 24px; font-weight: 800; color: #B92770; text-decoration: none;">
-           <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-        </a>
-        
-        <div class="header__actions" style="display: flex; gap: 20px;">
-          <a href="#" class="header__action-link">
-            <i class="fa-regular fa-user"></i>
-          </a>
-          <a href="/src/html/cart.html" class="header__action-link header__cart">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span class="header__cart-count">0</span>
-          </a>
-        </div>
-
-      </div>
+      <div class="header__top">
+        <div class="container header__top-inner">
+  <div class="header__left"> <button class="header__burger" id="burger-btn">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+    <div class="header__socials">
+      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
     </div>
-
-    <nav class="header__nav" style="padding: 20px 0;">
-      <div class="container">
-        <ul class="header__menu" style="display: flex; justify-content: center; gap: 40px; list-style: none; margin: 0; padding: 0; font-weight: 600; text-transform: uppercase;">
-           <li><a href="/" style="text-decoration: none; color: #333;">Home</a></li>
-           <li><a href="/src/html/catalog.html" style="text-decoration: none; color: #B92770;">Catalog</a></li> 
-           <li><a href="/src/html/about.html" style="text-decoration: none; color: #333;">About Us</a></li>
-           <li><a href="/src/html/contact.html" style="text-decoration: none; color: #333;">Contact Us</a></li>
-        </ul>
+  </div>
+  
+  <a href="/" class="header__logo">
+      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+  </a>
+  
+  <div class="header__actions">
+    <a href="#" class="header__action-link" id="open-login">
+      <i class="fa-regular fa-user"></i>
+    </a>
+    <a href="/src/html/cart.html" class="header__action-link header__cart">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="header__cart-count">0</span>
+    </a>
+  </div>
+</div>
       </div>
-    </nav>
-  </header>
+
+      <nav class="header__nav">
+        <div class="container">
+          <ul class="header__menu">
+             <li><a href="/">Home</a></li>
+             <li><a href="/src/html/catalog.html">Catalog</a></li> 
+             <li><a href="/src/html/about.html">About Us</a></li>
+             <li><a href="/src/html/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
 
   <main class="product-page">
   <div class="container">
     
     <section class="product-main">
-      
       <div class="product-gallery">
         <div class="product-gallery__main">
           <img id="product-main-image" src="/src/assets/suitcase-yellow.jpg" alt="Yellow suitcase">
@@ -117,18 +118,62 @@
 
     <section class="product-tabs">
       <div class="tabs-header">
-        <button class="tab-btn active" data-tab="details">DETAILS</button>
-        <button class="tab-btn" data-tab="reviews">REVIEWS</button>
-        <button class="tab-btn" data-tab="shipping">SHIPPING POLICY</button>
+        <button class="tab-btn active" data-tab="tab-details">DETAILS</button>
+        <button class="tab-btn" data-tab="tab-reviews">REVIEWS</button>
+        <button class="tab-btn" data-tab="tab-shipping">SHIPPING POLICY</button>
       </div>
       
       <div class="tabs-content">
         <div class="tab-pane active" id="tab-details">
           <p>Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla porta risus id neque tempor, in efficitur justo imperdiet. Etiam a ex at ante tincidunt imperdiet. Nunc congue ex vel nisl viverra, sit amet aliquet lectus ullamcorper. Praesent luctus lacus non lorem elementum, eu tristique sapien suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisl sodales purus, eget hendrerit dui ligula eu enim. Ut non est nisl. Pellentesque tristique pretium dolor eu commodo. Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam</p>
         </div>
+        
         <div class="tab-pane" id="tab-reviews">
-          <p>Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam. Proin iaculis nibh vitae lectus mollis bibendum.</p>
+          <div class="reviews-layout">
+            
+            <div class="reviews-list">
+              <div class="review-item">
+                <h4 class="review-author">John Doe <span class="review-date">12 April 2026</span></h4>
+                <div class="review-rating">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">Great suitcase, very durable and lightweight! Totally recommend it.</p>
+              </div>
+            </div>
+
+            <div class="reviews-form-wrapper">
+              <h3 class="form-title">Add a Review</h3>
+              <form id="review-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="review-name">Your Name *</label>
+                    <input type="text" id="review-name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="review-email">Your Email *</label>
+                    <input type="email" id="review-email" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Your Rating *</label>
+                  <div class="rating-select">
+                    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="review-text">Your Review *</label>
+                  <textarea id="review-text" rows="4" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-add-cart" style="width: 100%;">Submit</button>
+              </form>
+            </div>
+
+          </div>
         </div>
+
         <div class="tab-pane" id="tab-shipping">
           <p>Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.</p>
         </div>
@@ -138,7 +183,7 @@
     <section class="product-related">
       <h2 class="section-title">You May Also Like</h2>
       <div class="product-grid" id="related-products-grid">
-        </div>
+      </div>
     </section>
 
   </div>
@@ -243,8 +288,36 @@
 
       </div>
     </footer>
+    <div class="modal-overlay is-hidden" id="login-modal">
+  <div class="modal-content">
+    
+    <form class="login-form" id="login-form">
+      <div class="form-group">
+        <label for="login-email">Email address <span class="required">*</span></label>
+        <input type="email" id="login-email" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="login-password">Password <span class="required">*</span></label>
+        <div class="password-wrapper">
+          <input type="password" id="login-password" required>
+          <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <label class="remember-me">
+          <input type="checkbox" id="remember-me">
+          <span>Remember me</span>
+        </label>
+        <a href="#" class="forgot-link">Forgot Your Password?</a>
+      </div>
+      
+      <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+    </form>
 
-
-  <script type="module" src="../ts/product.ts"></script>
+  </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

@@ -17,7 +17,8 @@
 @import './pages/contact';
 @import './pages/modal';
 @import './pages/cart';
-
+@import './layouts/header.scss';
+@import './abstracts/mixins';
 
 body {
   font-family: $font-main;
@@ -25,7 +26,10 @@ body {
 }
 
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1200px; 
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 15px; /* Обов'язкові 15px, щоб контент не прилипав до країв екрана на телефоні */
+  overflow-x: hidden; /* Запобіжник від скролу всередині самого контейнера */
 }
+

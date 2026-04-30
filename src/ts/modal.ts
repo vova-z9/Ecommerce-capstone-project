@@ -11,17 +11,15 @@ export const initLoginModal = (): void => {
 
   // 1. ЗМІНИЛИ ЗАКРИТТЯ:
   const closeModal = () => {
-    // Було: loginModal.classList.add('is-hidden');
-    loginModal.hidden = true; // Стало
+    loginModal.classList.add('is-hidden'); 
     document.body.style.overflow = '';
     loginForm.reset();
   };
 
-  // 2. ЗМІНИЛИ ВІДКРИТТЯ:
+  // 2. ПРАВИЛЬНЕ ВІДКРИТТЯ:
   openModalBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    // Було: loginModal.classList.remove('is-hidden');
-    loginModal.hidden = false; // Стало
+    loginModal.classList.remove('is-hidden'); 
     document.body.style.overflow = 'hidden'; 
   });
 
