@@ -161,7 +161,7 @@
           </div>
         </section>
 
-        <section class="categories">
+        <section class="categories" style="position: relative; padding: 60px 0">
           <div class="container">
             <div
               class="categories__header"
@@ -176,64 +176,88 @@
                 Duis vestibulum elit vel neque pharetra
               </p>
             </div>
-            <div class="categories__grid">
+
+            <!-- 1. ВІКНО СЛАЙДЕРА (ховає зайве) -->
+            <div
+              class="slider-wrapper"
+              style="overflow: hidden; margin: 0 -10px; padding: 15px 10px"
+            >
+              <!-- 2. ТРЕК СЛАЙДЕРА (рухається вліво-вправо) -->
               <div
-                class="category-card"
-                style="
-                  background-image: url(&quot;/src/assets/travel-1.jpg.png&quot;);
-                "
+                class="categories__grid slider-track"
+                id="suitcase-track"
+                style="display: flex; transition: transform 0.4s ease"
               >
-                <h3 class="category-card__title">
-                  Duis vestibulum elit<br />vel neque.
-                </h3>
-                <p class="category-card__text">
-                  Duis vestibulum vel neque pharetra vulputate. Quisque
-                  scelerisque nisi.
-                </p>
-              </div>
-              <div
-                class="category-card"
-                style="
-                  background-image: url(&quot;/src/assets/travel-2.jpg.png&quot;);
-                "
-              >
-                <h3 class="category-card__title">
-                  Neque vestibulum<br />elit nequvel.
-                </h3>
-                <p class="category-card__text">
-                  Duis vestibulum vel neque pharetra vulputate. Quisque
-                  scelerisque nisi.
-                </p>
-              </div>
-              <div
-                class="category-card"
-                style="
-                  background-image: url(&quot;/src/assets/travel-3.jpg.png&quot;);
-                "
-              >
-                <h3 class="category-card__title">
-                  Elituis stibulum elit<br />velneque.
-                </h3>
-                <p class="category-card__text">
-                  Duis vestibulum vel neque pharetra vulputate. Quisque
-                  scelerisque nisi.
-                </p>
-              </div>
-              <div
-                class="category-card"
-                style="
-                  background-image: url(&quot;/src/assets/travel-4.jpg.png&quot;);
-                "
-              >
-                <h3 class="category-card__title">
-                  Vel vestibulum elit<br />tuvel euqen.
-                </h3>
-                <p class="category-card__text">
-                  Duis vestibulum vel neque pharetra vulputate. Quisque
-                  scelerisque nisi.
-                </p>
+                <!-- Твої картки (я додав клас 'slide' для JS) -->
+                <div
+                  class="category-card slide"
+                  style="
+                    background-image: url(&quot;/src/assets/travel-1.jpg.png&quot;);
+                  "
+                >
+                  <h3 class="category-card__title">
+                    Duis vestibulum elit<br />vel neque.
+                  </h3>
+                  <p class="category-card__text">
+                    Duis vestibulum vel neque pharetra vulputate. Quisque
+                    scelerisque nisi.
+                  </p>
+                </div>
+
+                <div
+                  class="category-card slide"
+                  style="
+                    background-image: url(&quot;/src/assets/travel-2.jpg.png&quot;);
+                  "
+                >
+                  <h3 class="category-card__title">
+                    Neque vestibulum<br />elit nequvel.
+                  </h3>
+                  <p class="category-card__text">
+                    Duis vestibulum vel neque pharetra vulputate. Quisque
+                    scelerisque nisi.
+                  </p>
+                </div>
+
+                <div
+                  class="category-card slide"
+                  style="
+                    background-image: url(&quot;/src/assets/travel-3.jpg.png&quot;);
+                  "
+                >
+                  <h3 class="category-card__title">
+                    Elituis stibulum elit<br />velneque.
+                  </h3>
+                  <p class="category-card__text">
+                    Duis vestibulum vel neque pharetra vulputate. Quisque
+                    scelerisque nisi.
+                  </p>
+                </div>
+
+                <div
+                  class="category-card slide"
+                  style="
+                    background-image: url(&quot;/src/assets/travel-4.jpg.png&quot;);
+                  "
+                >
+                  <h3 class="category-card__title">
+                    Vel vestibulum elit<br />tuvel euqen.
+                  </h3>
+                  <p class="category-card__text">
+                    Duis vestibulum vel neque pharetra vulputate. Quisque
+                    scelerisque nisi.
+                  </p>
+                </div>
               </div>
             </div>
+
+            <!-- Кнопки керування (абсолютно спозиційовані відносно секції) -->
+            <button class="slider-btn prev-btn" id="suitcase-prev">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="slider-btn next-btn" id="suitcase-next">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
           </div>
         </section>
 

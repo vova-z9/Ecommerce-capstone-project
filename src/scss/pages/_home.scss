@@ -140,3 +140,124 @@
     max-width: 90%; /* Щоб текст не прилипав до правого краю */
   }
 }
+
+/* Стилі для самих карток */
+.slider-wrapper {
+  overflow: hidden;
+  margin: 0 -10px;
+  padding: 20px 10px; /* Даємо місце для тіні при наведенні */
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px; /* Відстань між картками */
+  transition: transform 0.4s ease;
+}
+
+.category-card {
+  /* ТУТ ГОЛОВНА ЗМІНА: 4 картки в ряд! */
+  min-width: calc(25% - 15px);
+  height: 480px; /* Високі портретні картки */
+  border-radius: 0; /* Гострі кути як на макеті */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Текст притиснутий донизу */
+  padding: 30px 25px;
+  cursor: pointer;
+
+  /* Фон */
+  background-size: cover;
+  background-position: center;
+  transition:
+    background-size 0.5s ease,
+    box-shadow 0.4s ease;
+
+  /* Магія градієнта: темний тільки знизу, зверху прозорий */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0) 60%
+    );
+    z-index: 1;
+    pointer-events: none; /* Щоб не заважало клікати */
+  }
+
+  /* Текст піднімаємо вище градієнта */
+  .category-card__title,
+  .category-card__text {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+  }
+
+  .category-card__title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .category-card__text {
+    font-size: 14px;
+    color: #ddd;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ТЗ: ЕФЕКТИ ПРИ НАВЕДЕННІ (HOVER) */
+  &:hover {
+    background-size: 110%; /* ТЗ: Zoom effect */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25); /* ТЗ: Shadow effect */
+  }
+
+  /* Адаптив для слайдера */
+  @media (max-width: 1024px) {
+    min-width: calc(33.333% - 14px);
+  }
+  @media (max-width: 768px) {
+    min-width: calc(50% - 10px);
+  }
+  @media (max-width: 576px) {
+    min-width: 100%;
+    height: 400px;
+  }
+}
+
+/* Робимо кнопки слайдера непомітними на ПК, якщо карток всього 4 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 10;
+  color: #b92770;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: #b92770;
+    color: #fff;
+  }
+  &.prev-btn {
+    left: 5px;
+  }
+  &.next-btn {
+    right: 5px;
+  }
+
+  /* Ховаємо кнопки на великих екранах, щоб не псували дизайн з картинки */
+  @media (min-width: 1025px) {
+    display: none;
+  }
+}
