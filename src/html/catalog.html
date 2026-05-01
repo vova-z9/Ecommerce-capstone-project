@@ -85,65 +85,87 @@
                 </div>
               </div>
 
-              <div class="catalog__filters">
-                <!-- Custom Category Dropdown -->
-                <div class="custom-dropdown" data-filter-type="category">
-                  <div class="custom-dropdown__selected">
-                    <span class="selected-text">All Categories</span>
-                    <i class="fa-solid fa-chevron-down"></i>
+              <div class="catalog__filters catalog-filters-redesign">
+                <div class="filters-wrapper">
+                  <!-- Custom Size Dropdown -->
+                  <div class="filter-group">
+                    <label>Size</label>
+                    <div class="custom-dropdown" data-filter-type="size">
+                      <div class="custom-dropdown__selected">
+                        <span class="selected-text">All Sizes</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <ul class="custom-dropdown__list">
+                        <li class="active" data-value="all">All Sizes</li>
+                        <li data-value="S">S</li>
+                        <li data-value="M">M</li>
+                        <li data-value="L">L</li>
+                        <li data-value="XL">XL</li>
+                        <li data-value="S-L">S-L</li>
+                        <li data-value="S, M, XL">S, M, XL</li>
+                      </ul>
+                    </div>
                   </div>
-                  <ul class="custom-dropdown__list">
-                    <li class="active" data-value="all">All Categories</li>
-                    <li data-value="carry-ons">Carry-ons</li>
-                    <li data-value="suitcases">Suitcases</li>
-                    <li data-value="luggage sets">Luggage Sets</li>
-                    <li data-value="kids' luggage">Kids' Luggage</li>
-                  </ul>
+
+                  <!-- Custom Color Dropdown -->
+                  <div class="filter-group">
+                    <label>Color</label>
+                    <div class="custom-dropdown" data-filter-type="color">
+                      <div class="custom-dropdown__selected">
+                        <span class="selected-text">All Colors</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <ul class="custom-dropdown__list">
+                        <li class="active" data-value="all">All Colors</li>
+                        <li data-value="red">Red</li>
+                        <li data-value="blue">Blue</li>
+                        <li data-value="green">Green</li>
+                        <li data-value="black">Black</li>
+                        <li data-value="grey">Grey</li>
+                        <li data-value="yellow">Yellow</li>
+                        <li data-value="pink">Pink</li>
+                        <li data-value="brown">Brown</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Custom Category Dropdown -->
+                  <div class="filter-group">
+                    <label>Category</label>
+                    <div class="custom-dropdown" data-filter-type="category">
+                      <div class="custom-dropdown__selected">
+                        <span class="selected-text">All Categories</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                      </div>
+                      <ul class="custom-dropdown__list">
+                        <li class="active" data-value="all">All Categories</li>
+                        <li data-value="carry-ons">Carry-ons</li>
+                        <li data-value="suitcases">Suitcases</li>
+                        <li data-value="luggage sets">Luggage Sets</li>
+                        <li data-value="kids' luggage">Kids' Luggage</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <!-- Sales Checkbox (Новий дизайн) -->
+                  <div class="filter-group">
+                    <label>Sales</label>
+                    <label class="custom-radio-checkbox">
+                      <input type="checkbox" id="filter-sale" />
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
                 </div>
 
-                <!-- Custom Color Dropdown -->
-                <div class="custom-dropdown" data-filter-type="color">
-                  <div class="custom-dropdown__selected">
-                    <span class="selected-text">All Colors</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </div>
-                  <ul class="custom-dropdown__list">
-                    <li class="active" data-value="all">All Colors</li>
-                    <li data-value="red">Red</li>
-                    <li data-value="blue">Blue</li>
-                    <li data-value="green">Green</li>
-                    <li data-value="black">Black</li>
-                    <li data-value="grey">Grey</li>
-                    <li data-value="yellow">Yellow</li>
-                    <li data-value="pink">Pink</li>
-                    <li data-value="brown">Brown</li>
-                  </ul>
+                <!-- Кнопки знизу -->
+                <div class="filters-actions">
+                  <button id="reset-filters" class="btn-filter">
+                    CLEAR FILTERS
+                  </button>
+                  <button id="toggle-filters" class="btn-filter">
+                    HIDE FILTERS
+                  </button>
                 </div>
-
-                <!-- Custom Size Dropdown -->
-                <div class="custom-dropdown" data-filter-type="size">
-                  <div class="custom-dropdown__selected">
-                    <span class="selected-text">All Sizes</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                  </div>
-                  <ul class="custom-dropdown__list">
-                    <li class="active" data-value="all">All Sizes</li>
-                    <li data-value="S">S</li>
-                    <li data-value="M">M</li>
-                    <li data-value="L">L</li>
-                    <li data-value="XL">XL</li>
-                    <li data-value="S-L">S-L</li>
-                    <li data-value="S, M, XL">S, M, XL</li>
-                  </ul>
-                </div>
-
-                <label class="filter-checkbox">
-                  <input type="checkbox" id="filter-sale" /> On Sale Only
-                </label>
-
-                <button id="reset-filters" class="btn-reset">
-                  Reset Filters
-                </button>
               </div>
 
               <div class="product-grid" id="catalog-grid"></div>

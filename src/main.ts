@@ -229,6 +229,21 @@ async function fetchProducts() {
           applyFilters(); // Перемальовуємо заново
         });
 
+      // === Логіка кнопки HIDE/SHOW FILTERS ===
+      const toggleBtn = document.getElementById("toggle-filters");
+      const filtersWrapper = document.querySelector(".filters-wrapper");
+
+      if (toggleBtn && filtersWrapper) {
+        toggleBtn.addEventListener("click", () => {
+          filtersWrapper.classList.toggle("hidden");
+          if (filtersWrapper.classList.contains("hidden")) {
+            toggleBtn.textContent = "SHOW FILTERS";
+          } else {
+            toggleBtn.textContent = "HIDE FILTERS";
+          }
+        });
+      }
+
       // Запуск при завантаженні
       renderCatalog();
     }
