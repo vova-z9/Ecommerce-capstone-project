@@ -277,12 +277,28 @@ async function fetchProducts() {
     // 3. Рендеримо TOP BEST SETS (Бокова колонка)
     const topSetsContainer = document.getElementById("sidebar-sets");
     if (topSetsContainer) {
-      const topProducts = allProducts
-        .filter((p) => p.blocks && p.blocks.includes("Top Best Sets"))
-        .slice(0, 3);
-      const itemsToShow =
-        topProducts.length > 0 ? topProducts : allProducts.slice(0, 3);
+      // 1. Спочатку шукаємо товари, які є наборами
+      let candidateSets = allProducts.filter(
+        (p) =>
+          (p.blocks && p.blocks.includes("Top Best Sets")) ||
+          (p.category && p.category.toLowerCase() === "luggage sets"),
+      );
 
+      // 2. Якщо наборів менше 5, беремо інші валізи і "досипаємо" їх у список
+      if (candidateSets.length < 5) {
+        const otherProducts = allProducts.filter(
+          (p) => !candidateSets.includes(p),
+        );
+        candidateSets = [...candidateSets, ...otherProducts];
+      }
+
+      // 3. МАКСИМАЛЬНИЙ РАНДОМ: потужно перемішуємо весь зібраний список
+      const shuffledSets = [...candidateSets].sort(() => 0.5 - Math.random());
+
+      // 4. Беремо рівно 5 штук (як ти просив)
+      const itemsToShow = shuffledSets.slice(0, 5);
+
+      // 5. Відмальовуємо
       topSetsContainer.innerHTML = itemsToShow
         .map(
           (p) => `

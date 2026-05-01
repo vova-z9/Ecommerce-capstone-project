@@ -183,98 +183,213 @@
     }
   }
 
-  // Сітка відгуків (2 колонки)
+  /* =========================================
+   REVIEWS TAB LAYOUT (Wide + Pink Accents)
+   ========================================= */
   .reviews-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-top: 20px;
+    display: flex;
+    justify-content: space-between; /* Розштовхуємо колонки по краях */
+    gap: 8%; /* Відносний відступ замість жорстких пікселів */
+    width: 100%; /* Розтягуємо на 100% ширини контейнера (лінії) */
+    margin-top: 50px;
 
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr; // На мобілці буде в одну колонку
+    @media (max-width: 992px) {
+      flex-direction: column;
+      gap: 50px;
     }
   }
 
-  // Стилі лівої колонки (існуючі відгуки)
-  .review-item {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+  /* --- ЛІВА КОЛОНКА --- */
+  .reviews-list {
+    flex: 1; /* Забирає свою половину вільного місця */
+    /* ТУТ МИ ВИДАЛИЛИ max-width: 500px; !!! */
 
-    .review-author {
+    &__title {
       font-size: 16px;
-      margin-bottom: 5px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: #111;
+    }
 
-      .review-date {
-        font-size: 12px;
-        color: #888;
-        font-weight: 400;
+    .review-item {
+      display: flex;
+      gap: 25px; /* Більший відступ від аватарки до тексту */
+
+      .review-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .review-content {
+        flex: 1;
+
+        .review-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; /* Рівняємо зірочки по центру імені */
+          margin-bottom: 15px;
+
+          .review-meta {
+            display: flex;
+            align-items: baseline;
+            gap: 15px;
+
+            .review-author {
+              font-size: 15px;
+              font-weight: 700;
+              color: #111;
+            }
+
+            .review-date {
+              font-size: 13px;
+              color: #aaa;
+            }
+          }
+
+          .review-rating {
+            color: #ffc107;
+            font-size: 14px;
+          }
+        }
+
+        .review-text {
+          font-size: 14px;
+          color: #555;
+          line-height: 1.8;
+          margin: 0;
+        }
       }
     }
-
-    .review-rating {
-      color: #ffd700; // Золотий колір зірок
-      font-size: 14px;
-      margin-bottom: 10px;
-    }
-
-    .review-text {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #555;
-    }
   }
 
-  // Стилі правої колонки (форма)
+  /* --- ПРАВА КОЛОНКА (ФОРМА) --- */
   .reviews-form-wrapper {
-    background: #f9f9f9;
-    padding: 30px;
-    border-radius: 8px;
+    flex: 1;
+    background-color: #fff;
+    padding: 0;
 
     .form-title {
-      font-size: 20px;
-      margin-bottom: 25px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #111;
     }
 
-    .form-row {
+    .form-disclaimer {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .rating-group {
       display: flex;
-      gap: 20px; // Відстань між Name та Email
-    }
-
-    .form-group {
-      flex: 1; // Щоб Name і Email ділили ширину 50/50
-      margin-bottom: 20px;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
 
       label {
-        display: block;
-        margin-bottom: 8px;
-        font-size: 14px;
-        color: #333;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 700;
+        color: #111;
+        text-transform: uppercase;
+        margin: 0;
       }
 
-      input,
-      textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        outline: none;
-        transition: border-color 0.3s;
+      .rating-select {
+        color: #ffc107;
+        font-size: 18px;
+        cursor: pointer;
 
-        &:focus {
-          border-color: #b92770;
+        i {
+          margin-right: 4px;
+          transition: transform 0.2s;
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
     }
 
-    .rating-select {
-      color: #ffd700;
+    .form-group {
+      margin-bottom: 20px;
+
+      /* РОЖЕВІ РАМКИ ЯК У ФІГМІ */
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1px solid #d8a6b9; /* Блідо-рожева рамка по замовчуванню */
+        border-radius: 0; /* Гострі кути */
+        font-family: inherit;
+        font-size: 14px;
+        color: #333;
+        outline: none;
+        transition: border-color 0.3s;
+
+        &::placeholder {
+          color: #999;
+        }
+
+        &:focus {
+          border-color: #b92770; /* Яскраво-рожева при кліку */
+        }
+      }
+
+      textarea {
+        resize: vertical;
+      }
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+
+      .form-group {
+        flex: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    .checkbox-group {
+      margin-top: 20px;
+      margin-bottom: 30px;
+
+      label {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13px;
+        color: #888;
+        cursor: pointer;
+        line-height: 1.5;
+
+        input {
+          margin-top: 2px;
+          cursor: pointer;
+          accent-color: #b92770; /* Рожевий колір для самої галочки */
+        }
+      }
+    }
+
+    .btn-submit-review {
+      background-color: #b92770;
+      color: #fff;
+      border: none;
+      padding: 12px 35px;
+      font-size: 13px;
+      font-weight: 700;
       cursor: pointer;
-      font-size: 18px;
+      text-transform: uppercase;
+      transition: 0.3s;
+      border-radius: 0; /* Гострі кути */
+
+      &:hover {
+        background-color: #8a1d53;
+      }
     }
   }
 
@@ -521,4 +636,66 @@
       }
     }
   }
+}
+
+/* Вирівнювання сітки You May Also Like */
+#related-products-grid {
+  display: grid !important; /* Перебиваємо старі флекси, якщо вони були */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+#related-products-grid .product-card {
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+/* =========================================
+   ФІКС ШИРИНИ ДЛЯ ВСІХ ТАБІВ (Details, Reviews, Shipping)
+   ========================================= */
+.tabs-content {
+  width: 100%;
+  max-width: 100% !important;
+  padding-left: 0 !important; /* Прибираємо лівий відступ */
+  padding-right: 0 !important; /* Прибираємо правий відступ */
+}
+
+.tab-pane {
+  width: 100%;
+  max-width: 100% !important;
+
+  /* Змушуємо текст (Details та Shipping) розтягуватися */
+  p {
+    width: 100%;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: left;
+  }
+}
+
+/* Ще раз страхуємо наші відгуки */
+.reviews-layout {
+  width: 100%;
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviews-list,
+.reviews-form-wrapper {
+  width: 48% !important;
+  max-width: none !important;
 }
