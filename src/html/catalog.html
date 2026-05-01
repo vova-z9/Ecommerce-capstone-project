@@ -1,177 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best Shop | Catalog</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="/src/scss/main.scss">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Shop | Catalog</title>
 
- <header class="header">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/src/scss/main.scss" />
+  </head>
+  <body>
+    <header class="header">
       <div class="header__top">
         <div class="container header__top-inner">
-  <div class="header__left"> <button class="header__burger" id="burger-btn">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <div class="header__socials">
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-  </div>
-  
-  <a href="/" class="header__logo">
-      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-  </a>
-  
-  <div class="header__actions">
-    <a href="#" class="header__action-link" id="open-login">
-      <i class="fa-regular fa-user"></i>
-    </a>
-    <a href="/src/html/cart.html" class="header__action-link header__cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="header__cart-count">0</span>
-    </a>
-  </div>
-</div>
+          <div class="header__left">
+            <button class="header__burger" id="burger-btn">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="header__socials">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <a href="/" class="header__logo">
+            <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+          </a>
+
+          <div class="header__actions">
+            <a href="#" class="header__action-link" id="open-login">
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <a
+              href="/src/html/cart.html"
+              class="header__action-link header__cart"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-count">0</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <nav class="header__nav">
         <div class="container">
           <ul class="header__menu">
-             <li><a href="/">Home</a></li>
-             <li><a href="/src/html/catalog.html">Catalog</a></li> 
-             <li><a href="/src/html/about.html">About Us</a></li>
-             <li><a href="/src/html/contact.html">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/src/html/catalog.html">Catalog</a></li>
+            <li><a href="/src/html/about.html">About Us</a></li>
+            <li><a href="/src/html/contact.html">Contact Us</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-  <main id="app">
-  <section class="catalog-page">
-    <div class="container">
-      
-      <div class="catalog__layout">
-        
-        <div class="catalog__main">
-          
-          <div class="catalog__toolbar">
-            <p class="results-text" id="results-count">Showing 1–12 of 16 results</p>
-            
-            <div class="catalog__sorting">
-              <select id="sort-select" class="sort-select">
-                <option value="default">Default Sorting</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="popularity">Popularity</option>
-                <option value="rating">Rating: High to Low</option>
-              </select>
-            </div>
-          </div>
+    <main id="app">
+      <section class="catalog-page">
+        <div class="container">
+          <div class="catalog__layout">
+            <div class="catalog__main">
+              <div class="catalog__toolbar">
+                <p class="results-text" id="results-count">
+                  Showing 1–12 of 16 results
+                </p>
 
-          <div class="catalog__filters">
-            <select id="filter-category" class="filter-select">
-              <option value="all">All Categories</option>
-              <option value="carry-ons">Carry-ons</option>
-              <option value="suitcases">Suitcases</option>
-              <option value="luggage sets">Luggage Sets</option>
-              <option value="kids' luggage">Kids' Luggage</option>
-            </select>
-
-            <select id="filter-color" class="filter-select">
-              <option value="all">All Colors</option>
-              <option value="red">Red</option>
-              <option value="blue">Blue</option>
-              <option value="green">Green</option>
-              <option value="black">Black</option>
-              <option value="grey">Grey</option>
-              <option value="yellow">Yellow</option>
-              <option value="pink">Pink</option>
-              <option value="brown">Brown</option>
-            </select>
-
-            <select id="filter-size" class="filter-select">
-              <option value="all">All Sizes</option>
-              <option value="S">S</option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="XL">XL</option>
-              <option value="S-L">S-L</option>
-              <option value="S, M, XL">S, M, XL</option>
-            </select>
-
-            <label class="filter-checkbox">
-              <input type="checkbox" id="filter-sale"> On Sale Only
-            </label>
-
-            <button id="reset-filters" class="btn-reset">Reset Filters</button>
-          </div>
-          
-          <div class="product-grid" id="catalog-grid"></div>
-
-          <div class="pagination" id="catalog-pagination"></div>
-        </div>
-
-        <aside class="catalog__sidebar">
-          
-          <div class="sidebar-widget">
-            <div class="search-box">
-              <input type="text" id="search-input" placeholder="Search Models...">
-              <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-          </div>
-
-          <div class="sidebar-widget">
-            <h3 class="sidebar-widget__title">Top Best Sets</h3>
-            <div id="sidebar-sets" class="sidebar-sets-list">
+                <div class="catalog__sorting">
+                  <select id="sort-select" class="sort-select">
+                    <option value="default">Default Sorting</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="popularity">Popularity</option>
+                    <option value="rating">Rating: High to Low</option>
+                  </select>
+                </div>
               </div>
+
+              <div class="catalog__filters">
+                <!-- Custom Category Dropdown -->
+                <div class="custom-dropdown" data-filter-type="category">
+                  <div class="custom-dropdown__selected">
+                    <span class="selected-text">All Categories</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <ul class="custom-dropdown__list">
+                    <li class="active" data-value="all">All Categories</li>
+                    <li data-value="carry-ons">Carry-ons</li>
+                    <li data-value="suitcases">Suitcases</li>
+                    <li data-value="luggage sets">Luggage Sets</li>
+                    <li data-value="kids' luggage">Kids' Luggage</li>
+                  </ul>
+                </div>
+
+                <!-- Custom Color Dropdown -->
+                <div class="custom-dropdown" data-filter-type="color">
+                  <div class="custom-dropdown__selected">
+                    <span class="selected-text">All Colors</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <ul class="custom-dropdown__list">
+                    <li class="active" data-value="all">All Colors</li>
+                    <li data-value="red">Red</li>
+                    <li data-value="blue">Blue</li>
+                    <li data-value="green">Green</li>
+                    <li data-value="black">Black</li>
+                    <li data-value="grey">Grey</li>
+                    <li data-value="yellow">Yellow</li>
+                    <li data-value="pink">Pink</li>
+                    <li data-value="brown">Brown</li>
+                  </ul>
+                </div>
+
+                <!-- Custom Size Dropdown -->
+                <div class="custom-dropdown" data-filter-type="size">
+                  <div class="custom-dropdown__selected">
+                    <span class="selected-text">All Sizes</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                  </div>
+                  <ul class="custom-dropdown__list">
+                    <li class="active" data-value="all">All Sizes</li>
+                    <li data-value="S">S</li>
+                    <li data-value="M">M</li>
+                    <li data-value="L">L</li>
+                    <li data-value="XL">XL</li>
+                    <li data-value="S-L">S-L</li>
+                    <li data-value="S, M, XL">S, M, XL</li>
+                  </ul>
+                </div>
+
+                <label class="filter-checkbox">
+                  <input type="checkbox" id="filter-sale" /> On Sale Only
+                </label>
+
+                <button id="reset-filters" class="btn-reset">
+                  Reset Filters
+                </button>
+              </div>
+
+              <div class="product-grid" id="catalog-grid"></div>
+
+              <div class="pagination" id="catalog-pagination"></div>
+            </div>
+
+            <aside class="catalog__sidebar">
+              <div class="sidebar-widget">
+                <div class="search-box">
+                  <input
+                    type="text"
+                    id="search-input"
+                    placeholder="Search Models..."
+                  />
+                  <button id="search-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="sidebar-widget">
+                <h3 class="sidebar-widget__title">Top Best Sets</h3>
+                <div id="sidebar-sets" class="sidebar-sets-list"></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section
+      class="benefits"
+      style="background-color: #4a4a4a; padding: 40px 0; margin-top: 60px"
+    >
+      <div class="container">
+        <div
+          class="benefits__wrapper"
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-plane.svg.png"
+              alt="Plane"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Velit nisl sodales eget<br />donec quis. volutpat orci.
+            </p>
           </div>
 
-        </aside>
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-truck.svg.png"
+              alt="Truck"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Dolor eu varius. Morbi<br />fermentum velit nisl.
+            </p>
+          </div>
 
-      </div> </div>
-  </section>
-</main>
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-coins.svg.png"
+              alt="Coins"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Malesuada fames ac ante<br />ipsum primis in faucibus.
+            </p>
+          </div>
 
-  <section class="benefits" style="background-color: #4a4a4a; padding: 40px 0; margin-top: 60px;">
-    <div class="container">
-      <div class="benefits__wrapper" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-plane.svg.png" alt="Plane" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Velit nisl sodales eget<br>donec quis. volutpat orci.</p>
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-cap.svg.png"
+              alt="Cap"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Nisl sodales eget donec<br />quis. volutpat orci.
+            </p>
+          </div>
         </div>
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-truck.svg.png" alt="Truck" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Dolor eu varius. Morbi<br>fermentum velit nisl.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-coins.svg.png" alt="Coins" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Malesuada fames ac ante<br>ipsum primis in faucibus.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-cap.svg.png" alt="Cap" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Nisl sodales eget donec<br>quis. volutpat orci.</p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
+    <footer class="footer">
       <div class="container">
-        
         <div class="footer__top">
           <div class="footer__col">
             <h3 class="footer__title">About Us</h3>
@@ -181,7 +258,7 @@
               <li><a href="#">Clients</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Interesting Links</h3>
             <ul class="footer__list">
@@ -190,7 +267,7 @@
               <li><a href="#">Socials</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Achievements</h3>
             <ul class="footer__list">
@@ -199,21 +276,26 @@
               <li><a href="#">Our Amazing Clients</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Contact Us</h3>
             <p class="footer__text">
-              Bendum dolor eu varius. Morbi fermentum velitsodales egetonec. volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac velitn consequat nec luctus.
+              Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
+              volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac
+              velitn consequat nec luctus.
             </p>
           </div>
         </div>
 
         <div class="footer__bottom">
-          
           <div class="footer__shipping">
             <h3 class="footer__title">Shipping Information</h3>
             <p class="footer__text">
-              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.
+              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.
+              Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec
+              interdum, lectus in convallis pulvinar, enim elit porta sapien,
+              vel finibus erat felis sed neque. Etiam aliquet neque sagittis
+              erat tincidunt aliquam.
             </p>
           </div>
 
@@ -228,49 +310,52 @@
             </div>
             <div class="footer__contact-item">
               <i class="fa-regular fa-clock"></i>
-              <span>Mon - Fri: 10am - 6pm<br>Sat - Sun: 10am - 6pm</span>
+              <span>Mon - Fri: 10am - 6pm<br />Sat - Sun: 10am - 6pm</span>
             </div>
             <div class="footer__contact-item">
               <i class="fa-solid fa-location-dot"></i>
-              <span>639 Jade Valley,<br>Washington Dc</span>
+              <span>639 Jade Valley,<br />Washington Dc</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-overlay is-hidden" id="login-modal">
+      <div class="modal-content">
+        <form class="login-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email"
+              >Email address <span class="required">*</span></label
+            >
+            <input type="email" id="login-email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="login-password"
+              >Password <span class="required">*</span></label
+            >
+            <div class="password-wrapper">
+              <input type="password" id="login-password" required />
+              <i
+                class="fa-regular fa-eye toggle-password"
+                id="toggle-password"
+              ></i>
             </div>
           </div>
 
-        </div>
+          <div class="form-actions">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot Your Password?</a>
+          </div>
 
+          <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+        </form>
       </div>
-    </footer>
-    
-  <div class="modal-overlay is-hidden" id="login-modal">
-  <div class="modal-content">
-    
-    <form class="login-form" id="login-form">
-      <div class="form-group">
-        <label for="login-email">Email address <span class="required">*</span></label>
-        <input type="email" id="login-email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="login-password">Password <span class="required">*</span></label>
-        <div class="password-wrapper">
-          <input type="password" id="login-password" required>
-          <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
-        </div>
-      </div>
-      
-      <div class="form-actions">
-        <label class="remember-me">
-          <input type="checkbox" id="remember-me">
-          <span>Remember me</span>
-        </label>
-        <a href="#" class="forgot-link">Forgot Your Password?</a>
-      </div>
-      
-      <button type="submit" class="btn btn-primary w-100">LOG IN</button>
-    </form>
-
-  </div>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

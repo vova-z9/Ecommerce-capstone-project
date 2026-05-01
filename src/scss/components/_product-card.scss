@@ -1,4 +1,4 @@
-@import '../base/variables';
+@import "../base/variables";
 
 // 1. СІТКА ДЛЯ ВЕРСІЇ HOME (4 колонки за замовчуванням)
 .product-grid {
@@ -24,27 +24,23 @@
   &__image-wrapper {
     position: relative;
     width: 100%;
-    margin-bottom: 20px;
-    background-color: transparent;
-    height: 280px !important; // 🔥 Жорстко фіксуємо однакову висоту для всіх
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; // Ховаємо все, що вилазить
-  }
+    height: 400px; /* Фіксована висота */
+    overflow: hidden; /* Обрізає все, що вилазить */
+    background-color: #f5f5f5;
 
-  &__image {
-    width: 100%;
-    height: 100% !important; // Картинка має бути точно розміром з wrapper
-    object-fit: contain; // 🔥 Валіза впишеться повністю і не обріжеться
-    display: block;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Заповнює блок без сплющування */
+      display: block;
+    }
   }
 
   &__badge {
     position: absolute;
     top: 15px;
     left: 15px;
-    background: #B92770;
+    background: #b92770;
     color: #fff;
     padding: 5px 12px;
     font-size: 10px;

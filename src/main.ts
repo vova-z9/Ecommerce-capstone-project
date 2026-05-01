@@ -84,7 +84,6 @@ async function fetchProducts() {
           document.getElementById("catalog-pagination");
         if (!paginationContainer) return;
 
-        // Якщо сторінка лише одна (або нуль), ховаємо пагінацію
         if (totalPages <= 1) {
           paginationContainer.innerHTML = "";
           return;
@@ -92,35 +91,38 @@ async function fetchProducts() {
 
         let buttonsHTML = "";
 
-        // Додаємо кнопку Prev (показуємо, якщо ми не на першій сторінці)
         if (current > 1) {
-          buttonsHTML += `<button class="page-btn" onclick="changeCatalogPage(${current - 1})" style="margin: 0 5px; padding: 5px 12px; cursor: pointer; border: 1px solid #ddd; background: #fff; color: #333;">Prev</button>`;
+          buttonsHTML += `<button class="page-btn page-btn-nav" onclick="changeCatalogPage(${current - 1})"><i class="fa-solid fa-chevron-left"></i> PREV</button>`;
         }
 
-        // Малюємо цифри сторінок
         for (let i = 1; i <= totalPages; i++) {
-          buttonsHTML += `<button class="page-btn ${i === current ? "active" : ""}" onclick="changeCatalogPage(${i})" style="margin: 0 5px; padding: 5px 12px; cursor: pointer; border: 1px solid #ddd; background: ${i === current ? "#B92770" : "#fff"}; color: ${i === current ? "#fff" : "#333"};">${i}</button>`;
+          buttonsHTML += `<button class="page-btn ${i === current ? "active" : ""}" onclick="changeCatalogPage(${i})">${i}</button>`;
         }
 
-        // Додаємо кнопку Next (показуємо, якщо ми не на останній сторінці)
         if (current < totalPages) {
-          buttonsHTML += `<button class="page-btn" onclick="changeCatalogPage(${current + 1})" style="margin: 0 5px; padding: 5px 12px; cursor: pointer; border: 1px solid #ddd; background: #fff; color: #333;">Next</button>`;
+          buttonsHTML += `<button class="page-btn page-btn-nav" onclick="changeCatalogPage(${current + 1})">NEXT <i class="fa-solid fa-chevron-right"></i></button>`;
         }
 
         paginationContainer.innerHTML = buttonsHTML;
       }
 
-      // ЛОГІКА ФІЛЬТРІВ
+      // === НОВА ЛОГІКА ФІЛЬТРІВ ===
+
+      // Допоміжна функція: дістає значення з активного li кастомного меню
+      const getCustomFilterValue = (filterType: string) => {
+        const activeLi = document.querySelector(
+          `.custom-dropdown[data-filter-type="${filterType}"] li.active`,
+        );
+        return activeLi ? activeLi.getAttribute("data-value") || "all" : "all";
+      };
+
       const applyFilters = () => {
-        const category =
-          (document.getElementById("filter-category") as HTMLSelectElement)
-            ?.value || "all";
-        const color =
-          (document.getElementById("filter-color") as HTMLSelectElement)
-            ?.value || "all";
-        const size =
-          (document.getElementById("filter-size") as HTMLSelectElement)
-            ?.value || "all";
+        // Читаємо значення з нових кастомних меню
+        const category = getCustomFilterValue("category");
+        const color = getCustomFilterValue("color");
+        const size = getCustomFilterValue("size");
+
+        // Ці два залишилися стандартними
         const sale =
           (document.getElementById("filter-sale") as HTMLInputElement)
             ?.checked || false;
@@ -159,16 +161,30 @@ async function fetchProducts() {
         renderCatalog();
       };
 
-      // Вішаємо події на селекти
-      document
-        .getElementById("filter-category")
-        ?.addEventListener("change", applyFilters);
-      document
-        .getElementById("filter-color")
-        ?.addEventListener("change", applyFilters);
-      document
-        .getElementById("filter-size")
-        ?.addEventListener("change", applyFilters);
+      // Ініціалізація кліків по кастомних меню
+      const dropdowns = document.querySelectorAll(".custom-dropdown");
+      dropdowns.forEach((dropdown) => {
+        const selectedText = dropdown.querySelector(".selected-text");
+        const options = dropdown.querySelectorAll(".custom-dropdown__list li");
+
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            // Змінюємо активний клас
+            options.forEach((opt) => opt.classList.remove("active"));
+            option.classList.add("active");
+
+            // Оновлюємо текст
+            if (selectedText) {
+              selectedText.textContent = option.textContent;
+            }
+
+            // Запускаємо фільтрацію!
+            applyFilters();
+          });
+        });
+      });
+
+      // Вішаємо події на стандартні елементи (Чекбокс та Сортування)
       document
         .getElementById("filter-sale")
         ?.addEventListener("change", applyFilters);
@@ -176,22 +192,31 @@ async function fetchProducts() {
         .getElementById("sort-select")
         ?.addEventListener("change", applyFilters);
 
-      // Кнопка Reset Filters
+      // Оновлена кнопка Reset Filters
       document
         .getElementById("reset-filters")
         ?.addEventListener("click", () => {
-          if (document.getElementById("filter-category"))
-            (
-              document.getElementById("filter-category") as HTMLSelectElement
-            ).value = "all";
-          if (document.getElementById("filter-color"))
-            (
-              document.getElementById("filter-color") as HTMLSelectElement
-            ).value = "all";
-          if (document.getElementById("filter-size"))
-            (
-              document.getElementById("filter-size") as HTMLSelectElement
-            ).value = "all";
+          // Скидаємо кастомні меню
+          dropdowns.forEach((dropdown) => {
+            const options = dropdown.querySelectorAll(
+              ".custom-dropdown__list li",
+            );
+            const selectedText = dropdown.querySelector(".selected-text");
+
+            options.forEach((opt) => opt.classList.remove("active"));
+
+            // Знаходимо дефолтний пункт (з value="all") і робимо його активним
+            const defaultOption = dropdown.querySelector(
+              '.custom-dropdown__list li[data-value="all"]',
+            );
+            if (defaultOption) {
+              defaultOption.classList.add("active");
+              if (selectedText)
+                selectedText.textContent = defaultOption.textContent;
+            }
+          });
+
+          // Скидаємо стандартні елементи
           if (document.getElementById("sort-select"))
             (
               document.getElementById("sort-select") as HTMLSelectElement
@@ -206,6 +231,47 @@ async function fetchProducts() {
 
       // Запуск при завантаженні
       renderCatalog();
+    }
+
+    // === ЛОГІКА ПОШУКУ (Search) ===
+    const searchInput = document.getElementById(
+      "search-input",
+    ) as HTMLInputElement;
+    const searchBtn = document.getElementById("search-btn");
+
+    const handleSearch = () => {
+      if (!searchInput) return;
+
+      const query = searchInput.value.trim().toLowerCase();
+      if (!query) return; // Якщо поле пусте, нічого не робимо
+
+      // Шукаємо товар, у назві якого є введений текст (частковий збіг)
+      const foundProduct = allProducts.find(
+        (p) => p.name && p.name.toLowerCase().includes(query),
+      );
+
+      if (foundProduct) {
+        // ТЗ: Якщо товар знайдено, відкривається сторінка Product Details
+        window.location.href = `/src/html/product-details.html?id=${foundProduct.id}`;
+      } else {
+        // ТЗ: Якщо не знайдено, показуємо pop-up
+        alert("Product not found");
+      }
+    };
+
+    // Запускаємо пошук по кліку на кнопку (лупу)
+    if (searchBtn) {
+      searchBtn.addEventListener("click", handleSearch);
+    }
+
+    // Додатково: Запускаємо пошук по натисканню клавіші Enter
+    if (searchInput) {
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault(); // Запобігаємо стандартній поведінці форми
+          handleSearch();
+        }
+      });
     }
 
     // 3. Рендеримо TOP BEST SETS (Бокова колонка)
