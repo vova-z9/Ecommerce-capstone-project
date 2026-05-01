@@ -1,225 +1,332 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best Shop | Product Details</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="/src/scss/main.scss">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Shop | Product Details</title>
 
-  <header class="header">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/src/scss/main.scss" />
+  </head>
+  <body>
+    <header class="header">
       <div class="header__top">
         <div class="container header__top-inner">
-  <div class="header__left"> <button class="header__burger" id="burger-btn">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <div class="header__socials">
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-  </div>
-  
-  <a href="/" class="header__logo">
-      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-  </a>
-  
-  <div class="header__actions">
-    <a href="#" class="header__action-link" id="open-login">
-      <i class="fa-regular fa-user"></i>
-    </a>
-    <a href="/src/html/cart.html" class="header__action-link header__cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="header__cart-count">0</span>
-    </a>
-  </div>
-</div>
+          <div class="header__left">
+            <button class="header__burger" id="burger-btn">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="header__socials">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <a href="/" class="header__logo">
+            <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+          </a>
+
+          <div class="header__actions">
+            <a href="#" class="header__action-link" id="open-login">
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <a
+              href="/src/html/cart.html"
+              class="header__action-link header__cart"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-count">0</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <nav class="header__nav">
         <div class="container">
           <ul class="header__menu">
-             <li><a href="/">Home</a></li>
-             <li><a href="/src/html/catalog.html">Catalog</a></li> 
-             <li><a href="/src/html/about.html">About Us</a></li>
-             <li><a href="/src/html/contact.html">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/src/html/catalog.html">Catalog</a></li>
+            <li><a href="/src/html/about.html">About Us</a></li>
+            <li><a href="/src/html/contact.html">Contact Us</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-  <main class="product-page">
-  <div class="container">
-    
-    <section class="product-main">
-      <div class="product-gallery">
-        <div class="product-gallery__main">
-          <img id="product-main-image" src="/src/assets/suitcase-yellow.jpg" alt="Yellow suitcase">
-        </div>
-        <div class="product-gallery__thumbnails" id="product-thumbnails">
-          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 1" class="active">
-          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 2">
-          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 3">
-          <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 4">
-        </div>
-      </div>
-
-      <div class="product-info">
-        <h1 class="product-info__title" id="product-title">Loading...</h1>
-        
-        <div class="product-info__rating">
-          <span class="stars" id="product-rating">★★★★★</span>
-          <span class="reviews-count">(0 Reviews)</span>
-        </div>
-        
-        <div class="product-info__price" id="product-price">$0</div>
-        
-        <div class="product-info__desc">
-          <p id="product-description">The new Global Explorer Max Comfort Suitcase Pro is a bold reimagining of travel essentials...</p>
-        </div>
-
-        <div class="product-info__options">
-          <div class="option-group">
-            <label for="option-size">Size</label>
-            <select id="option-size"><option>Choose option</option></select>
+    <main class="product-page">
+      <div class="container">
+        <section class="product-main">
+          <div class="product-gallery">
+            <div class="product-gallery__main">
+              <img
+                id="product-main-image"
+                src="/src/assets/suitcase-yellow.jpg"
+                alt="Yellow suitcase"
+              />
+            </div>
+            <div class="product-gallery__thumbnails" id="product-thumbnails">
+              <img
+                src="/src/assets/suitcase-yellow.jpg"
+                alt="Thumb 1"
+                class="active"
+              />
+              <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 2" />
+              <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 3" />
+              <img src="/src/assets/suitcase-yellow.jpg" alt="Thumb 4" />
+            </div>
           </div>
-          <div class="option-group">
-            <label for="option-color">Color</label>
-            <select id="option-color"><option>Choose option</option></select>
-          </div>
-          <div class="option-group">
-            <label for="option-category">Category</label>
-            <select id="option-category"><option>Choose option</option></select>
-          </div>
-        </div>
 
-        <div class="product-info__actions">
-          <div class="quantity-selector">
-            <button type="button" id="qty-minus">-</button>
-            <input type="text" id="qty-input" value="1" readonly>
-            <button type="button" id="qty-plus">+</button>
-          </div>
-          <button class="btn btn-add-cart" id="btn-add-to-cart">Add To Cart</button>
-        </div>
+          <div class="product-info">
+            <h1 class="product-info__title" id="product-title">Loading...</h1>
 
-        <div class="product-info__payments">
-          <span>Payment:</span>
-          <strong>VISA</strong> <strong>MasterCard</strong> <strong>PayPal</strong>
-        </div>
-      </div>
-    </section>
+            <div class="product-info__rating">
+              <span class="stars" id="product-rating">★★★★★</span>
+              <span class="reviews-count">(0 Reviews)</span>
+            </div>
 
-    <section class="product-tabs">
-      <div class="tabs-header">
-        <button class="tab-btn active" data-tab="tab-details">DETAILS</button>
-        <button class="tab-btn" data-tab="tab-reviews">REVIEWS</button>
-        <button class="tab-btn" data-tab="tab-shipping">SHIPPING POLICY</button>
-      </div>
-      
-      <div class="tabs-content">
-        <div class="tab-pane active" id="tab-details">
-          <p>Vestibulum commodo sapien non elit porttitor, vitae volutpat nibh mollis. Nulla porta risus id neque tempor, in efficitur justo imperdiet. Etiam a ex at ante tincidunt imperdiet. Nunc congue ex vel nisl viverra, sit amet aliquet lectus ullamcorper. Praesent luctus lacus non lorem elementum, eu tristique sapien suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisl sodales purus, eget hendrerit dui ligula eu enim. Ut non est nisl. Pellentesque tristique pretium dolor eu commodo. Proin iaculis nibh vitae lectus mollis bibendum. Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam</p>
-        </div>
-        
-        <div class="tab-pane" id="tab-reviews">
-          <div class="reviews-layout">
-            
-            <div class="reviews-list">
-              <div class="review-item">
-                <h4 class="review-author">John Doe <span class="review-date">12 April 2026</span></h4>
-                <div class="review-rating">
-                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                </div>
-                <p class="review-text">Great suitcase, very durable and lightweight! Totally recommend it.</p>
+            <div class="product-info__price" id="product-price">$0</div>
+
+            <div class="product-info__desc">
+              <p id="product-description">
+                The new Global Explorer Max Comfort Suitcase Pro is a bold
+                reimagining of travel essentials...
+              </p>
+            </div>
+
+            <div class="product-info__options">
+              <div class="option-group">
+                <label for="option-size">Size</label>
+                <select id="option-size">
+                  <option>Choose option</option>
+                </select>
+              </div>
+              <div class="option-group">
+                <label for="option-color">Color</label>
+                <select id="option-color">
+                  <option>Choose option</option>
+                </select>
+              </div>
+              <div class="option-group">
+                <label for="option-category">Category</label>
+                <select id="option-category">
+                  <option>Choose option</option>
+                </select>
               </div>
             </div>
 
-            <div class="reviews-form-wrapper">
-              <h3 class="form-title">Add a Review</h3>
-              <form id="review-form">
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="review-name">Your Name *</label>
-                    <input type="text" id="review-name" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="review-email">Your Email *</label>
-                    <input type="email" id="review-email" required>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label>Your Rating *</label>
-                  <div class="rating-select">
-                    <i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="review-text">Your Review *</label>
-                  <textarea id="review-text" rows="4" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-add-cart" style="width: 100%;">Submit</button>
-              </form>
+            <div class="product-info__actions">
+              <div class="quantity-selector">
+                <button type="button" id="qty-minus">-</button>
+                <input type="text" id="qty-input" value="1" readonly />
+                <button type="button" id="qty-plus">+</button>
+              </div>
+              <button class="btn btn-add-cart" id="btn-add-to-cart">
+                Add To Cart
+              </button>
             </div>
 
+            <div class="product-info__payments">
+              <span>Payment:</span>
+              <strong>VISA</strong> <strong>MasterCard</strong>
+              <strong>PayPal</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-tabs">
+          <div class="tabs-header">
+            <button class="tab-btn active" data-tab="tab-details">
+              DETAILS
+            </button>
+            <button class="tab-btn" data-tab="tab-reviews">REVIEWS</button>
+            <button class="tab-btn" data-tab="tab-shipping">
+              SHIPPING POLICY
+            </button>
+          </div>
+
+          <div class="tabs-content">
+            <div class="tab-pane active" id="tab-details">
+              <p>
+                Vestibulum commodo sapien non elit porttitor, vitae volutpat
+                nibh mollis. Nulla porta risus id neque tempor, in efficitur
+                justo imperdiet. Etiam a ex at ante tincidunt imperdiet. Nunc
+                congue ex vel nisl viverra, sit amet aliquet lectus ullamcorper.
+                Praesent luctus lacus non lorem elementum, eu tristique sapien
+                suscipit. Sed bibendum, ipsum nec viverra malesuada, erat nisl
+                sodales purus, eget hendrerit dui ligula eu enim. Ut non est
+                nisl. Pellentesque tristique pretium dolor eu commodo. Proin
+                iaculis nibh vitae lectus mollis bibendum. Quisque varius eget
+                urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat
+                est, sit amet sodales risus. Pellentesque viverra dui auctor,
+                ullamcorper turpis pharetra, facilisis quam
+              </p>
+            </div>
+
+            <div class="tab-pane" id="tab-reviews">
+              <div class="reviews-layout">
+                <div class="reviews-list">
+                  <div class="review-item">
+                    <h4 class="review-author">
+                      John Doe <span class="review-date">12 April 2026</span>
+                    </h4>
+                    <div class="review-rating">
+                      <i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i
+                      ><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">
+                      Great suitcase, very durable and lightweight! Totally
+                      recommend it.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="reviews-form-wrapper">
+                  <h3 class="form-title">Add a Review</h3>
+                  <form id="review-form">
+                    <div class="form-row">
+                      <div class="form-group">
+                        <label for="review-name">Your Name *</label>
+                        <input type="text" id="review-name" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="review-email">Your Email *</label>
+                        <input type="email" id="review-email" required />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Your Rating *</label>
+                      <div class="rating-select">
+                        <i class="fa-regular fa-star"></i
+                        ><i class="fa-regular fa-star"></i
+                        ><i class="fa-regular fa-star"></i
+                        ><i class="fa-regular fa-star"></i
+                        ><i class="fa-regular fa-star"></i>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="review-text">Your Review *</label>
+                      <textarea id="review-text" rows="4" required></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="btn btn-add-cart"
+                      style="width: 100%"
+                    >
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane" id="tab-shipping">
+              <p>
+                Quisque varius eget urna sit amet luctus. Suspendisse potenti.
+                Curabitur ac placerat est, sit amet sodales risus. Pellentesque
+                viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-related">
+          <h2 class="section-title">You May Also Like</h2>
+          <div class="product-grid" id="related-products-grid"></div>
+        </section>
+      </div>
+    </main>
+
+    <section
+      class="benefits"
+      style="background-color: #4a4a4a; padding: 40px 0; margin-top: 60px"
+    >
+      <div class="container">
+        <div
+          class="benefits__wrapper"
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-plane.svg.png"
+              alt="Plane"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Velit nisl sodales eget<br />donec quis. volutpat orci.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-truck.svg.png"
+              alt="Truck"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Dolor eu varius. Morbi<br />fermentum velit nisl.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-coins.svg.png"
+              alt="Coins"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Malesuada fames ac ante<br />ipsum primis in faucibus.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-cap.svg.png"
+              alt="Cap"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Nisl sodales eget donec<br />quis. volutpat orci.
+            </p>
           </div>
         </div>
-
-        <div class="tab-pane" id="tab-shipping">
-          <p>Quisque varius eget urna sit amet luctus. Suspendisse potenti. Curabitur ac placerat est, sit amet sodales risus. Pellentesque viverra dui auctor, ullamcorper turpis pharetra, facilisis quam.</p>
-        </div>
       </div>
     </section>
 
-    <section class="product-related">
-      <h2 class="section-title">You May Also Like</h2>
-      <div class="product-grid" id="related-products-grid">
-      </div>
-    </section>
-
-  </div>
-</main>
-
-  <section class="benefits" style="background-color: #4a4a4a; padding: 40px 0; margin-top: 60px;">
-    <div class="container">
-      <div class="benefits__wrapper" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-plane.svg.png" alt="Plane" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Velit nisl sodales eget<br>donec quis. volutpat orci.</p>
-        </div>
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-truck.svg.png" alt="Truck" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Dolor eu varius. Morbi<br>fermentum velit nisl.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-coins.svg.png" alt="Coins" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Malesuada fames ac ante<br>ipsum primis in faucibus.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-cap.svg.png" alt="Cap" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Nisl sodales eget donec<br>quis. volutpat orci.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
+    <footer class="footer">
       <div class="container">
-        
         <div class="footer__top">
           <div class="footer__col">
             <h3 class="footer__title">About Us</h3>
@@ -229,7 +336,7 @@
               <li><a href="#">Clients</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Interesting Links</h3>
             <ul class="footer__list">
@@ -238,7 +345,7 @@
               <li><a href="#">Socials</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Achievements</h3>
             <ul class="footer__list">
@@ -247,21 +354,26 @@
               <li><a href="#">Our Amazing Clients</a></li>
             </ul>
           </div>
-          
+
           <div class="footer__col">
             <h3 class="footer__title">Contact Us</h3>
             <p class="footer__text">
-              Bendum dolor eu varius. Morbi fermentum velitsodales egetonec. volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac velitn consequat nec luctus.
+              Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
+              volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac
+              velitn consequat nec luctus.
             </p>
           </div>
         </div>
 
         <div class="footer__bottom">
-          
           <div class="footer__shipping">
             <h3 class="footer__title">Shipping Information</h3>
             <p class="footer__text">
-              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.
+              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.
+              Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec
+              interdum, lectus in convallis pulvinar, enim elit porta sapien,
+              vel finibus erat felis sed neque. Etiam aliquet neque sagittis
+              erat tincidunt aliquam.
             </p>
           </div>
 
@@ -276,48 +388,51 @@
             </div>
             <div class="footer__contact-item">
               <i class="fa-regular fa-clock"></i>
-              <span>Mon - Fri: 10am - 6pm<br>Sat - Sun: 10am - 6pm</span>
+              <span>Mon - Fri: 10am - 6pm<br />Sat - Sun: 10am - 6pm</span>
             </div>
             <div class="footer__contact-item">
               <i class="fa-solid fa-location-dot"></i>
-              <span>639 Jade Valley,<br>Washington Dc</span>
+              <span>639 Jade Valley,<br />Washington Dc</span>
             </div>
           </div>
-
         </div>
-
       </div>
     </footer>
     <div class="modal-overlay is-hidden" id="login-modal">
-  <div class="modal-content">
-    
-    <form class="login-form" id="login-form">
-      <div class="form-group">
-        <label for="login-email">Email address <span class="required">*</span></label>
-        <input type="email" id="login-email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="login-password">Password <span class="required">*</span></label>
-        <div class="password-wrapper">
-          <input type="password" id="login-password" required>
-          <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
-        </div>
-      </div>
-      
-      <div class="form-actions">
-        <label class="remember-me">
-          <input type="checkbox" id="remember-me">
-          <span>Remember me</span>
-        </label>
-        <a href="#" class="forgot-link">Forgot Your Password?</a>
-      </div>
-      
-      <button type="submit" class="btn btn-primary w-100">LOG IN</button>
-    </form>
+      <div class="modal-content">
+        <form class="login-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email"
+              >Email address <span class="required">*</span></label
+            >
+            <input type="email" id="login-email" required />
+          </div>
 
-  </div>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+          <div class="form-group">
+            <label for="login-password"
+              >Password <span class="required">*</span></label
+            >
+            <div class="password-wrapper">
+              <input type="password" id="login-password" required />
+              <i
+                class="fa-regular fa-eye toggle-password"
+                id="toggle-password"
+              ></i>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot Your Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

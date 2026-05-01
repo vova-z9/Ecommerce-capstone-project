@@ -15,45 +15,48 @@
 
   // Галерея
   .product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%; // Галерея займає всю ширину своєї колонки
+    max-width: 645px; // Але не більше ніж на зразку
+
     &__main {
-      background-color: #f8f8f8;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 15px;
-      text-align: center;
-      
+      width: 100%;
+      // Використовуємо пропорцію з твоїх замірів (645 / 860 = 0.75, тобто 3:4)
+      aspect-ratio: 3 / 4;
+      background-color: #f9f9f9;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px; // Трохи заокруглені кути для краси
+
       img {
-        max-width: 100%;
-        height: auto;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; // Гарантує, що фото заповнить весь блок
+        display: block;
       }
     }
 
     &__thumbnails {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 15px;
+      display: grid; // Grid краще для рівномірного розподілу
+      grid-template-columns: repeat(4, 1fr); // 4 мініатюри в ряд
+      gap: 15px;
 
       img {
         width: 100%;
-        aspect-ratio: 1 / 1; // Робимо їх ідеально квадратними
-        object-fit: contain; // Картинка впишеться всередину без обрізки
-        background-color: #f8f8f8; // Сірий фон заповнить порожнечу
-        padding: 5px; 
-        border: 1px solid #eee; // Світліша та тонша рамка (як на макеті)
-        border-radius: 4px;
+        aspect-ratio: 1 / 1; // Мініатюри будуть ідеальними квадратами
+        object-fit: cover;
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
+        border: 2px solid transparent; // Прозора рамка, щоб при наведенні фото не смикалось
+        border-radius: 4px;
+        transition: border-color 0.3s ease;
 
-        &.active {
-          border: 1px solid #B92770; // Витончена активна рамка
-          box-shadow: 0 0 5px rgba(185, 39, 112, 0.2); // Легка тінь
-          background-color: #fff;
-        }
-
+        &.active,
         &:hover {
-          border-color: #B92770;
-          opacity: 0.8;
+          border-color: #b92770;
         }
       }
     }
@@ -72,7 +75,7 @@
       color: #f5b301; // Золоті зірки
       font-size: 18px;
       margin-bottom: 20px;
-      
+
       .reviews-count {
         color: #777;
         font-size: 14px;
@@ -97,10 +100,10 @@
 
     &__options {
       margin-bottom: 30px;
-      
+
       .option-group {
         margin-bottom: 15px;
-        
+
         label {
           display: block;
           font-weight: 600;
@@ -119,7 +122,7 @@
           transition: border-color 0.3s;
 
           &:focus {
-            border-color: #B92770; // Фокус твоїм фірмовим кольором
+            border-color: #b92770; // Фокус твоїм фірмовим кольором
           }
         }
       }
@@ -132,14 +135,14 @@
 
       .quantity-selector {
         display: flex;
-        border: 1px solid #B92770;
+        border: 1px solid #b92770;
         border-radius: 4px;
         width: 120px;
 
         button {
           background: transparent;
           border: none;
-          color: #B92770;
+          color: #b92770;
           font-size: 20px;
           width: 40px;
           cursor: pointer;
@@ -157,7 +160,7 @@
 
       .btn-add-cart {
         flex: 1;
-        background-color: #B92770;
+        background-color: #b92770;
         color: white;
         border: none;
         border-radius: 4px;
@@ -166,7 +169,7 @@
         transition: 0.3s;
 
         &:hover {
-          background-color: darken(#B92770, 10%);
+          background-color: darken(#b92770, 10%);
         }
       }
     }
@@ -181,96 +184,99 @@
   }
 
   // Сітка відгуків (2 колонки)
-.reviews-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-top: 20px;
+  .reviews-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 20px;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; // На мобілці буде в одну колонку
-  }
-}
-
-// Стилі лівої колонки (існуючі відгуки)
-.review-item {
-  margin-bottom: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #eee;
-
-  .review-author {
-    font-size: 16px;
-    margin-bottom: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .review-date {
-      font-size: 12px;
-      color: #888;
-      font-weight: 400;
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr; // На мобілці буде в одну колонку
     }
   }
 
-  .review-rating {
-    color: #ffd700; // Золотий колір зірок
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
+  // Стилі лівої колонки (існуючі відгуки)
+  .review-item {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
 
-  .review-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #555;
-  }
-}
+    .review-author {
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
 
-// Стилі правої колонки (форма)
-.reviews-form-wrapper {
-  background: #f9f9f9;
-  padding: 30px;
-  border-radius: 8px;
+      .review-date {
+        font-size: 12px;
+        color: #888;
+        font-weight: 400;
+      }
+    }
 
-  .form-title {
-    font-size: 20px;
-    margin-bottom: 25px;
-  }
-
-  .form-row {
-    display: flex;
-    gap: 20px; // Відстань між Name та Email
-  }
-
-  .form-group {
-    flex: 1; // Щоб Name і Email ділили ширину 50/50
-    margin-bottom: 20px;
-
-    label {
-      display: block;
-      margin-bottom: 8px;
+    .review-rating {
+      color: #ffd700; // Золотий колір зірок
       font-size: 14px;
-      color: #333;
-      font-weight: 500;
+      margin-bottom: 10px;
     }
 
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      outline: none;
-      transition: border-color 0.3s;
-
-      &:focus { border-color: #B92770; }
+    .review-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
     }
   }
 
-  .rating-select {
-    color: #ffd700;
-    cursor: pointer;
-    font-size: 18px;
+  // Стилі правої колонки (форма)
+  .reviews-form-wrapper {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+
+    .form-title {
+      font-size: 20px;
+      margin-bottom: 25px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px; // Відстань між Name та Email
+    }
+
+    .form-group {
+      flex: 1; // Щоб Name і Email ділили ширину 50/50
+      margin-bottom: 20px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #333;
+        font-weight: 500;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        outline: none;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: #b92770;
+        }
+      }
+    }
+
+    .rating-select {
+      color: #ffd700;
+      cursor: pointer;
+      font-size: 18px;
+    }
   }
-}
 
   // 2. ТАБИ
   .product-tabs {
@@ -296,7 +302,7 @@
         &.active {
           color: #111;
           &::after {
-            content: '';
+            content: "";
             position: absolute;
             bottom: -1px;
             left: 0;
@@ -328,19 +334,33 @@
       border: 1px solid #eee;
       border-radius: 8px;
 
-      h3 { margin-bottom: 20px; font-size: 20px; color: #111; }
+      h3 {
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #111;
+      }
 
       .form-group {
         margin-bottom: 20px;
-        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: #111; }
-        input, textarea {
+        label {
+          display: block;
+          margin-bottom: 8px;
+          font-weight: 600;
+          font-size: 14px;
+          color: #111;
+        }
+        input,
+        textarea {
           width: 100%;
           padding: 12px;
           border: 1px solid #ddd;
           border-radius: 4px;
           font-family: inherit;
         }
-        textarea { height: 120px; resize: vertical; }
+        textarea {
+          height: 120px;
+          resize: vertical;
+        }
       }
 
       .rating-input {
@@ -349,13 +369,21 @@
         justify-content: flex-end;
         gap: 5px;
         font-size: 24px;
-        
-        input { display: none; }
-        label { color: #ccc; cursor: pointer; transition: 0.2s; }
-        
+
+        input {
+          display: none;
+        }
+        label {
+          color: #ccc;
+          cursor: pointer;
+          transition: 0.2s;
+        }
+
         input:checked ~ label,
         label:hover,
-        label:hover ~ label { color: #f5b301; }
+        label:hover ~ label {
+          color: #f5b301;
+        }
       }
     }
 
@@ -392,21 +420,28 @@
       }
     }
 
-    // Стилі картки з підтримкою бейджа SALE
     .product-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%; /* ВАЖЛИВО: Картка розтягується на всю висоту колонки */
       position: relative;
       text-align: center;
-      transition: transform 0.3s ease;
 
-      &:hover {
-        transform: translateY(-5px); // Легкий підйом при наведенні
+      /* ЕФЕКТИ: Анімація при наведенні мишки */
+      &:hover &__image-wrapper {
+        transform: translateY(-8px); /* Піднімаємо картинку вище */
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15); /* Робимо тінь темнішою і більшою */
+
+        img {
+          transform: scale(1.05); /* Додаємо легкий зум самого фото всередині */
+        }
       }
-      
+
       &__badge {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        background-color: #B92770;
+        top: 15px;
+        left: 15px;
+        background-color: #b92770;
         color: #fff;
         padding: 4px 12px;
         font-size: 12px;
@@ -417,47 +452,70 @@
       }
 
       &__image-wrapper {
-        background-color: #f8f8f8;
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        background-color: #f9f9f9;
         border-radius: 8px;
-        padding: 20px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         cursor: pointer;
-        
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08); /* Базова, більш помітна тінь */
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+
         img {
-          max-width: 100%;
-          height: auto;
-          mix-blend-mode: multiply; // Білий фон валізи ідеально зіллється з підкладкою
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          transition: transform 0.5s ease; /* Плавність зуму */
         }
       }
 
       &__info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* ВАЖЛИВО: Дозволяє блоку з текстом розтягнутися на весь вільний простір */
+        width: 100%;
+        padding: 0 10px;
+
         h3 {
           font-size: 16px;
           font-weight: 700;
           margin-bottom: 10px;
           color: #111;
+          line-height: 1.4;
+          min-height: 44px; /* ВАЖЛИВО: Жорстко фіксуємо висоту під 2 рядки тексту */
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         p {
           font-size: 18px;
-          color: #555;
+          color: #111;
           margin-bottom: 15px;
-          font-weight: bold;
+          font-weight: 800;
         }
 
         .btn {
           width: 100%;
-          padding: 10px;
-          background-color: #B92770;
+          padding: 12px;
+          background-color: #b92770;
           color: white;
           border: none;
           border-radius: 4px;
           font-weight: bold;
           cursor: pointer;
           transition: 0.3s;
+          margin-top: auto; /* МАГІЯ: Притискає кнопку в самий низ картки! */
 
           &:hover {
-            background-color: darken(#B92770, 10%);
+            background-color: #941f5a;
           }
         }
       }
