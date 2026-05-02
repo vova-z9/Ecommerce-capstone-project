@@ -1,9 +1,11 @@
 .contact-page {
-
+  // =========================================
   // 1. HERO БАНЕР
+  // =========================================
   .contact-hero {
-    // ЗАМІНИ ШЛЯХ ДО КАРТИНКИ (фото з ногами і валізою)
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/src/assets/contact-us.jpg');
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("/src/assets/contact-us.jpg");
     background-size: cover;
     background-position: center;
     min-height: 400px;
@@ -26,98 +28,102 @@
     }
   }
 
- .contact-info {
-  // Зменшили відступи: 40px зверху, 50px знизу (було 80px)
-  padding: 40px 0 50px; 
+  // =========================================
+  // 2. ІНФО-КАРТКИ (Іконки)
+  // =========================================
+  .contact-info {
+    padding: 60px 0 10px;
 
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    
-    @media (max-width: 992px) { grid-template-columns: repeat(2, 1fr); }
-    @media (max-width: 576px) { grid-template-columns: 1fr; }
-  }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: start; // Притискаємо всі картки до верху
 
-  .info-card {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__icon {
-      width: 55px;
-      height: 55px;
-      background-color: #B92770;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      margin-bottom: 15px;
-      border-radius: 4px;
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
     }
 
-    h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: #111;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      // Встановлюємо висоту, щоб наступний текст почався рівно
-      min-height: 40px; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    p {
-      font-size: 14px;
-      color: #777;
-      line-height: 1.5;
-      margin: 0;
-      max-width: 200px; // Обмежуємо ширину, щоб текст гарно розбивався на рядки
+    .info-card {
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start; // Контент починається зверху
+      height: 100%; // Заповнюємо висоту сітки
+
+      &__icon {
+        width: 55px;
+        height: 55px;
+        background-color: #b92770;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        flex-shrink: 0; // Забороняємо іконці стискатися
+      }
+
+      h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 12px;
+        flex-shrink: 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #777;
+        line-height: 1.5;
+        margin: 0;
+        max-width: 200px;
+        text-align: center;
+      }
     }
   }
-}
 
-.contact-feedback {
-  padding-top: 20px; 
-  padding-bottom: 80px;
+  // =========================================
+  // 3. ФОРМА ТА КАРТИНКА (Feedback)
+  // =========================================
+  .contact-feedback {
+    padding-top: 0;
+    padding-bottom: 80px;
 
     .feedback-wrapper {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
-      // ЗМІНА ТУТ: розтягуємо колонки по висоті, щоб вони були однаковими
-      align-items: stretch; 
+      align-items: stretch; // Зрівнюємо висоту правої і лівої колонки
 
       @media (max-width: 992px) {
         grid-template-columns: 1fr;
-        align-items: start; // На мобільному вертаємо дефолт
+        align-items: start;
       }
     }
 
     .feedback-image {
-      // ЗМІНА ТУТ: ворпер картинки займає 100% висоти гріда
-      height: 100%; 
-      
+      height: 100%;
+
       img {
         width: 100%;
-        // ЗМІНА ТУТ: картинка розтягується в повну висоту ворпера
-        height: 100%; 
-        object-fit: cover; // ЗАПОВНЮЄМО простір, щоб не було білих смуг
-        border-radius: 8px; // Скруглення як на ебаут ас
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
       }
     }
 
     .feedback-form-wrapper {
       background-color: #fff;
-      padding: 40px; // Трохи повітря навколо форми
+      padding: 40px;
       border-radius: 8px;
-      // Тінь, щоб форма "відривалася" від фону (як на багатьох макетах)
-      box-shadow: 0 10px 30px rgba(0,0,0, 0.05); 
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
       h2 {
         font-size: 28px;
@@ -136,6 +142,7 @@
     .feedback-form {
       .form-group {
         margin-bottom: 20px;
+        position: relative;
 
         label {
           display: block;
@@ -143,17 +150,18 @@
           font-weight: 700;
           margin-bottom: 8px;
           color: #111;
-          text-transform: uppercase; // Щоб як на макеті
+          text-transform: uppercase;
 
           .required {
-            color: #B92770; // Рожева зірочка
+            color: #b92770;
           }
         }
 
-        input, textarea {
+        input,
+        textarea {
           width: 100%;
           padding: 12px 15px;
-          border: 1px solid #e0e0e0; // Світліша рамка
+          border: 1px solid #e0e0e0;
           border-radius: 4px;
           outline: none;
           font-family: inherit;
@@ -162,12 +170,27 @@
           color: #333;
 
           &:focus {
-            border-color: #B92770; // Рожевий бордер при кліку
+            border-color: #b92770;
+          }
+
+          &.invalid {
+            border-color: #e74c3c;
           }
         }
 
         textarea {
-          resize: vertical; // Дозволяємо тягнути тільки вниз
+          resize: vertical;
+        }
+
+        .error-msg {
+          display: none;
+          color: #e74c3c;
+          font-size: 12px;
+          margin-top: 5px;
+        }
+
+        &.has-error .error-msg {
+          display: block;
         }
       }
 
@@ -175,7 +198,7 @@
         display: inline-block;
         margin-top: 10px;
         padding: 15px 35px;
-        background-color: #B92770;
+        background-color: #b92770;
         color: #fff;
         text-decoration: none;
         font-weight: bold;
@@ -187,7 +210,23 @@
         letter-spacing: 1px;
 
         &:hover {
-          background-color: darken(#B92770, 10%);
+          background-color: darken(#b92770, 10%);
+        }
+      }
+
+      .form-status {
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 4px;
+        display: none;
+
+        &.success {
+          display: block;
+          color: #155724;
+          background-color: #d4edda;
+          border: 1px solid #c3e6cb;
         }
       }
     }

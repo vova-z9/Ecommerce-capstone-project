@@ -1,273 +1,384 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Best Shop | Contact Us</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  
-  <link rel="stylesheet" href="/src/scss/main.scss">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Best Shop | Contact Us</title>
 
-  <header class="header">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="/src/scss/main.scss" />
+  </head>
+  <body>
+    <header class="header">
       <div class="header__top">
         <div class="container header__top-inner">
-  <div class="header__left"> <button class="header__burger" id="burger-btn">
-      <i class="fa-solid fa-bars"></i>
-    </button>
-    <div class="header__socials">
-      <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-      <a href="#"><i class="fa-brands fa-twitter"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-    </div>
-  </div>
-  
-  <a href="/" class="header__logo">
-      <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
-  </a>
-  
-  <div class="header__actions">
-    <a href="#" class="header__action-link" id="open-login">
-      <i class="fa-regular fa-user"></i>
-    </a>
-    <a href="/src/html/cart.html" class="header__action-link header__cart">
-      <i class="fa-solid fa-cart-shopping"></i>
-      <span class="header__cart-count">0</span>
-    </a>
-  </div>
-</div>
+          <div class="header__left">
+            <button class="header__burger" id="burger-btn">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="header__socials">
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+
+          <a href="/" class="header__logo">
+            <i class="fa-solid fa-suitcase-rolling"></i> BEST SHOP
+          </a>
+
+          <div class="header__actions">
+            <a href="#" class="header__action-link" id="open-login">
+              <i class="fa-regular fa-user"></i>
+            </a>
+            <a
+              href="/src/html/cart.html"
+              class="header__action-link header__cart"
+            >
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span class="header__cart-count">0</span>
+            </a>
+          </div>
+        </div>
       </div>
 
       <nav class="header__nav">
         <div class="container">
           <ul class="header__menu">
-             <li><a href="/">Home</a></li>
-             <li><a href="/src/html/catalog.html">Catalog</a></li> 
-             <li><a href="/src/html/about.html">About Us</a></li>
-             <li><a href="/src/html/contact.html">Contact Us</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/src/html/catalog.html">Catalog</a></li>
+            <li><a href="/src/html/about.html">About Us</a></li>
+            <li><a href="/src/html/contact.html">Contact Us</a></li>
           </ul>
         </div>
       </nav>
     </header>
 
-  <main class="contact-page">
-    
-    <section class="contact-hero">
+    <main class="contact-page">
+      <section class="contact-hero">
+        <div class="container">
+          <h1 class="contact-hero__title">Contact Us</h1>
+          <p class="contact-hero__subtitle">
+            Duis vestibulum elit vel neque pharetra vulputate.<br />Duis rutrum
+            non risus in imperdiet.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact-info">
+        <div class="container">
+          <div class="info-grid">
+            <div class="info-card">
+              <div class="info-card__icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <h3>Our Location</h3>
+              <p>1234 NW Bobcat Lane, St.<br />Robert, MO 65584-5678</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card__icon">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <h3>Operating Time</h3>
+              <p>Monday - Friday: 9am - 6pm<br />Weekends: 10:30 am - 6pm</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card__icon">
+                <i class="fa-regular fa-envelope"></i>
+              </div>
+              <h3>Our Email</h3>
+              <p>best@shop.com<br />info@bestshop.com</p>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card__icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <h3>Call Us</h3>
+              <p>(268)142-8413<br />(760)265-2917</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-feedback">
+        <div class="container">
+          <div class="feedback-wrapper">
+            <div class="feedback-image">
+              <img
+                src="/src/assets/contact-feedback.jpg"
+                alt="Feedback Suitcase"
+              />
+            </div>
+
+            <div class="feedback-form-wrapper">
+              <h2>Your Feedback Is Much Appreciated!</h2>
+              <p>We will contact you when you complete the following form!</p>
+
+              <!-- Додали novalidate -->
+              <form class="feedback-form" id="contact-form" novalidate>
+                <div class="form-group">
+                  <label for="contact-name"
+                    >YOUR NAME <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    required
+                    placeholder="John Doe"
+                  />
+                  <!-- Місце для помилки -->
+                  <span class="error-msg">Please enter your name.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email"
+                    >YOUR EMAIL ADDRESS <span class="required">*</span></label
+                  >
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    placeholder="john@doe.com"
+                  />
+                  <span class="error-msg"
+                    >Please enter a valid email address.</span
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="topic"
+                    >TOPIC <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="topic"
+                    name="topic"
+                    required
+                    placeholder="Your request topic"
+                  />
+                  <span class="error-msg">Please enter a topic.</span>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message"
+                    >YOUR MESSAGE <span class="required">*</span></label
+                  >
+                  <textarea
+                    id="contact-message"
+                    name="message"
+                    rows="5"
+                    required
+                    placeholder="Type your message here..."
+                  ></textarea>
+                  <span class="error-msg">Please enter your message.</span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">SEND</button>
+
+                <!-- Місце для повідомлення "Успішно відправлено" -->
+                <div id="form-status" class="form-status"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section
+      class="benefits"
+      style="background-color: #4a4a4a; padding: 40px 0"
+    >
       <div class="container">
-        <h1 class="contact-hero__title">Contact Us</h1>
-        <p class="contact-hero__subtitle">Duis vestibulum elit vel neque pharetra vulputate.<br>Duis rutrum non risus in imperdiet.</p>
+        <div
+          class="benefits__wrapper"
+          style="display: flex; justify-content: space-between; flex-wrap: wrap"
+        >
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-plane.svg.png"
+              alt="Plane"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Velit nisl sodales eget<br />donec quis. volutpat orci.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-truck.svg.png"
+              alt="Truck"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Dolor eu varius. Morbi<br />fermentum velit nisl.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-coins.svg.png"
+              alt="Coins"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Malesuada fames ac ante<br />ipsum primis in faucibus.
+            </p>
+          </div>
+
+          <div
+            class="benefit-card"
+            style="display: flex; align-items: center; gap: 15px; color: white"
+          >
+            <img
+              src="/src/assets/icon-cap.svg.png"
+              alt="Cap"
+              class="benefit-card__icon"
+              style="width: 40px"
+            />
+            <p class="benefit-card__text" style="font-size: 14px; margin: 0">
+              Nisl sodales eget donec<br />quis. volutpat orci.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="contact-info">
+    <footer class="footer">
       <div class="container">
-        <div class="info-grid">
-          
-          <div class="info-card">
-            <div class="info-card__icon"><i class="fa-solid fa-location-dot"></i></div>
-            <h3>Our Location</h3>
-            <p>1234 NW Bobcat Lane, St.<br>Robert, MO 65584-5678</p>
-          </div>
-          
-          <div class="info-card">
-            <div class="info-card__icon"><i class="fa-regular fa-clock"></i></div>
-            <h3>Operating Time</h3>
-            <p>Monday - Friday: 9am - 6pm<br>Weekends: 10:30 am - 6pm</p>
-          </div>
-          
-          <div class="info-card">
-            <div class="info-card__icon"><i class="fa-regular fa-envelope"></i></div>
-            <h3>Our Email</h3>
-            <p>best@shop.com<br>info@bestshop.com</p>
-          </div>
-          
-          <div class="info-card">
-            <div class="info-card__icon"><i class="fa-solid fa-phone"></i></div>
-            <h3>Call Us</h3>
-            <p>(268)142-8413<br>(760)265-2917</p>
+        <div class="footer__top">
+          <div class="footer__col">
+            <h3 class="footer__title">About Us</h3>
+            <ul class="footer__list">
+              <li><a href="#">Organisation</a></li>
+              <li><a href="#">Partners</a></li>
+              <li><a href="#">Clients</a></li>
+            </ul>
           </div>
 
+          <div class="footer__col">
+            <h3 class="footer__title">Interesting Links</h3>
+            <ul class="footer__list">
+              <li><a href="#">Photo Gallery</a></li>
+              <li><a href="#">Our Team</a></li>
+              <li><a href="#">Socials</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Achievements</h3>
+            <ul class="footer__list">
+              <li><a href="#">Winning Awards</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Our Amazing Clients</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__col">
+            <h3 class="footer__title">Contact Us</h3>
+            <p class="footer__text">
+              Bendum dolor eu varius. Morbi fermentum velitsodales egetonec.
+              volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac
+              velitn consequat nec luctus.
+            </p>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <div class="footer__shipping">
+            <h3 class="footer__title">Shipping Information</h3>
+            <p class="footer__text">
+              Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac.
+              Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec
+              interdum, lectus in convallis pulvinar, enim elit porta sapien,
+              vel finibus erat felis sed neque. Etiam aliquet neque sagittis
+              erat tincidunt aliquam.
+            </p>
+          </div>
+
+          <div class="footer__contacts">
+            <div class="footer__contact-item">
+              <i class="fa-solid fa-phone"></i>
+              <span>Phone: (+63) 236 6322</span>
+            </div>
+            <div class="footer__contact-item">
+              <i class="fa-regular fa-envelope"></i>
+              <span>public@news.com</span>
+            </div>
+            <div class="footer__contact-item">
+              <i class="fa-regular fa-clock"></i>
+              <span>Mon - Fri: 10am - 6pm<br />Sat - Sun: 10am - 6pm</span>
+            </div>
+            <div class="footer__contact-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span>639 Jade Valley,<br />Washington Dc</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </footer>
+    <div class="modal-overlay is-hidden" id="login-modal">
+      <div class="modal-content">
+        <form class="login-form" id="login-form">
+          <div class="form-group">
+            <label for="login-email"
+              >Email address <span class="required">*</span></label
+            >
+            <input type="email" id="login-email" required />
+          </div>
 
-    <section class="contact-feedback">
-  <div class="container">
-    <div class="feedback-wrapper">
-      
-      <div class="feedback-image">
-        <img src="/src/assets/contact-feedback.jpg" alt="Feedback Suitcase">
-      </div>
-      
-      <div class="feedback-form-wrapper">
-        <h2>Your Feedback Is Much Appreciated!</h2>
-        <p>We will contact you when you complete the following form!</p>
-        
-        <form class="feedback-form" id="contact-form">
-  <div class="form-group">
-    <label for="contact-name">YOUR NAME <span class="required">*</span></label>
-    <input type="text" id="contact-name" name="name" required placeholder="John Doe">
-  </div>
-  
-  <div class="form-group">
-    <label for="contact-email">YOUR EMAIL ADDRESS <span class="required">*</span></label>
-    <input type="email" id="contact-email" name="email" required placeholder="john@doe.com">
-  </div>
-  
-  <div class="form-group">
-    <label for="topic">TOPIC <span class="required">*</span></label>
-    <input type="text" id="topic" name="topic" required placeholder="Your request topic">
-  </div>
-  
-  <div class="form-group">
-    <label for="contact-message">YOUR MESSAGE <span class="required">*</span></label>
-    <textarea id="contact-message" name="message" rows="5" required placeholder="Type your message here..."></textarea>
-  </div>
-  
-  <button type="submit" class="btn btn-primary">SEND</button>
-</form>
-      </div>
+          <div class="form-group">
+            <label for="login-password"
+              >Password <span class="required">*</span></label
+            >
+            <div class="password-wrapper">
+              <input type="password" id="login-password" required />
+              <i
+                class="fa-regular fa-eye toggle-password"
+                id="toggle-password"
+              ></i>
+            </div>
+          </div>
 
+          <div class="form-actions">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="forgot-link">Forgot Your Password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">LOG IN</button>
+        </form>
+      </div>
     </div>
-  </div>
-</section>
-
-  </main>
-
-  <section class="benefits" style="background-color: #4a4a4a; padding: 40px 0;">
-    <div class="container">
-      <div class="benefits__wrapper" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-plane.svg.png" alt="Plane" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Velit nisl sodales eget<br>donec quis. volutpat orci.</p>
-        </div>
-        
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-truck.svg.png" alt="Truck" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Dolor eu varius. Morbi<br>fermentum velit nisl.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-coins.svg.png" alt="Coins" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Malesuada fames ac ante<br>ipsum primis in faucibus.</p>
-        </div>
-
-        <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; color: white;">
-          <img src="/src/assets/icon-cap.svg.png" alt="Cap" class="benefit-card__icon" style="width: 40px;">
-          <p class="benefit-card__text" style="font-size: 14px; margin: 0;">Nisl sodales eget donec<br>quis. volutpat orci.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div class="container">
-      
-      <div class="footer__top">
-        <div class="footer__col">
-          <h3 class="footer__title">About Us</h3>
-          <ul class="footer__list">
-            <li><a href="#">Organisation</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Clients</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer__col">
-          <h3 class="footer__title">Interesting Links</h3>
-          <ul class="footer__list">
-            <li><a href="#">Photo Gallery</a></li>
-            <li><a href="#">Our Team</a></li>
-            <li><a href="#">Socials</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer__col">
-          <h3 class="footer__title">Achievements</h3>
-          <ul class="footer__list">
-            <li><a href="#">Winning Awards</a></li>
-            <li><a href="#">Press</a></li>
-            <li><a href="#">Our Amazing Clients</a></li>
-          </ul>
-        </div>
-        
-        <div class="footer__col">
-          <h3 class="footer__title">Contact Us</h3>
-          <p class="footer__text">
-            Bendum dolor eu varius. Morbi fermentum velitsodales egetonec. volutpat orci. Sed ipsum felis, tristique egestas et, convallis ac velitn consequat nec luctus.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        
-        <div class="footer__shipping">
-          <h3 class="footer__title">Shipping Information</h3>
-          <p class="footer__text">
-            Nulla eleifend pulvinar purus, molestie euismod odio imperdiet ac. Ut sit amet erat nec nibh rhoncus varius in non lorem. Donec interdum, lectus in convallis pulvinar, enim elit porta sapien, vel finibus erat felis sed neque. Etiam aliquet neque sagittis erat tincidunt aliquam.
-          </p>
-        </div>
-
-        <div class="footer__contacts">
-          <div class="footer__contact-item">
-            <i class="fa-solid fa-phone"></i>
-            <span>Phone: (+63) 236 6322</span>
-          </div>
-          <div class="footer__contact-item">
-            <i class="fa-regular fa-envelope"></i>
-            <span>public@news.com</span>
-          </div>
-          <div class="footer__contact-item">
-            <i class="fa-regular fa-clock"></i>
-            <span>Mon - Fri: 10am - 6pm<br>Sat - Sun: 10am - 6pm</span>
-          </div>
-          <div class="footer__contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <span>639 Jade Valley,<br>Washington Dc</span>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </footer>
-  <div class="modal-overlay is-hidden" id="login-modal">
-  <div class="modal-content">
-    
-    <form class="login-form" id="login-form">
-      <div class="form-group">
-        <label for="login-email">Email address <span class="required">*</span></label>
-        <input type="email" id="login-email" required>
-      </div>
-      
-      <div class="form-group">
-        <label for="login-password">Password <span class="required">*</span></label>
-        <div class="password-wrapper">
-          <input type="password" id="login-password" required>
-          <i class="fa-regular fa-eye toggle-password" id="toggle-password"></i>
-        </div>
-      </div>
-      
-      <div class="form-actions">
-        <label class="remember-me">
-          <input type="checkbox" id="remember-me">
-          <span>Remember me</span>
-        </label>
-        <a href="#" class="forgot-link">Forgot Your Password?</a>
-      </div>
-      
-      <button type="submit" class="btn btn-primary w-100">LOG IN</button>
-    </form>
-
-  </div>
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>
