@@ -153,23 +153,34 @@ async function fetchProducts() {
       };
 
       const dropdowns = document.querySelectorAll(".custom-dropdown");
-      dropdowns.forEach((dropdown) => {
+
+      function handleOptionSelect(
+        option: Element,
+        options: NodeListOf<Element>,
+        selectedText: Element | null,
+      ) {
+        options.forEach((opt) => opt.classList.remove("active"));
+        option.classList.add("active");
+
+        if (selectedText) {
+          selectedText.textContent = option.textContent;
+        }
+
+        applyFilters();
+      }
+
+      function setupDropdown(dropdown: Element) {
         const selectedText = dropdown.querySelector(".selected-text");
         const options = dropdown.querySelectorAll(".custom-dropdown__list li");
 
         options.forEach((option) => {
-          option.addEventListener("click", () => {
-            options.forEach((opt) => opt.classList.remove("active"));
-            option.classList.add("active");
-
-            if (selectedText) {
-              selectedText.textContent = option.textContent;
-            }
-
-            applyFilters();
-          });
+          option.addEventListener("click", () =>
+            handleOptionSelect(option, options, selectedText),
+          );
         });
-      });
+      }
+
+      dropdowns.forEach(setupDropdown);
 
       document
         .getElementById("filter-sale")

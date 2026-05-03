@@ -55,58 +55,50 @@ export async function initProductDetails() {
   }
 }
 
-function renderProductInfo(p: Product) {
-  const title = document.getElementById("product-title");
-  const price = document.getElementById("product-price");
-  const mainImage = document.getElementById(
-    "product-main-image",
-  ) as HTMLImageElement;
-  const desc = document.getElementById("product-description");
-  const rating = document.getElementById("product-rating");
-  const thumbsContainer = document.getElementById("product-thumbnails");
+function renderDescription(desc: HTMLElement | null, p: any) {
+  if (!desc) return;
+  desc.innerHTML =
+    p.description ||
+    `The new <strong>${p.name}</strong> is a bold reimagining of travel essentials, designed to elevate every journey. Made with at least 30% recycled materials, its lightweight yet impact-resistant shell combines eco-conscious innovation with rugged durability.<br><br>The ergonomic handle and GlideMotion spinner wheels ensure effortless mobility while making a statement in sleek design. Inside, the modular compartments and adjustable straps keep your belongings secure and neatly organized, no matter the destination.`;
+}
 
-  if (title) title.textContent = p.name;
-  if (price) price.textContent = `$${p.price}`;
-  if (mainImage) mainImage.src = p.imageUrl;
-
-  if (desc) {
-    desc.innerHTML =
-      p.description ||
-      `The new <strong>${p.name}</strong> is a bold reimagining of travel essentials, designed to elevate every journey. Made with at least 30% recycled materials, its lightweight yet impact-resistant shell combines eco-conscious innovation with rugged durability.<br><br>The ergonomic handle and GlideMotion spinner wheels ensure effortless mobility while making a statement in sleek design. Inside, the modular compartments and adjustable straps keep your belongings secure and neatly organized, no matter the destination.`;
+function renderRating(rating: HTMLElement | null, ratingValue?: number) {
+  if (!rating) return;
+  const starsCount = Math.floor(ratingValue || 5);
+  let starsHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    starsHTML +=
+      i <= starsCount
+        ? '<i class="fa-solid fa-star"></i>'
+        : '<i class="fa-regular fa-star"></i>';
   }
+  rating.innerHTML = starsHTML;
+}
 
-  if (rating) {
-    const starsCount = Math.floor(p.rating || 5);
-    let starsHTML = "";
-    for (let i = 1; i <= 5; i++) {
-      if (i <= starsCount) {
-        starsHTML += '<i class="fa-solid fa-star"></i>';
-      } else {
-        starsHTML += '<i class="fa-regular fa-star"></i>';
-      }
-    }
-    rating.innerHTML = starsHTML;
+function renderThumbnails(thumbsContainer: HTMLElement | null, p: any) {
+  if (!thumbsContainer) return;
+  const imagesToRender =
+    p.gallery && p.gallery.length > 0
+      ? p.gallery
+      : [p.imageUrl, p.imageUrl, p.imageUrl, p.imageUrl];
+
+  thumbsContainer.innerHTML = imagesToRender
+    .slice(0, 4)
+    .map(
+      (imgUrl: string, index: number) => `
+        <img src="${imgUrl}" alt="Thumbnail ${index + 1}" class="${index === 0 ? "active" : ""}">
+      `,
+    )
+    .join("");
+
+  if (typeof (window as any).setupGalleryClickHandlers === "function") {
+    (window as any).setupGalleryClickHandlers();
+  } else if (typeof setupGalleryClickHandlers === "function") {
+    setupGalleryClickHandlers();
   }
+}
 
-  if (thumbsContainer) {
-    const imagesToRender =
-      p.gallery && p.gallery.length > 0
-        ? p.gallery
-        : [p.imageUrl, p.imageUrl, p.imageUrl, p.imageUrl];
-    thumbsContainer.innerHTML = imagesToRender
-      .slice(0, 4)
-      .map(
-        (imgUrl, index) => `
-            <img src="${imgUrl}" alt="Thumbnail ${index + 1}" class="${index === 0 ? "active" : ""}">
-        `,
-      )
-      .join("");
-
-    if (typeof setupGalleryClickHandlers === "function") {
-      setupGalleryClickHandlers();
-    }
-  }
-
+function renderSelectOptions(p: any) {
   const sizeSelect = document.getElementById(
     "option-size",
   ) as HTMLSelectElement;
@@ -121,6 +113,23 @@ function renderProductInfo(p: Product) {
   if (colorSelect && p.color) colorSelect.value = p.color.toLowerCase();
   if (categorySelect && p.category)
     categorySelect.value = p.category.toLowerCase();
+}
+
+export function renderProductInfo(p: Product) {
+  const title = document.getElementById("product-title");
+  const price = document.getElementById("product-price");
+  const mainImage = document.getElementById(
+    "product-main-image",
+  ) as HTMLImageElement;
+
+  if (title) title.textContent = p.name;
+  if (price) price.textContent = `$${p.price}`;
+  if (mainImage) mainImage.src = p.imageUrl;
+
+  renderDescription(document.getElementById("product-description"), p);
+  renderRating(document.getElementById("product-rating"), p.rating);
+  renderThumbnails(document.getElementById("product-thumbnails"), p);
+  renderSelectOptions(p);
 }
 
 function setupGalleryClickHandlers() {

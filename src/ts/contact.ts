@@ -30,9 +30,7 @@ export const initContactForm = (): void => {
     let isValid = true;
     const value = input.value.trim();
 
-    if (value === "") {
-      isValid = false;
-    } else if (input.type === "email" && !isValidEmail(value)) {
+    if (value === "" || (input.type === "email" && !isValidEmail(value))) {
       isValid = false;
     }
 
