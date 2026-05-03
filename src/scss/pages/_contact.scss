@@ -1,7 +1,4 @@
 .contact-page {
-  // =========================================
-  // 1. HERO БАНЕР
-  // =========================================
   .contact-hero {
     background-image:
       linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
@@ -28,9 +25,6 @@
     }
   }
 
-  // =========================================
-  // 2. ІНФО-КАРТКИ (Іконки)
-  // =========================================
   .contact-info {
     padding: 60px 0 10px;
 
@@ -38,7 +32,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      align-items: start; // Притискаємо всі картки до верху
+      align-items: start;
 
       @media (max-width: 992px) {
         grid-template-columns: repeat(2, 1fr);
@@ -53,8 +47,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; // Контент починається зверху
-      height: 100%; // Заповнюємо висоту сітки
+      justify-content: flex-start;
+      height: 100%;
 
       &__icon {
         width: 55px;
@@ -67,7 +61,7 @@
         font-size: 22px;
         margin-bottom: 15px;
         border-radius: 4px;
-        flex-shrink: 0; // Забороняємо іконці стискатися
+        flex-shrink: 0;
       }
 
       h3 {
@@ -89,9 +83,6 @@
     }
   }
 
-  // =========================================
-  // 3. ФОРМА ТА КАРТИНКА (Feedback)
-  // =========================================
   .contact-feedback {
     padding-top: 0;
     padding-bottom: 80px;
@@ -100,7 +91,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
-      align-items: stretch; // Зрівнюємо висоту правої і лівої колонки
+      align-items: stretch;
 
       @media (max-width: 992px) {
         grid-template-columns: 1fr;

@@ -1,6 +1,5 @@
 import "../scss/main.scss";
 
-// Інтерфейс продукту
 interface Product {
   id: string;
   name: string;
@@ -70,28 +69,25 @@ function renderProductInfo(p: Product) {
   if (price) price.textContent = `$${p.price}`;
   if (mainImage) mainImage.src = p.imageUrl;
 
-  // БІЛЬШЕ ОПИСОВОГО ТЕКСТУ (Якщо в JSON його немає, генеруємо красивий текст)
   if (desc) {
     desc.innerHTML =
       p.description ||
       `The new <strong>${p.name}</strong> is a bold reimagining of travel essentials, designed to elevate every journey. Made with at least 30% recycled materials, its lightweight yet impact-resistant shell combines eco-conscious innovation with rugged durability.<br><br>The ergonomic handle and GlideMotion spinner wheels ensure effortless mobility while making a statement in sleek design. Inside, the modular compartments and adjustable straps keep your belongings secure and neatly organized, no matter the destination.`;
   }
 
-  // ЗІРОЧКИ (Як на прикладі: зафарбовані та пусті)
   if (rating) {
     const starsCount = Math.floor(p.rating || 5);
     let starsHTML = "";
     for (let i = 1; i <= 5; i++) {
       if (i <= starsCount) {
-        starsHTML += '<i class="fa-solid fa-star"></i>'; // Жовта зірка
+        starsHTML += '<i class="fa-solid fa-star"></i>';
       } else {
-        starsHTML += '<i class="fa-regular fa-star"></i>'; // Пуста контурна зірка
+        starsHTML += '<i class="fa-regular fa-star"></i>';
       }
     }
     rating.innerHTML = starsHTML;
   }
 
-  // ГАЛЕРЕЯ (Дублюємо картинки, якщо їх мало, щоб було як на макеті)
   if (thumbsContainer) {
     const imagesToRender =
       p.gallery && p.gallery.length > 0
@@ -106,13 +102,11 @@ function renderProductInfo(p: Product) {
       )
       .join("");
 
-    // Викликаємо функцію кліків по галереї, якщо вона є
     if (typeof setupGalleryClickHandlers === "function") {
       setupGalleryClickHandlers();
     }
   }
 
-  // ОПЦІЇ (Size / Color / Category)
   const sizeSelect = document.getElementById(
     "option-size",
   ) as HTMLSelectElement;
@@ -123,7 +117,6 @@ function renderProductInfo(p: Product) {
     "option-category",
   ) as HTMLSelectElement;
 
-  // Автоматично обираємо опцію, якщо вона є в базі, інакше залишаємо "Choose option"
   if (sizeSelect && p.size) sizeSelect.value = p.size;
   if (colorSelect && p.color) colorSelect.value = p.color.toLowerCase();
   if (categorySelect && p.category)
@@ -152,7 +145,6 @@ function setupGalleryClickHandlers() {
 function setupEventListeners() {
   const qtyInput = document.getElementById("qty-input") as HTMLInputElement;
 
-  // 1. Кількість (+/-)
   document.getElementById("qty-plus")?.addEventListener("click", () => {
     qtyInput.value = (parseInt(qtyInput.value) + 1).toString();
   });
@@ -161,30 +153,26 @@ function setupEventListeners() {
     if (val > 1) qtyInput.value = (val - 1).toString();
   });
 
-  // 2. Таби (ВИПРАВЛЕНО)
   const tabBtns = document.querySelectorAll(".tab-btn");
   tabBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const target = (btn as HTMLElement).dataset.tab; // тут вже є 'tab-details'
+      const target = (btn as HTMLElement).dataset.tab;
 
       document
         .querySelectorAll(".tab-btn, .tab-pane")
         .forEach((el) => el.classList.remove("active"));
       btn.classList.add("active");
 
-      // Шукаємо просто по target, без додавання 'tab-'
       if (target) {
         document.getElementById(target)?.classList.add("active");
       }
     });
   });
 
-  // === ІНТЕРАКТИВНІ ЗІРКИ ДЛЯ ВІДГУКУ ===
   const ratingStars = document.querySelectorAll(".rating-select i");
-  let selectedRating = 0; // Зберігає обрану кількість зірок
+  let selectedRating = 0;
 
   ratingStars.forEach((star, index) => {
-    // Коли наводимо мишку: зафарбовуємо зірки до поточної
     star.addEventListener("mouseover", () => {
       ratingStars.forEach((s, i) => {
         if (i <= index) {
@@ -197,13 +185,11 @@ function setupEventListeners() {
       });
     });
 
-    // Коли клікаємо: фіксуємо вибір
     star.addEventListener("click", () => {
       selectedRating = index + 1;
     });
   });
 
-  // Коли прибираємо мишку з усього блоку зірок: повертаємо до обраного стану
   const ratingContainer = document.querySelector(".rating-select");
   ratingContainer?.addEventListener("mouseout", () => {
     ratingStars.forEach((s, i) => {
@@ -217,13 +203,10 @@ function setupEventListeners() {
     });
   });
 
-  // =====================================
-  // 3. Відгуки (Review Form) (ВИПРАВЛЕНО)
   const reviewForm = document.getElementById("review-form") as HTMLFormElement;
   reviewForm?.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Перевіряємо, чи є вже повідомлення. Якщо ні - створюємо!
     let successMsg = document.getElementById("review-success-msg");
     if (!successMsg) {
       successMsg = document.createElement("div");
@@ -247,13 +230,11 @@ function setupEventListeners() {
       s.classList.add("fa-regular");
     });
 
-    // Ховаємо через 3 секунди
     setTimeout(() => {
       successMsg!.style.display = "none";
     }, 3000);
   });
 
-  // 4. Логіка ADD TO CART (залишається твоя, вона чудова)
   document.getElementById("btn-add-to-cart")?.addEventListener("click", () => {
     if (!currentProduct) return;
 

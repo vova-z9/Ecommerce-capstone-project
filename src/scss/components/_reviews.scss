@@ -1,7 +1,7 @@
-@import '../base/variables';
+@import "../base/variables";
 
 .reviews {
-  background-color: #f8f9fa; // Світлий фон секції
+  background-color: #f8f9fa;
   padding: 80px 0;
 
   &__grid {
@@ -15,8 +15,10 @@
   background-color: #fff;
   padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); // Легка тінь
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 
   &:hover {
     transform: translateY(-5px);
@@ -28,7 +30,7 @@
     height: 90px;
     border-radius: 50%;
     object-fit: cover;
-    margin: 0 auto 25px; // Центруємо аватарку
+    margin: 0 auto 25px;
   }
 
   &__text {
@@ -36,12 +38,12 @@
     color: #666;
     line-height: 1.7;
     margin-bottom: 25px;
-    font-style: normal; // РОБИМО ШРИФТ ПРЯМИМ (НЕ КУРСИВ)
+    font-style: normal;
   }
 
   &__author {
     font-weight: 700;
-    color: $color-primary; // Рожевий колір імені
+    color: $color-primary;
     font-size: 15px;
   }
 }

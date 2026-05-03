@@ -1,6 +1,5 @@
 .hero {
   background-color: #f2f2f2;
-  // Даємо ДУЖЕ багато місця знизу, щоб наша картка мала куди наїхати
   padding: 80px 0 180px 0;
 
   &__inner {
@@ -45,13 +44,11 @@
   }
 }
 
-/* --- INFO BLOCKS (Lillian Bennett & Discount) --- */
 .info-blocks {
-  /* --- МАГІЯ НАЇЗДУ: ТЕПЕР ТУТ --- */
-  margin-top: -120px; /* Тягнемо всю секцію вгору на 120px */
+  margin-top: -120px;
   position: relative;
   z-index: 10;
-  background-color: transparent; /* Секція прозора, щоб було видно сірий фон .hero */
+  background-color: transparent;
   padding-bottom: 80px;
 }
 
@@ -62,8 +59,6 @@
   border-radius: 8px;
   overflow: hidden;
 
-  /* --- ФІКС БІЛОЇ ЛІНІЇ --- */
-  /* Обнуляємо відступи від класу .container, щоб картинка розтягнулась на 100% */
   padding: 0 !important;
   width: 100%;
 
@@ -73,13 +68,12 @@
 }
 
 .info-card {
-  flex: 1; /* Обидва блоки (лівий і правий) займають рівно по 50% */
+  flex: 1;
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  /* --- Стилі для лівої картки (Відгук/Про нас) --- */
   &--about {
     align-items: flex-start;
   }
@@ -114,9 +108,7 @@
   }
 }
 
-/* --- Стилі для правої картки (Знижка) --- */
 .info-card--discount {
-  /* Затемнення + картинка. ОБОВ'ЯЗКОВО ПЕРЕВІР НАЗВУ ФОТО В URL! */
   background:
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)),
     url("/img/discount-bg.jpg");
@@ -125,7 +117,7 @@
   align-items: flex-start;
 
   .info-card__percent {
-    color: #ffffff; /* Великий білий відсоток */
+    color: #ffffff;
     font-size: 38px;
     font-weight: 800;
     margin-bottom: 15px;
@@ -133,48 +125,44 @@
   }
 
   .info-card__text {
-    color: #dddddd !important; /* Світло-сірий текст */
+    color: #dddddd !important;
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 25px;
-    max-width: 90%; /* Щоб текст не прилипав до правого краю */
+    max-width: 90%;
   }
 }
 
-/* Стилі для самих карток */
 .slider-wrapper {
   overflow: hidden;
   margin: 0 -10px;
-  padding: 20px 10px; /* Даємо місце для тіні при наведенні */
+  padding: 20px 10px;
   position: relative;
 }
 
 .slider-track {
   display: flex;
-  gap: 20px; /* Відстань між картками */
+  gap: 20px;
   transition: transform 0.4s ease;
 }
 
 .category-card {
-  /* ТУТ ГОЛОВНА ЗМІНА: 4 картки в ряд! */
   min-width: calc(25% - 15px);
-  height: 480px; /* Високі портретні картки */
-  border-radius: 0; /* Гострі кути як на макеті */
+  height: 480px;
+  border-radius: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Текст притиснутий донизу */
+  justify-content: flex-end;
   padding: 30px 25px;
   cursor: pointer;
 
-  /* Фон */
   background-size: cover;
   background-position: center;
   transition:
     background-size 0.5s ease,
     box-shadow 0.4s ease;
 
-  /* Магія градієнта: темний тільки знизу, зверху прозорий */
   &::before {
     content: "";
     position: absolute;
@@ -185,10 +173,9 @@
       rgba(0, 0, 0, 0) 60%
     );
     z-index: 1;
-    pointer-events: none; /* Щоб не заважало клікати */
+    pointer-events: none;
   }
 
-  /* Текст піднімаємо вище градієнта */
   .category-card__title,
   .category-card__text {
     position: relative;
@@ -210,13 +197,11 @@
     margin: 0;
   }
 
-  /* ТЗ: ЕФЕКТИ ПРИ НАВЕДЕННІ (HOVER) */
   &:hover {
-    background-size: 110%; /* ТЗ: Zoom effect */
-    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25); /* ТЗ: Shadow effect */
+    background-size: 110%;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
   }
 
-  /* Адаптив для слайдера */
   @media (max-width: 1024px) {
     min-width: calc(33.333% - 14px);
   }
@@ -229,7 +214,6 @@
   }
 }
 
-/* Робимо кнопки слайдера непомітними на ПК, якщо карток всього 4 */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -256,7 +240,6 @@
     right: 5px;
   }
 
-  /* Ховаємо кнопки на великих екранах, щоб не псували дизайн з картинки */
   @media (min-width: 1025px) {
     display: none;
   }

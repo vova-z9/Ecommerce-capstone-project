@@ -3,33 +3,34 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 рівні колонки
-    gap: 30px; // Відступ між картками
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
 }
 
 .category-card {
-  height: 520px; // Робимо їх високими, як на макеті
+  height: 520px;
   padding: 30px 25px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; // Притискаємо текст донизу
+  justify-content: flex-end;
   background-size: cover;
   background-position: center;
   color: white;
   position: relative;
   overflow: hidden;
 
-  // Плавне затемнення знизу, щоб текст було добре видно
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    // Градієнт від чорного (знизу) до прозорого (зверху)
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0) 60%
+    );
   }
 
-  // Щоб текст був ПОВЕРХ затемнення
   & > * {
     position: relative;
     z-index: 1;

@@ -1,15 +1,15 @@
-@import '../base/variables';
+@import "../base/variables";
 
 .footer {
-  background-color: #fff; // Світлий фон як на макеті
+  background-color: #fff;
   padding: 80px 0;
-  border-top: 1px solid #eee; // Легка лінія зверху для відділення від контенту
+  border-top: 1px solid #eee;
 
   &__top {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 рівні колонки
+    grid-template-columns: repeat(4, 1fr);
     gap: 40px;
-    margin-bottom: 60px; // Відступ до нижнього блоку
+    margin-bottom: 60px;
   }
 
   &__title {
@@ -34,7 +34,7 @@
         transition: color 0.3s;
 
         &:hover {
-          color: $color-primary; // Твій рожевий колір при наведенні
+          color: $color-primary;
         }
       }
     }
@@ -48,14 +48,14 @@
 
   &__bottom {
     display: grid;
-    grid-template-columns: 1fr 1fr; // Розділяємо навпіл: зліва текст, справа контакти
+    grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: flex-start;
   }
 
   &__contacts {
     display: grid;
-    grid-template-columns: 1fr 1fr; // Сітка 2х2 для контактів
+    grid-template-columns: 1fr 1fr;
     gap: 30px;
   }
 
@@ -69,8 +69,8 @@
 
     i {
       font-size: 22px;
-      color: $color-primary; // Рожеві іконки
-      margin-top: 2px; // Трохи опускаємо іконку, щоб вона була на рівні тексту
+      color: $color-primary;
+      margin-top: 2px;
     }
   }
 }

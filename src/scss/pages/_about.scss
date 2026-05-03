@@ -1,12 +1,11 @@
 .about-page {
-
-  // 1. HERO BANNER
   .about-hero {
-    // ЗАМІНИ ШЛЯХ ДО КАРТИНКИ
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/src/assets/banner image.jpg');
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+      url("/src/assets/banner image.jpg");
     background-size: cover;
     background-position: center;
-    min-height: 600px; 
+    min-height: 600px;
     width: 100%;
     display: flex;
     align-items: center;
@@ -32,7 +31,6 @@
     }
   }
 
-  // 2. BENEFITS
   .about-features {
     padding: 80px 0;
     text-align: center;
@@ -42,14 +40,18 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
 
-      @media (max-width: 992px) { grid-template-columns: repeat(2, 1fr); }
-      @media (max-width: 576px) { grid-template-columns: 1fr; }
+      @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: 576px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .feature-item {
       &__icon {
         font-size: 45px;
-        color: #B92770;
+        color: #b92770;
         margin-bottom: 20px;
       }
 
@@ -68,7 +70,6 @@
     }
   }
 
-  // 3. NEW ARRIVALS
   .about-arrivals {
     padding: 80px 0;
     background-color: #fff;
@@ -104,7 +105,7 @@
         display: inline-block;
         margin-top: 15px;
         padding: 15px 35px;
-        background-color: #B92770;
+        background-color: #b92770;
         color: #fff;
         text-decoration: none;
         font-weight: bold;
@@ -112,7 +113,9 @@
         border: none;
         transition: 0.3s;
 
-        &:hover { background-color: darken(#B92770, 10%); }
+        &:hover {
+          background-color: darken(#b92770, 10%);
+        }
       }
     }
 
@@ -127,7 +130,6 @@
     }
   }
 
-  // 4. TEAM
   .about-team {
     padding: 80px 0;
     text-align: center;
@@ -140,14 +142,14 @@
       display: inline-block;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
         width: 100px;
         height: 3px;
-        background-color: #B92770;
+        background-color: #b92770;
       }
     }
 
@@ -156,7 +158,9 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 40px;
 
-      @media (max-width: 768px) { grid-template-columns: 1fr; }
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
     }
 
     .team-member {

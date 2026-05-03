@@ -1,10 +1,10 @@
-@import '../base/variables';
+@import "../base/variables";
 
 .benefits {
-  background-color: #4a4a4a; // Темно-сірий фон
+  background-color: #4a4a4a;
   background-size: cover;
   background-position: center;
-  padding: 50px 0; // Відступи зверху і знизу
+  padding: 50px 0;
   color: white;
 
   &__title {
@@ -15,7 +15,7 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); // 4 рівні колонки
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
   }
 }
@@ -23,17 +23,17 @@
 .benefit-card {
   display: flex;
   align-items: center;
-  gap: 15px; // Відстань між іконкою та текстом
+  gap: 15px;
 
   &__icon {
-    width: 45px; // Ширина іконки (підкоригуй, якщо експортуєш іншого розміру)
+    width: 45px;
     height: auto;
-    flex-shrink: 0; // Забороняємо іконці стискатися
+    flex-shrink: 0;
   }
 
   &__text {
     font-size: 14px;
     line-height: 1.5;
-    color: #e0e0e0; // Трохи світліший білий для м'якості читання
+    color: #e0e0e0;
   }
 }

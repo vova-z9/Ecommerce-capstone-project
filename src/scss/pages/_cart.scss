@@ -1,20 +1,13 @@
-// src/scss/_cart.scss
-
-// 🛑 ОБОВ'ЯЗКОВО ПЕРЕВІР ШЛЯХ ДО ФОТО!
-// Завантаж файл із пустелею/дорогою в папку src/assets/images/ (або свою)
-// і переконайся, що шлях нижче правильний.
 %hero-bg {
-  background-image: url('/src/assets/banner\ cart.jpg'); // Гіпотетичний шлях
+  background-image: url("/src/assets/banner\ cart.jpg");
   background-size: cover;
   background-position: center;
 }
 
-// Загальні налаштування для кошика
 .cart-page {
   padding-bottom: 80px;
 }
 
-// Заголовок "My Cart" із фоном з пустелею
 .page-hero {
   @extend %hero-bg;
   padding: 60px 0;
@@ -30,13 +23,10 @@
   }
 }
 
-// Контент кошика
 .cart-content {
   margin-top: 0;
 }
 
-// 🛑 Спільна сітка (CSS Grid) для таблиці товарів
-// image, name, price, quantity, total, delete
 %cart-grid {
   display: grid;
   grid-template-columns: 120px 2.5fr 1fr 1fr 1fr 50px;
@@ -45,10 +35,9 @@
   text-align: center;
 }
 
-// Темна шапка таблиці
 .cart-table-header {
   @extend %cart-grid;
-  background-color: #555555; // Темно-сірий колір з макету
+  background-color: #555555;
   color: #ffffff;
   padding: 15px 20px;
   font-weight: 700;
@@ -58,42 +47,40 @@
   margin-bottom: 10px;
 }
 
-// Список товарів
 .cart-items-list {
   display: flex;
   flex-direction: column;
 }
 
-// Картка одного товару в кошику (ми будемо рендерити її через TS)
 .cart-item {
   @extend %cart-grid;
   padding: 20px;
   border-bottom: 1px solid #e0e0e0;
   background-color: #ffffff;
-  
+
   &__image img {
     max-width: 100%;
     height: auto;
   }
-  
+
   &__name {
     font-weight: 600;
     text-align: left;
     font-size: 16px;
   }
-  
-  &__price, &__total {
+
+  &__price,
+  &__total {
     font-weight: 700;
     font-size: 16px;
   }
-  
+
   &__quantity {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    
-    // Стилі для кнопок +/- та інпуту кількості (додамо пізніше в TS)
+
     .qty-btn {
       background: none;
       border: 1px solid #ccc;
@@ -101,7 +88,7 @@
       cursor: pointer;
       padding: 0 10px;
     }
-    
+
     input {
       width: 40px;
       text-align: center;
@@ -110,28 +97,27 @@
       font-weight: 600;
     }
   }
-  
+
   &__delete {
-    color: #B92770; // Рожевий колір з макету
+    color: #b92770;
     background: none;
     border: none;
     cursor: pointer;
     font-size: 18px;
-    
+
     &:hover {
       opacity: 0.8;
     }
   }
 }
 
-// Порожній стан кошика
 .cart-empty {
   text-align: center;
   padding: 80px 20px;
   background-color: #f8f8f8;
   margin-top: 20px;
   border: 1px dashed #ccc;
-  
+
   p {
     font-size: 18px;
     color: #777;
@@ -139,7 +125,6 @@
   }
 }
 
-// Нижня частина кошика (Кнопки та Підсумки)
 .cart-footer {
   display: grid;
   grid-template-columns: 2fr 1.5fr;
@@ -148,12 +133,11 @@
   margin-top: 50px;
 }
 
-// Кнопки CONTINUE SHOPPING та CLEAR
 .cart-actions {
   display: flex;
   gap: 20px;
   margin-top: 0;
-  
+
   .btn {
     text-transform: uppercase;
     font-weight: 700;
@@ -163,13 +147,12 @@
   }
 }
 
-// Темний блок Підсумку
 .cart-summary {
   background-color: #555555;
   color: #ffffff;
   padding: 40px;
   text-align: left;
-  
+
   &__row {
     display: flex;
     justify-content: space-between;
@@ -178,8 +161,7 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 16px;
     font-weight: 600;
-    
-    // Рядок фінального Total
+
     &--total {
       font-size: 20px;
       font-weight: 700;
@@ -188,13 +170,11 @@
       padding-bottom: 0;
     }
 
-    // Рядок знижки
     &--discount {
-      color: #ffb6c1; // Світло-рожевий для знижки
+      color: #ffb6c1;
     }
   }
-  
-  // Кнопка CHECKOUT
+
   .btn--checkout {
     width: 100%;
     padding: 15px;

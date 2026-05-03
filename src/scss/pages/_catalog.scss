@@ -11,9 +11,6 @@
   align-items: start;
 }
 
-// =========================================
-// ТУЛБАР (Над сіткою товарів)
-// =========================================
 .catalog__toolbar {
   display: flex;
   justify-content: space-between;
@@ -34,17 +31,14 @@
   }
 }
 
-// =========================================
-// CATALOG FILTERS REDESIGN (Figma Match)
-// =========================================
 .catalog-filters-redesign {
   margin-bottom: 40px;
   width: 100%;
 
   .filters-wrapper {
     display: flex;
-    justify-content: flex-start !important; /* Притискаємо всі елементи до лівого краю */
-    gap: 40px !important; /* Робимо акуратний відступ між ними */
+    justify-content: flex-start !important;
+    gap: 40px !important;
     padding: 25px 0;
     border-top: 2px solid #b92770;
     border-bottom: 2px solid #b92770;
@@ -53,7 +47,7 @@
       max-height 0.3s ease-out,
       padding 0.3s ease-out,
       opacity 0.3s;
-    overflow: visible; /* Дозволяє випадаючим спискам виходити за межі блоку */
+    overflow: visible;
     max-height: 500px;
 
     &.hidden {
@@ -74,10 +68,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    flex: none !important; /* Забороняємо їм безконтрольно розтягуватися */
-    width: 200px; /* Фіксована ширина полів */
+    flex: none !important;
+    width: 200px;
 
-    /* Блок "Sales" не потребує ширини 200px, робимо його компактним */
     &:last-child {
       width: auto;
     }
@@ -88,7 +81,6 @@
       color: #333;
     }
 
-    /* Стилізуємо кастомний дропдаун */
     .custom-dropdown {
       position: relative;
       width: 100%;
@@ -97,7 +89,7 @@
         width: 100%;
         padding: 12px 15px;
         border: 1px solid #e0e0e0;
-        border-radius: 0; /* Гострі кути */
+        border-radius: 0;
         color: #666;
         font-size: 14px;
         background: #fff;
@@ -127,7 +119,6 @@
         padding: 0;
         margin: 0;
 
-        /* Ховаємо список спочатку */
         opacity: 0;
         visibility: hidden;
         transform: translateY(-10px);
@@ -153,7 +144,6 @@
         }
       }
 
-      /* Відкриваємо меню при наведенні (HOVER) */
       &:hover {
         .custom-dropdown__selected {
           border-color: #b92770;
@@ -173,7 +163,6 @@
     }
   }
 
-  /* Круглий чекбокс для Sales */
   .custom-radio-checkbox {
     position: relative;
     display: inline-block;
@@ -223,7 +212,6 @@
     }
   }
 
-  /* Кнопки */
   .filters-actions {
     display: flex;
     gap: 15px;
@@ -247,9 +235,6 @@
   }
 }
 
-// =========================================
-// САЙДБАР ТА ПОШУК
-// =========================================
 .catalog__sidebar {
   .sidebar-widget {
     margin-bottom: 40px;
@@ -286,7 +271,6 @@
   }
 }
 
-/* Міні-картки (Top Best Sets) */
 .sidebar-sets-list {
   display: flex;
   flex-direction: column;
@@ -342,9 +326,6 @@
   }
 }
 
-// =========================================
-// ПАГІНАЦІЯ (М'який дизайн за макетом)
-// =========================================
 #catalog-pagination {
   display: flex;
   justify-content: center;
@@ -371,7 +352,6 @@
       color: #b92770;
     }
 
-    /* Активна сторінка */
     &.active {
       background-color: #b92770;
       color: #fff;
@@ -382,7 +362,6 @@
     }
   }
 
-  /* Кнопки NEXT та PREV */
   .page-btn-nav {
     padding: 0 20px;
     border: 1px solid #b92770;

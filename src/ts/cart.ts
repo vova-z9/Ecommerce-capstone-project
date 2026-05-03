@@ -1,82 +1,83 @@
-// src/ts/cart.ts
-
 interface CartItemData {
-    id: string;
-    color: string;
-    size: string;
-    quantity: number;
+  id: string;
+  color: string;
+  size: string;
+  quantity: number;
 }
 
 export async function initCart() {
-    const container = document.getElementById('cart-items-container');
-    const emptyMessage = document.getElementById('cart-empty-message');
-    const clearBtn = document.getElementById('clear-cart-btn');
-    const checkoutBtn = document.getElementById('checkout-btn');
+  const container = document.getElementById("cart-items-container");
+  const emptyMessage = document.getElementById("cart-empty-message");
+  const clearBtn = document.getElementById("clear-cart-btn");
+  const checkoutBtn = document.getElementById("checkout-btn");
 
-    // Якщо ми не на сторінці кошика, припиняємо роботу
-    if (!container) return;
+  if (!container) return;
 
-    // Дістаємо дані
-    const cart: CartItemData[] = JSON.parse(localStorage.getItem('cart') || '[]');
+  const cart: CartItemData[] = JSON.parse(localStorage.getItem("cart") || "[]");
 
-    // Якщо кошик порожній
-    if (cart.length === 0) {
-        container.innerHTML = '';
-        emptyMessage?.removeAttribute('hidden');
-        calculateAndRenderTotals([], []); // Обнуляємо суми
-        return;
-    } else {
-        emptyMessage?.setAttribute('hidden', '');
-    }
+  if (cart.length === 0) {
+    container.innerHTML = "";
+    emptyMessage?.removeAttribute("hidden");
+    calculateAndRenderTotals([], []);
+    return;
+  } else {
+    emptyMessage?.setAttribute("hidden", "");
+  }
 
-    try {
-        const response = await fetch('/data.json');
-        const rawData = await response.json();
-        const allProducts = rawData[0]?.data || [];
+  try {
+    const response = await fetch("/data.json");
+    const rawData = await response.json();
+    const allProducts = rawData[0]?.data || [];
 
-        renderCartItems(cart, allProducts, container);
-        calculateAndRenderTotals(cart, allProducts);
-        
-    } catch (error) {
-        console.error('Error loading cart data:', error);
-    }
+    renderCartItems(cart, allProducts, container);
+    calculateAndRenderTotals(cart, allProducts);
+  } catch (error) {
+    console.error("Error loading cart data:", error);
+  }
 
-    // Подія для очищення кошика (Clear Cart)
-    if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-            localStorage.removeItem('cart');
-            initCart(); 
-            updateHeaderCounter();
-        });
-    }
+  // Подія для очищення кошика (Clear Cart)
+  if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+      localStorage.removeItem("cart");
+      initCart();
+      updateHeaderCounter();
+    });
+  }
 
-    // Подія для оформлення замовлення (Checkout)
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('cart');
-            initCart(); 
-            updateHeaderCounter();
-            alert('Thank you for your purchase.'); // Вимога з ТЗ
-        });
-    }
+  // Подія для оформлення замовлення (Checkout)
+  if (checkoutBtn) {
+    checkoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("cart");
+      initCart();
+      updateHeaderCounter();
+      alert("Thank you for your purchase.");
+    });
+  }
 }
 
-function renderCartItems(cart: CartItemData[], allProducts: any[], container: HTMLElement) {
-    container.innerHTML = cart.map((cartItem, index) => {
-        const product = allProducts.find(p => p.id === cartItem.id);
-        if (!product) return '';
+function renderCartItems(
+  cart: CartItemData[],
+  allProducts: any[],
+  container: HTMLElement,
+) {
+  container.innerHTML = cart
+    .map((cartItem, index) => {
+      const product = allProducts.find((p) => p.id === cartItem.id);
+      if (!product) return "";
 
-        const itemTotal = product.price * cartItem.quantity;
-        const variantInfo = [cartItem.color, cartItem.size].filter(Boolean).join(' / ');
+      const itemTotal = product.price * cartItem.quantity;
+      const variantInfo = [cartItem.color, cartItem.size]
+        .filter(Boolean)
+        .join(" / ");
 
-        return `
+      return `
             <div class="cart-item">
                 <div class="cart-item__image">
                     <img src="${product.imageUrl}" alt="${product.name}">
                 </div>
                 <div class="cart-item__name">
                     ${product.name}
-                    ${variantInfo ? `<br><small style="color: #777;">${variantInfo}</small>` : ''}
+                    ${variantInfo ? `<br><small style="color: #777;">${variantInfo}</small>` : ""}
                 </div>
                 <div class="cart-item__price">$${product.price}</div>
                 <div class="cart-item__quantity">
@@ -90,83 +91,91 @@ function renderCartItems(cart: CartItemData[], allProducts: any[], container: HT
                 </button>
             </div>
         `;
-    }).join('');
+    })
+    .join("");
 
-    setupCartListeners();
+  setupCartListeners();
 }
 
 function calculateAndRenderTotals(cart: CartItemData[], allProducts: any[]) {
-    const subtotalEl = document.getElementById('summary-subtotal');
-    const totalEl = document.getElementById('summary-total');
-    const discountRow = document.getElementById('discount-row');
-    const discountEl = document.getElementById('summary-discount');
+  const subtotalEl = document.getElementById("summary-subtotal");
+  const totalEl = document.getElementById("summary-total");
+  const discountRow = document.getElementById("discount-row");
+  const discountEl = document.getElementById("summary-discount");
 
-    let subtotal = 0;
-    cart.forEach(cartItem => {
-        const product = allProducts.find(p => p.id === cartItem.id);
-        if (product) {
-            subtotal += product.price * cartItem.quantity;
-        }
-    });
-
-    const shipping = cart.length > 0 ? 30 : 0; // Доставка 30$ тільки якщо є товари
-    let total = subtotal + shipping;
-    let discount = 0;
-
-    // Знижка 10% якщо сума більше $3000 (за ТЗ)
-    if (subtotal > 3000) {
-        discount = subtotal * 0.10;
-        total = subtotal - discount + shipping;
-        discountRow?.removeAttribute('hidden');
-        if (discountEl) discountEl.textContent = `-$${discount.toFixed(0)}`;
-    } else {
-        discountRow?.setAttribute('hidden', '');
+  let subtotal = 0;
+  cart.forEach((cartItem) => {
+    const product = allProducts.find((p) => p.id === cartItem.id);
+    if (product) {
+      subtotal += product.price * cartItem.quantity;
     }
+  });
 
-    if (subtotalEl) subtotalEl.textContent = `$${subtotal}`;
-    if (totalEl) totalEl.textContent = `$${total.toFixed(0)}`;
+  const shipping = cart.length > 0 ? 30 : 0;
+  let total = subtotal + shipping;
+  let discount = 0;
+
+  if (subtotal > 3000) {
+    discount = subtotal * 0.1;
+    total = subtotal - discount + shipping;
+    discountRow?.removeAttribute("hidden");
+    if (discountEl) discountEl.textContent = `-$${discount.toFixed(0)}`;
+  } else {
+    discountRow?.setAttribute("hidden", "");
+  }
+
+  if (subtotalEl) subtotalEl.textContent = `$${subtotal}`;
+  if (totalEl) totalEl.textContent = `$${total.toFixed(0)}`;
 }
 
 function setupCartListeners() {
-    const container = document.getElementById('cart-items-container');
-    if (!container) return;
+  const container = document.getElementById("cart-items-container");
+  if (!container) return;
 
-    // Скидаємо старі слухачі подій, щоб не було дублювання при перемальовуванні
-    const newContainer = container.cloneNode(true);
-    container.parentNode?.replaceChild(newContainer, container);
+  const newContainer = container.cloneNode(true);
+  container.parentNode?.replaceChild(newContainer, container);
 
-    newContainer.addEventListener('click', (e) => {
-        const target = e.target as HTMLElement;
-        const btn = target.closest('button');
-        if (!btn) return;
+  newContainer.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const btn = target.closest("button");
+    if (!btn) return;
 
-        const index = parseInt(btn.getAttribute('data-index') || '-1');
-        if (index === -1) return;
+    const index = parseInt(btn.getAttribute("data-index") || "-1");
+    if (index === -1) return;
 
-        let cart: CartItemData[] = JSON.parse(localStorage.getItem('cart') || '[]');
+    let cart: CartItemData[] = JSON.parse(localStorage.getItem("cart") || "[]");
 
-        if (btn.classList.contains('plus')) {
-            cart[index].quantity += 1;
-        } else if (btn.classList.contains('minus')) {
-            if (cart[index].quantity > 1) {
-                cart[index].quantity -= 1;
-            }
-        } else if (btn.closest('.cart-item__delete')) {
-            cart.splice(index, 1);
-        }
+    if (btn.classList.contains("plus")) {
+      cart[index].quantity += 1;
+    } else if (btn.classList.contains("minus")) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+      }
+    } else if (btn.closest(".cart-item__delete")) {
+      cart.splice(index, 1);
+    }
 
-        // Зберігаємо і миттєво перемальовуємо
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateHeaderCounter();
-        initCart(); 
-    });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateHeaderCounter();
+    initCart();
+  });
 }
 
 function updateHeaderCounter() {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const counter = document.querySelector('.header__cart-count');
-    if (counter) {
-        const totalItems = cart.reduce((sum: number, item: any) => sum + item.quantity, 0);
-        counter.textContent = totalItems.toString();
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const counter = document.querySelector(".header__cart-count") as HTMLElement;
+
+  if (counter) {
+    const totalItems = cart.reduce(
+      (sum: number, item: any) => sum + item.quantity,
+      0,
+    );
+    counter.textContent = totalItems.toString();
+
+    if (totalItems === 0) {
+      counter.style.display = "none";
+    } else {
+      counter.style.display = "flex";
     }
+  }
 }

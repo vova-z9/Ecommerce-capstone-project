@@ -1,12 +1,11 @@
-@import '../base/variables';
+@import "../base/variables";
 
 .header {
   background-color: #fff;
-  border-bottom: 1px solid #eee; // Легка лінія під хедером
+  border-bottom: 1px solid #eee;
 
   &__top {
     padding: 20px 0;
-    border-bottom: 1px solid #f9f9f9;
   }
 
   &__top-inner {
@@ -18,31 +17,39 @@
   &__socials {
     display: flex;
     gap: 15px;
-    width: 100px; // Щоб логотип був рівно по центру
-    a { 
-      color: #777; 
-      font-size: 16px; 
-      transition: color 0.3s; 
-      &:hover { color: $color-primary; }
+    width: 150px;
+    a {
+      color: #777;
+      font-size: 16px;
+      transition: color 0.3s;
+      &:hover {
+        color: $color-primary;
+      }
     }
   }
 
   &__logo {
-    font-size: 28px;
+    font-size: 34px;
     font-weight: 800;
-    color: $color-primary; // Рожевий логотип
+    color: $color-primary;
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     letter-spacing: 1px;
+
+    i {
+      font-size: 38px;
+      line-height: 1;
+      transform: translateY(-3px);
+    }
   }
 
   &__actions {
     display: flex;
     gap: 20px;
     align-items: center;
-    width: 100px; // Баланс для центрування лого
+    width: 150px;
     justify-content: flex-end;
   }
 
@@ -51,24 +58,39 @@
     font-size: 20px;
     text-decoration: none;
     position: relative;
+    display: inline-flex;
+    align-items: center;
     transition: color 0.3s;
-    &:hover { color: $color-primary; }
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__cart {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
   }
 
   &__cart-count {
     position: absolute;
-    top: -8px;
-    right: -12px;
-    background-color: $color-primary;
-    color: white;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -30%);
+
+    background-color: #fff;
+    color: #b92770;
+    border: 2px solid #b92770;
     font-size: 11px;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    font-weight: 700;
+    font-weight: 800;
+    line-height: 1;
+    z-index: 10;
   }
 
   &__nav {
@@ -78,20 +100,20 @@
   &__menu {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 70px;
     list-style: none;
     padding: 0;
     margin: 0;
 
     a {
       text-decoration: none;
-      color: #333;
-      font-weight: 600;
-      font-size: 14px;
-      text-transform: uppercase;
+      color: #111;
+      font-weight: 700;
+      font-size: 16px;
       transition: color 0.3s;
 
-      &:hover, &.active {
+      &:hover,
+      &.active {
         color: $color-primary;
       }
     }

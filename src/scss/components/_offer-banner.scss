@@ -1,41 +1,38 @@
-@import '../base/variables';
+@import "../base/variables";
 
 .offer-banner {
   margin: 80px 0;
-  // УВАГА: Тут (у головному класі) не має бути жодного background!
 
   &__inner {
     position: relative;
-    background-image: url('/src/assets/offer-bg.png'); 
+    background-image: url("/src/assets/offer-bg.png");
     background-color: #333;
     background-size: cover;
     background-position: center;
     color: white;
-    
-    // РОБЛЯТЬ БАНЕР ВИСОКИМ І ПРОПОРЦІЙНИМ
-    min-height: 460px;  
-    padding: 60px 50px; 
-    
+
+    min-height: 460px;
+    padding: 60px 50px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px; 
-    overflow: hidden; 
+    gap: 100px;
+    overflow: hidden;
     border-radius: 10px;
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0;
-      // Світліша плівка, щоб було видно бігуна (0.4)
-      background: rgba(0, 0, 0, 0.4); 
+      background: rgba(0, 0, 0, 0.4);
       z-index: 0;
     }
   }
 
   &__content {
     position: relative;
-    z-index: 1; 
+    z-index: 1;
     text-align: center;
   }
 
@@ -46,11 +43,11 @@
   }
 
   &__huge-text {
-    font-size: 160px; // Гігантський розмір як на макеті
-    font-weight: 900; // Максимально жирний шрифт
-    line-height: 0.9; // Прибираємо зайві відступи зверху і знизу цифр
+    font-size: 160px;
+    font-weight: 900;
+    line-height: 0.9;
     display: block;
-    letter-spacing: -3px; // Трохи зсуваємо цифри одна до одної
+    letter-spacing: -3px;
     margin-bottom: 15px;
   }
 

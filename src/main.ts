@@ -29,7 +29,7 @@ async function fetchProducts() {
 
     const allProducts: Product[] = rawData[0].data;
 
-    // 1. Рендеримо Selected Products & New Arrivals (Головна сторінка)
+    // 1. Рендер Selected Products & New Arrivals
     const selected = allProducts.filter(
       (p) => p.blocks && p.blocks.includes("Selected Products"),
     );
@@ -43,11 +43,10 @@ async function fetchProducts() {
     // 2. КАТАЛОГ: ФІЛЬТРАЦІЯ ТА ПАГІНАЦІЯ
     const catalogContainer = document.getElementById("catalog-grid");
     if (catalogContainer) {
-      let filteredProducts = [...allProducts]; // Масив, який будемо фільтрувати
+      let filteredProducts = [...allProducts];
       const itemsPerPage = 12;
       let currentPage = 1;
 
-      // Головна функція відмальовки каталогу
       const renderCatalog = () => {
         const start = (currentPage - 1) * itemsPerPage;
         const end = start + itemsPerPage;
@@ -59,7 +58,6 @@ async function fetchProducts() {
           currentPage,
         );
 
-        // Оновлюємо текст "Showing 1–12 of 16 results"
         const resultsCount = document.getElementById("results-count");
         if (resultsCount) {
           const shownStart = filteredProducts.length === 0 ? 0 : start + 1;
@@ -75,7 +73,7 @@ async function fetchProducts() {
         if (catalogSection) {
           catalogSection.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
-          window.scrollTo({ top: 0, behavior: "smooth" }); // Запасний варіант
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       };
 
@@ -106,9 +104,6 @@ async function fetchProducts() {
         paginationContainer.innerHTML = buttonsHTML;
       }
 
-      // === НОВА ЛОГІКА ФІЛЬТРІВ ===
-
-      // Допоміжна функція: дістає значення з активного li кастомного меню
       const getCustomFilterValue = (filterType: string) => {
         const activeLi = document.querySelector(
           `.custom-dropdown[data-filter-type="${filterType}"] li.active`,
@@ -117,12 +112,10 @@ async function fetchProducts() {
       };
 
       const applyFilters = () => {
-        // Читаємо значення з нових кастомних меню
         const category = getCustomFilterValue("category");
         const color = getCustomFilterValue("color");
         const size = getCustomFilterValue("size");
 
-        // Ці два залишилися стандартними
         const sale =
           (document.getElementById("filter-sale") as HTMLInputElement)
             ?.checked || false;
@@ -130,7 +123,6 @@ async function fetchProducts() {
           (document.getElementById("sort-select") as HTMLSelectElement)
             ?.value || "default";
 
-        // Фільтруємо масив
         filteredProducts = allProducts.filter((p) => {
           if (
             category !== "all" &&
@@ -145,7 +137,6 @@ async function fetchProducts() {
           return true;
         });
 
-        // Сортуємо масив
         if (sort === "price-low")
           filteredProducts.sort((a, b) => a.price - b.price);
         else if (sort === "price-high")
@@ -157,11 +148,10 @@ async function fetchProducts() {
         else if (sort === "rating")
           filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
 
-        currentPage = 1; // Після фільтрації завжди скидаємо на 1-шу сторінку
+        currentPage = 1;
         renderCatalog();
       };
 
-      // Ініціалізація кліків по кастомних меню
       const dropdowns = document.querySelectorAll(".custom-dropdown");
       dropdowns.forEach((dropdown) => {
         const selectedText = dropdown.querySelector(".selected-text");
@@ -169,22 +159,18 @@ async function fetchProducts() {
 
         options.forEach((option) => {
           option.addEventListener("click", () => {
-            // Змінюємо активний клас
             options.forEach((opt) => opt.classList.remove("active"));
             option.classList.add("active");
 
-            // Оновлюємо текст
             if (selectedText) {
               selectedText.textContent = option.textContent;
             }
 
-            // Запускаємо фільтрацію!
             applyFilters();
           });
         });
       });
 
-      // Вішаємо події на стандартні елементи (Чекбокс та Сортування)
       document
         .getElementById("filter-sale")
         ?.addEventListener("change", applyFilters);
@@ -192,11 +178,9 @@ async function fetchProducts() {
         .getElementById("sort-select")
         ?.addEventListener("change", applyFilters);
 
-      // Оновлена кнопка Reset Filters
       document
         .getElementById("reset-filters")
         ?.addEventListener("click", () => {
-          // Скидаємо кастомні меню
           dropdowns.forEach((dropdown) => {
             const options = dropdown.querySelectorAll(
               ".custom-dropdown__list li",
@@ -205,7 +189,6 @@ async function fetchProducts() {
 
             options.forEach((opt) => opt.classList.remove("active"));
 
-            // Знаходимо дефолтний пункт (з value="all") і робимо його активним
             const defaultOption = dropdown.querySelector(
               '.custom-dropdown__list li[data-value="all"]',
             );
@@ -216,7 +199,6 @@ async function fetchProducts() {
             }
           });
 
-          // Скидаємо стандартні елементи
           if (document.getElementById("sort-select"))
             (
               document.getElementById("sort-select") as HTMLSelectElement
@@ -226,7 +208,7 @@ async function fetchProducts() {
               document.getElementById("filter-sale") as HTMLInputElement
             ).checked = false;
 
-          applyFilters(); // Перемальовуємо заново
+          applyFilters();
         });
 
       // === Логіка кнопки HIDE/SHOW FILTERS ===
@@ -244,7 +226,6 @@ async function fetchProducts() {
         });
       }
 
-      // Запуск при завантаженні
       renderCatalog();
     }
 
@@ -258,48 +239,40 @@ async function fetchProducts() {
       if (!searchInput) return;
 
       const query = searchInput.value.trim().toLowerCase();
-      if (!query) return; // Якщо поле пусте, нічого не робимо
-
-      // Шукаємо товар, у назві якого є введений текст (частковий збіг)
+      if (!query) return;
       const foundProduct = allProducts.find(
         (p) => p.name && p.name.toLowerCase().includes(query),
       );
 
       if (foundProduct) {
-        // ТЗ: Якщо товар знайдено, відкривається сторінка Product Details
         window.location.href = `/src/html/product-details.html?id=${foundProduct.id}`;
       } else {
-        // ТЗ: Якщо не знайдено, показуємо pop-up
         alert("Product not found");
       }
     };
 
-    // Запускаємо пошук по кліку на кнопку (лупу)
     if (searchBtn) {
       searchBtn.addEventListener("click", handleSearch);
     }
 
-    // Додатково: Запускаємо пошук по натисканню клавіші Enter
     if (searchInput) {
       searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
-          e.preventDefault(); // Запобігаємо стандартній поведінці форми
+          e.preventDefault();
           handleSearch();
         }
       });
     }
 
-    // 3. Рендеримо TOP BEST SETS (Бокова колонка)
+    // 3. Рендер TOP BEST SETS
     const topSetsContainer = document.getElementById("sidebar-sets");
     if (topSetsContainer) {
-      // 1. Спочатку шукаємо товари, які є наборами
       let candidateSets = allProducts.filter(
         (p) =>
           (p.blocks && p.blocks.includes("Top Best Sets")) ||
           (p.category && p.category.toLowerCase() === "luggage sets"),
       );
 
-      // 2. Якщо наборів менше 5, беремо інші валізи і "досипаємо" їх у список
       if (candidateSets.length < 5) {
         const otherProducts = allProducts.filter(
           (p) => !candidateSets.includes(p),
@@ -307,13 +280,10 @@ async function fetchProducts() {
         candidateSets = [...candidateSets, ...otherProducts];
       }
 
-      // 3. МАКСИМАЛЬНИЙ РАНДОМ: потужно перемішуємо весь зібраний список
       const shuffledSets = [...candidateSets].sort(() => 0.5 - Math.random());
 
-      // 4. Беремо рівно 5 штук (як ти просив)
       const itemsToShow = shuffledSets.slice(0, 5);
 
-      // 5. Відмальовуємо
       topSetsContainer.innerHTML = itemsToShow
         .map(
           (p) => `

@@ -18,7 +18,6 @@ export function initSlider() {
     const slide = track.firstElementChild as HTMLElement;
     if (!slide) return;
 
-    // Рахуємо ширину слайду + margin (20px)
     const slideWidth = slide.offsetWidth + 20;
     const moveAmount = currentIndex * slideWidth;
     track.style.transform = `translateX(-${moveAmount}px)`;

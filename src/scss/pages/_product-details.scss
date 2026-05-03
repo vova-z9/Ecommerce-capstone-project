@@ -1,56 +1,53 @@
 .product-page {
   padding: 60px 0;
 
-  // 1. ВЕРХНІЙ БЛОК
   .product-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 50px;
-    margin-bottom: 100px; // Збільшили відступ до табів, як на макеті
+    margin-bottom: 100px;
 
     @media (max-width: 992px) {
-      grid-template-columns: 1fr; // На мобільному колонки стають одна під одною
+      grid-template-columns: 1fr;
     }
   }
 
-  // Галерея
   .product-gallery {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%; // Галерея займає всю ширину своєї колонки
-    max-width: 645px; // Але не більше ніж на зразку
+    width: 100%;
+    max-width: 645px;
 
     &__main {
       width: 100%;
-      // Використовуємо пропорцію з твоїх замірів (645 / 860 = 0.75, тобто 3:4)
       aspect-ratio: 3 / 4;
       background-color: #f9f9f9;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 4px; // Трохи заокруглені кути для краси
+      border-radius: 4px;
 
       img {
         width: 100%;
         height: 100%;
-        object-fit: cover; // Гарантує, що фото заповнить весь блок
+        object-fit: cover;
         display: block;
       }
     }
 
     &__thumbnails {
-      display: grid; // Grid краще для рівномірного розподілу
-      grid-template-columns: repeat(4, 1fr); // 4 мініатюри в ряд
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 15px;
 
       img {
         width: 100%;
-        aspect-ratio: 1 / 1; // Мініатюри будуть ідеальними квадратами
+        aspect-ratio: 1 / 1;
         object-fit: cover;
         cursor: pointer;
-        border: 2px solid transparent; // Прозора рамка, щоб при наведенні фото не смикалось
+        border: 2px solid transparent;
         border-radius: 4px;
         transition: border-color 0.3s ease;
 
@@ -62,17 +59,16 @@
     }
   }
 
-  // Інформація
   .product-info {
     &__title {
       font-size: 32px;
       margin-bottom: 15px;
       color: #111;
-      font-weight: 700; // Додали жирність заголовку
+      font-weight: 700;
     }
 
     &__rating {
-      color: #f5b301; // Золоті зірки
+      color: #f5b301;
       font-size: 18px;
       margin-bottom: 20px;
 
@@ -114,7 +110,7 @@
         select {
           width: 100%;
           padding: 12px;
-          border: 1px solid #e0e0e0; // Світліша рамка селекту
+          border: 1px solid #e0e0e0;
           border-radius: 4px;
           outline: none;
           color: #444;
@@ -122,7 +118,7 @@
           transition: border-color 0.3s;
 
           &:focus {
-            border-color: #b92770; // Фокус твоїм фірмовим кольором
+            border-color: #b92770;
           }
         }
       }
@@ -183,14 +179,11 @@
     }
   }
 
-  /* =========================================
-   REVIEWS TAB LAYOUT (Wide + Pink Accents)
-   ========================================= */
   .reviews-layout {
     display: flex;
-    justify-content: space-between; /* Розштовхуємо колонки по краях */
-    gap: 8%; /* Відносний відступ замість жорстких пікселів */
-    width: 100%; /* Розтягуємо на 100% ширини контейнера (лінії) */
+    justify-content: space-between;
+    gap: 8%;
+    width: 100%;
     margin-top: 50px;
 
     @media (max-width: 992px) {
@@ -199,10 +192,8 @@
     }
   }
 
-  /* --- ЛІВА КОЛОНКА --- */
   .reviews-list {
-    flex: 1; /* Забирає свою половину вільного місця */
-    /* ТУТ МИ ВИДАЛИЛИ max-width: 500px; !!! */
+    flex: 1;
 
     &__title {
       font-size: 16px;
@@ -213,7 +204,7 @@
 
     .review-item {
       display: flex;
-      gap: 25px; /* Більший відступ від аватарки до тексту */
+      gap: 25px;
 
       .review-avatar {
         width: 50px;
@@ -228,7 +219,7 @@
         .review-header {
           display: flex;
           justify-content: space-between;
-          align-items: center; /* Рівняємо зірочки по центру імені */
+          align-items: center;
           margin-bottom: 15px;
 
           .review-meta {
@@ -264,7 +255,6 @@
     }
   }
 
-  /* --- ПРАВА КОЛОНКА (ФОРМА) --- */
   .reviews-form-wrapper {
     flex: 1;
     background-color: #fff;
@@ -316,14 +306,13 @@
     .form-group {
       margin-bottom: 20px;
 
-      /* РОЖЕВІ РАМКИ ЯК У ФІГМІ */
       input[type="text"],
       input[type="email"],
       textarea {
         width: 100%;
         padding: 15px 20px;
-        border: 1px solid #d8a6b9; /* Блідо-рожева рамка по замовчуванню */
-        border-radius: 0; /* Гострі кути */
+        border: 1px solid #d8a6b9;
+        border-radius: 0;
         font-family: inherit;
         font-size: 14px;
         color: #333;
@@ -335,7 +324,7 @@
         }
 
         &:focus {
-          border-color: #b92770; /* Яскраво-рожева при кліку */
+          border-color: #b92770;
         }
       }
 
@@ -370,7 +359,7 @@
         input {
           margin-top: 2px;
           cursor: pointer;
-          accent-color: #b92770; /* Рожевий колір для самої галочки */
+          accent-color: #b92770;
         }
       }
     }
@@ -385,7 +374,7 @@
       cursor: pointer;
       text-transform: uppercase;
       transition: 0.3s;
-      border-radius: 0; /* Гострі кути */
+      border-radius: 0;
 
       &:hover {
         background-color: #8a1d53;
@@ -393,7 +382,6 @@
     }
   }
 
-  // 2. ТАБИ
   .product-tabs {
     margin-bottom: 80px;
 
@@ -441,7 +429,6 @@
       }
     }
 
-    // Стилі форми відгуків
     .reviews-form {
       margin-top: 40px;
       background: #fdfdfd;
@@ -513,7 +500,6 @@
     }
   }
 
-  // 3. РЕКОМЕНДАЦІЇ (You May Also Like)
   .product-related {
     .section-title {
       text-align: center;
@@ -538,17 +524,16 @@
     .product-card {
       display: flex;
       flex-direction: column;
-      height: 100%; /* ВАЖЛИВО: Картка розтягується на всю висоту колонки */
+      height: 100%;
       position: relative;
       text-align: center;
 
-      /* ЕФЕКТИ: Анімація при наведенні мишки */
       &:hover &__image-wrapper {
-        transform: translateY(-8px); /* Піднімаємо картинку вище */
-        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15); /* Робимо тінь темнішою і більшою */
+        transform: translateY(-8px);
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
 
         img {
-          transform: scale(1.05); /* Додаємо легкий зум самого фото всередині */
+          transform: scale(1.05);
         }
       }
 
@@ -575,7 +560,7 @@
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08); /* Базова, більш помітна тінь */
+        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.08);
         transition:
           transform 0.4s ease,
           box-shadow 0.4s ease;
@@ -585,15 +570,14 @@
           height: 100%;
           object-fit: cover;
           display: block;
-          transition: transform 0.5s ease; /* Плавність зуму */
+          transition: transform 0.5s ease;
         }
       }
 
       &__info {
         display: flex;
         flex-direction: column;
-        flex-grow: 1; /* ВАЖЛИВО: Дозволяє блоку з текстом розтягнутися на весь вільний простір */
-        width: 100%;
+        flex-grow: 1;
         padding: 0 10px;
 
         h3 {
@@ -602,7 +586,7 @@
           margin-bottom: 10px;
           color: #111;
           line-height: 1.4;
-          min-height: 44px; /* ВАЖЛИВО: Жорстко фіксуємо висоту під 2 рядки тексту */
+          min-height: 44px;
           display: -webkit-box;
           -webkit-line-clamp: 2;
           line-clamp: 2;
@@ -627,7 +611,7 @@
           font-weight: bold;
           cursor: pointer;
           transition: 0.3s;
-          margin-top: auto; /* МАГІЯ: Притискає кнопку в самий низ картки! */
+          margin-top: auto;
 
           &:hover {
             background-color: #941f5a;
@@ -638,9 +622,8 @@
   }
 }
 
-/* Вирівнювання сітки You May Also Like */
 #related-products-grid {
-  display: grid !important; /* Перебиваємо старі флекси, якщо вони були */
+  display: grid !important;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   width: 100%;
@@ -660,21 +643,17 @@
   margin: 0;
 }
 
-/* =========================================
-   ФІКС ШИРИНИ ДЛЯ ВСІХ ТАБІВ (Details, Reviews, Shipping)
-   ========================================= */
 .tabs-content {
   width: 100%;
   max-width: 100% !important;
-  padding-left: 0 !important; /* Прибираємо лівий відступ */
-  padding-right: 0 !important; /* Прибираємо правий відступ */
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .tab-pane {
   width: 100%;
   max-width: 100% !important;
 
-  /* Змушуємо текст (Details та Shipping) розтягуватися */
   p {
     width: 100%;
     max-width: 100% !important;
@@ -684,7 +663,6 @@
   }
 }
 
-/* Ще раз страхуємо наші відгуки */
 .reviews-layout {
   width: 100%;
   max-width: 100% !important;

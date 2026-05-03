@@ -1,24 +1,24 @@
-@import './base/variables';
-@import './base/reset';
+@import "./base/variables";
+@import "./base/reset";
 
-@import './components/header';
-@import './pages/home';
-@import './components/buttons';
-@import './components/product-card';
-@import './components/info-blocks'; // Блок з Ліліан
-@import './components/categories';  // 4 сірі категорії
-@import './components/offer-banner';// Банер 50%
-@import './components/reviews';     // Відгуки клієнтів
-@import './components/footer';      // Підвал сайту
-@import './components/benefits';
-@import './pages/catalog';      
-@import './pages/product-details';
-@import './pages/about';
-@import './pages/contact';
-@import './pages/modal';
-@import './pages/cart';
-@import './layouts/header.scss';
-@import './abstracts/mixins';
+@import "./components/header";
+@import "./pages/home";
+@import "./components/buttons";
+@import "./components/product-card";
+@import "./components/info-blocks";
+@import "./components/categories";
+@import "./components/offer-banner";
+@import "./components/reviews";
+@import "./components/footer";
+@import "./components/benefits";
+@import "./pages/catalog";
+@import "./pages/product-details";
+@import "./pages/about";
+@import "./pages/contact";
+@import "./pages/modal";
+@import "./pages/cart";
+@import "./layouts/header.scss";
+@import "./abstracts/mixins";
 
 body {
   font-family: $font-main;
@@ -27,9 +27,8 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px; /* Обов'язкові 15px, щоб контент не прилипав до країв екрана на телефоні */
-  overflow-x: hidden; /* Запобіжник від скролу всередині самого контейнера */
+  padding: 0 15px;
+  overflow-x: hidden;
 }
-
