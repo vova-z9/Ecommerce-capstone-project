@@ -8,6 +8,7 @@ Responsive e-commerce website built as a capstone project to practice strict typ
 
 
 ![Catalog with filters](path-to-screenshot-2.png)
+<img width="711" height="684" alt="image" src="https://github.com/user-attachments/assets/72aa208a-aecc-4b7b-af35-c531ca333058" />
 
 ## Tech Stack
 
