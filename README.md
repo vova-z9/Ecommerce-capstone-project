@@ -5,10 +5,9 @@ Responsive e-commerce website built as a capstone project to practice strict typ
 🔗 https://suitcaseshop.netlify.app/
 
 ## Screenshot
+<img width="1919" height="869" alt="image" src="https://github.com/user-attachments/assets/5a87e39a-f90b-4e99-91c9-2f93a6815233" />
+<img width="1917" height="869" alt="image" src="https://github.com/user-attachments/assets/3d221330-65cf-4b3c-9628-0c0cf3b3d62e" />
 
-
-![Catalog with filters](path-to-screenshot-2.png)
-<img width="711" height="684" alt="image" src="https://github.com/user-attachments/assets/72aa208a-aecc-4b7b-af35-c531ca333058" />
 
 ## Tech Stack
 
